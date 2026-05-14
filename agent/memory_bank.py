@@ -32,3 +32,5 @@ def query_historical_memory(query: str) -> str:
     if results.get('documents') and results['documents'][0]:
         return results['documents'][0][0]
     return "No historical precedent found. Rely on manifest baselines."
+
+    #hi
