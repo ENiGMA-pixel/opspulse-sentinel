@@ -209,7 +209,12 @@ with tab2:
                         """)
 
                         # THE REAL API CALL — no args, engine builds context internally
-                        response, model_used = generate_rca_with_fallback()
+                        df_tel = st.session_state.get('custom_telemetry', None)
+                        df_dep = st.session_state.get('custom_deployments', None)
+                        response, model_used = generate_rca_with_fallback(
+                            df_telemetry=df_tel,
+                            df_deployments=df_dep
+                        )
                         rca_data = json.loads(response.text)
 
                         # Store in session state

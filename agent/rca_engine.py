@@ -12,20 +12,14 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
-def load_context():
+def load_context(df_telemetry=None, df_deployments=None):
     with open("config/cluster_manifest.json", "r") as f:
         cluster_map = f.read()
 
-    # Use uploaded data if available, otherwise fall back to benchmark
-    import streamlit as st
-    if 'custom_telemetry' in st.session_state:
-        df_telemetry = st.session_state['custom_telemetry']
-    else:
+    # Use passed dataframes if provided, otherwise fall back to benchmark
+    if df_telemetry is None:
         df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
-
-    if 'custom_deployments' in st.session_state:
-        df_deployments = st.session_state['custom_deployments']
-    else:
+    if df_deployments is None:
         df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
     important = df_telemetry[df_telemetry['Level'].isin(['ERROR', 'FATAL', 'WARN', 'INFO'])]
@@ -38,11 +32,14 @@ def load_context():
     return cluster_map, clean_telemetry, clean_deployments
 
 
-def build_prompt():
+def build_prompt(df_telemetry=None, df_deployments=None):
     historical_memory = query_historical_memory(
         "503 Service Unavailable timeout after deployment configuration change"
     )
-    cluster_map, clean_telemetry, clean_deployments = load_context()
+    cluster_map, clean_telemetry, clean_deployments = load_context(
+        df_telemetry=df_telemetry,
+        df_deployments=df_deployments
+    )
 
     user_prompt = USER_PROMPT_TEMPLATE.format(
         historical_memory=historical_memory,
@@ -54,11 +51,14 @@ def build_prompt():
     return SYSTEM_INSTRUCTION.strip(), user_prompt.strip()
 
 
-def generate_rca_with_fallback():
+def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
     primary_model = 'gemini-3.1-pro-preview'
     fallback_model = 'gemini-3.1-flash-lite-preview'
 
-    system_instruction, user_prompt = build_prompt()
+    system_instruction, user_prompt = build_prompt(
+        df_telemetry=df_telemetry,
+        df_deployments=df_deployments
+    )
 
     try:
         print(f"🧠 Attempting RCA with {primary_model}...")
