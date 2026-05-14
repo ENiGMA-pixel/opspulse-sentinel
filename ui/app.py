@@ -93,19 +93,54 @@ tab1, tab2, tab3 = st.tabs([
     "✅ ACT III: Remediation Execution"
 ])
 
-# ─────────────────────────────────────────────
+# # ─────────────────────────────────────────────
 # ACT I: THE DATA LAYER
 # ─────────────────────────────────────────────
 with tab1:
     st.markdown("### 📡 Live System Telemetry")
     st.error("⚠️ CRITICAL ANOMALY: Widespread 503 connection timeouts detected in upstream ServiceA routing.")
 
+    # --- FILE UPLOAD SECTION ---
+    st.markdown("### 📂 Data Source")
+    upload_col, info_col = st.columns([1, 1])
+
+    with upload_col:
+        uploaded_telemetry = st.file_uploader(
+            "Upload custom telemetry log (CSV)",
+            type=["csv"],
+            help="Must have columns: Date, Time, Level, Component, Content"
+        )
+        uploaded_deployments = st.file_uploader(
+            "Upload custom deployment log (CSV)",
+            type=["csv"],
+            help="Must have columns: Date, Time, Component, Content"
+        )
+
+    with info_col:
+        if uploaded_telemetry or uploaded_deployments:
+            st.success("✅ Custom data loaded. Sentinel will analyze your logs.")
+        else:
+            st.info(
+                "📋 **Using default benchmark dataset**\n\n"
+                "Upload your own CSVs above to analyze a different failure scenario. "
+                "Columns required: `Date`, `Time`, `Level`, `Component`, `Content`"
+            )
+
+    # Store uploads in session state so rca_engine can access them
+    if uploaded_telemetry:
+        st.session_state['custom_telemetry'] = pd.read_csv(uploaded_telemetry)
+    if uploaded_deployments:
+        st.session_state['custom_deployments'] = pd.read_csv(uploaded_deployments)
+
+    st.divider()
+
     col_a, col_b = st.columns(2)
 
     with col_a:
         st.markdown("**🔄 Recent Deployment Events**")
         try:
-            df_dep = pd.read_csv("data/processed/deployment_log.csv").tail(3)
+            df_dep = st.session_state.get('custom_deployments',
+                      pd.read_csv("data/processed/deployment_log.csv")).tail(3)
             st.dataframe(df_dep, use_container_width=True, hide_index=True)
             st.caption("⚠️ Note the Helm upgrade at 14:28:01 — 4 minutes before errors began.")
         except Exception:
@@ -114,7 +149,8 @@ with tab1:
     with col_b:
         st.markdown("**📉 Telemetry Firehose (Last 5 Events)**")
         try:
-            df_tel = pd.read_csv("data/processed/structured_telemetry.csv").tail(5)
+            df_tel = st.session_state.get('custom_telemetry',
+                      pd.read_csv("data/processed/structured_telemetry.csv")).tail(5)
             st.dataframe(df_tel, use_container_width=True, hide_index=True)
             st.caption("Errors cascade beginning at 14:32 — 4 minutes after the Helm change.")
         except Exception:

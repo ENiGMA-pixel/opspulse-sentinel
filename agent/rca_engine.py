@@ -16,8 +16,17 @@ def load_context():
     with open("config/cluster_manifest.json", "r") as f:
         cluster_map = f.read()
 
-    df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
-    df_deployments = pd.read_csv("data/processed/deployment_log.csv")
+    # Use uploaded data if available, otherwise fall back to benchmark
+    import streamlit as st
+    if 'custom_telemetry' in st.session_state:
+        df_telemetry = st.session_state['custom_telemetry']
+    else:
+        df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
+
+    if 'custom_deployments' in st.session_state:
+        df_deployments = st.session_state['custom_deployments']
+    else:
+        df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
     important = df_telemetry[df_telemetry['Level'].isin(['ERROR', 'FATAL', 'WARN', 'INFO'])]
     clean_telemetry = "\n".join(
