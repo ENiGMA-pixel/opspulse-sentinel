@@ -1,24 +1,30 @@
+import os
 import chromadb
 
-chroma_client = chromadb.Client()
+# Persist to disk instead of in-memory
+CHROMA_PATH = "data/chroma_db"
+os.makedirs(CHROMA_PATH, exist_ok=True)
 
-try:
-    chroma_client.delete_collection(name="incident_history")
-except Exception:
-    pass
+chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
 
-collection = chroma_client.create_collection(name="incident_history")
+# Get or create — won't wipe on restart
+collection = chroma_client.get_or_create_collection(name="incident_history")
 
-collection.add(
-    documents=[
-        "Resolution: Reverted Ingress controller proxy-connect-timeout to baseline 30s after deployment caused 503s.",
-        "Resolution: ServiceA OOMKilled due to memory leak in v1.1.0. Rolled back to v1.0.9.",
-        "Resolution: Database lock timeout exceeded during massive batch insert on PostgreSQL-Main. Terminated idle transactions.",
-        "Resolution: BGP routing flap caused transient 504 Gateway Timeouts. Reset peering session.",
-        "Resolution: Auth-Service SSL certificate expiration caused silent connection drops. Rotated certs."
-    ],
-    ids=["inc_001", "inc_002", "inc_003", "inc_004", "inc_005"]
-)
+# Only add if collection is empty — prevents duplicate entries on restart
+if collection.count() == 0:
+    collection.add(
+        documents=[
+            "Resolution: Reverted Ingress controller proxy-connect-timeout to baseline 30s after deployment caused 503s.",
+            "Resolution: ServiceA OOMKilled due to memory leak in v1.1.0. Rolled back to v1.0.9.",
+            "Resolution: Database lock timeout exceeded during massive batch insert on PostgreSQL-Main. Terminated idle transactions.",
+            "Resolution: BGP routing flap caused transient 504 Gateway Timeouts. Reset peering session.",
+            "Resolution: Auth-Service SSL certificate expiration caused silent connection drops. Rotated certs."
+        ],
+        ids=["inc_001", "inc_002", "inc_003", "inc_004", "inc_005"]
+    )
+    print("✅ Memory bank initialized with 5 historical incidents.")
+else:
+    print(f"✅ Memory bank loaded. {collection.count()} incidents in history.")
 
 
 def query_historical_memory(query: str) -> str:

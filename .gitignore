@@ -222,3 +222,4 @@ data/raw/
 __pycache__/
 *.pyc
 venv/
+data/chroma_db/
