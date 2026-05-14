@@ -13,15 +13,12 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def load_context():
-    # Load manifest — matches actual file location in repo
-    with open("agent/cluster_manifest.json", "r") as f:
+    with open("config/cluster_manifest.json", "r") as f:
         cluster_map = f.read()
 
-    # Load processed CSVs
     df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
     df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
-    # Optimize telemetry — filter signal from noise
     important = df_telemetry[df_telemetry['Level'].isin(['ERROR', 'FATAL', 'WARN', 'INFO'])]
     clean_telemetry = "\n".join(
         f"[{r['Time']}] {r['Component']}: {r['Content']}"
@@ -38,7 +35,6 @@ def build_prompt():
     )
     cluster_map, clean_telemetry, clean_deployments = load_context()
 
-    # Use the imported templates — single source of truth
     user_prompt = USER_PROMPT_TEMPLATE.format(
         historical_memory=historical_memory,
         cluster_map=cluster_map,
