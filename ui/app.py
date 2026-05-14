@@ -70,8 +70,8 @@ with st.sidebar:
     pipeline_status = st.empty()
     pipeline_status.markdown("""
     - ⬜ ChromaDB Memory Query
-    - ⬜ Stage 1: Flash Anomaly Filter
-    - ⬜ Stage 2: Pro Deep RCA
+    - ⬜ Context Loading
+    - ⬜ Gemini API Call
     - ⬜ Guardrail Validation
     - ⬜ Remediation Ready
     """)
@@ -216,7 +216,7 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - 🔄 Stage 1 & 2: Executing AI Pipeline...
+                        - 🔄 Gemini API Call...
                         - ⬜ Guardrail Validation
                         - ⬜ Remediation Ready
                         """)
@@ -245,8 +245,7 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - ✅ Stage 1: Flash Anomaly Filter
-                        - ✅ Stage 2: Pro Deep RCA
+                        - ✅ Gemini API Call
                         - ✅ Guardrail Validation
                         - ✅ Remediation Ready
                         """)
@@ -274,7 +273,7 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - ⚠️ Stage 1 & 2: API (Cached Mode)
+                        - ⚠️ Gemini API (Cached)
                         - ✅ Guardrail Validation
                         - ✅ Remediation Ready
                         """)
@@ -341,10 +340,44 @@ with tab3:
 
             with col_x:
                 if st.button("✅ APPROVE & EXECUTE ROLLBACK", type="primary", use_container_width=True):
-                    with st.spinner("Executing rollback command..."):
-                        time.sleep(1.5)
+                    
+                    # --- SIMULATED TERMINAL EXECUTION ---
+                    terminal_container = st.empty()
+                    fix_cmd = st.session_state.get('fix_cmd', 'Command unavailable')
+                    
+                    # Start with the initial connection line
+                    terminal_lines = ["$ Initializing secure cluster connection..."]
+                    
+                    def render_terminal():
+                        # Helper to render the lines as a bash code block
+                        joined_lines = '\n'.join(terminal_lines)
+                        terminal_container.markdown(f"```bash\n{joined_lines}\n```")
 
-                    st.success("✅ Command executed. proxy-connect-timeout reverted to 30s.")
+                    render_terminal()
+                    time.sleep(0.6)
+                    
+                    # Execute the dynamic command
+                    terminal_lines.append(f"$ {fix_cmd}")
+                    render_terminal()
+                    time.sleep(1.2)
+                    
+                    # Apply changes
+                    terminal_lines.append("> Applying configuration changes...")
+                    render_terminal()
+                    time.sleep(0.8)
+                    
+                    # Rollout wait
+                    terminal_lines.append("> Waiting for rollout to finish: 1 of 1 updated replicas are available...")
+                    render_terminal()
+                    time.sleep(1.0)
+                    
+                    # Success
+                    terminal_lines.append("✅ Rollout successful. Infrastructure state synced.")
+                    render_terminal()
+                    time.sleep(0.5)
+                    # ------------------------------------
+
+                    st.success("✅ Command executed. System reverted to stable baseline.")
                     st.info("📈 ServiceA latency stabilizing. Connections recovering.")
                     st.balloons()
 
