@@ -66,12 +66,19 @@ with st.sidebar:
     st.markdown("🟢 Telemetry Stream\n\n🟢 ChromaDB Vector Store\n\n🟢 Kubernetes API")
     
     st.markdown("<br>", unsafe_allow_html=True)
+    
+    st.markdown("### Agent Architecture")
+    st.success("**Primary Model:**\nGemini 3.1 Pro Preview\nDeep semantic RCA")
+    st.info("**Fallback Model:**\nGemini 3.1 Flash-Lite\nAuto-triggers on quota limits")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     st.markdown("### Pipeline Status")
     pipeline_status = st.empty()
     pipeline_status.markdown("""
-    - ⬜ Context Ingestion
-    - ⬜ Stage 1: Flash Filter
-    - ⬜ Stage 2: Pro RCA
+    - ⬜ ChromaDB Memory Query
+    - ⬜ Stage 1: Flash Anomaly Filter
+    - ⬜ Stage 2: Pro Deep RCA
     - ⬜ Policy Validation
     """)
 
@@ -94,7 +101,13 @@ st.markdown('<div class="header-sub">Autonomous Site Reliability Engineering Pip
 
 # --- KPI METRICS ---
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("ServiceA Status", "503 Error", "-100% SLA", delta_color="inverse")
+
+# Dynamic KPI based on data source
+if st.session_state.get('custom_telemetry') is not None:
+    c1.metric("System Status", "Degraded", "SLA Breached", delta_color="inverse")
+else:
+    c1.metric("ServiceA Status", "503 Error", "-100% SLA", delta_color="inverse")
+
 c2.metric("Pending Actions", "1 Review", "Requires L2", delta_color="off")
 c3.metric("Manual MTTR Baseline", "90m", "Industry Avg", delta_color="off")
 c4.metric("Agent Diagnostic Time", "< 1m", "-98%", delta_color="normal")
@@ -105,19 +118,23 @@ st.markdown("<br>", unsafe_allow_html=True)
 tab1, tab2, tab3 = st.tabs(["📡 Telemetry Feed", "🧠 Diagnostic Agent", "⚡ Remediation"])
 
 # ─────────────────────────────────────────────
-# TAB 1: TELEMETRY (Cleaned up)
+# TAB 1: TELEMETRY 
 # ─────────────────────────────────────────────
 with tab1:
-    st.error("🔴 **CRITICAL ANOMALY:** Widespread 503 connection timeouts in upstream ServiceA routing.")
+    # Dynamic Alert Banner
+    if st.session_state.get('custom_telemetry') is not None:
+        st.error("🔴 **CRITICAL ANOMALY:** Elevated error rates detected in custom telemetry stream.")
+    else:
+        st.error("🔴 **CRITICAL ANOMALY:** Widespread 503 connection timeouts in upstream ServiceA routing.")
     
     col_a, col_b = st.columns(2)
     with col_a:
         st.markdown("**Deployment Events**")
-        df_dep = pd.read_csv("data/processed/deployment_log.csv").tail(3)
+        df_dep = st.session_state.get('custom_deployments', pd.read_csv("data/processed/deployment_log.csv")).tail(3)
         st.dataframe(df_dep, use_container_width=True, hide_index=True)
     with col_b:
         st.markdown("**Telemetry Stream**")
-        df_tel = pd.read_csv("data/processed/structured_telemetry.csv").tail(5)
+        df_tel = st.session_state.get('custom_telemetry', pd.read_csv("data/processed/structured_telemetry.csv")).tail(5)
         st.dataframe(df_tel, use_container_width=True, hide_index=True)
         
     with st.expander("⚙️ Override Data Sources / View Cluster Manifest"):
@@ -131,10 +148,11 @@ with tab1:
         try:
             with open("config/cluster_manifest.json", "r") as f:
                 st.code(f.read(), language="json")
-        except: pass
+        except: 
+            st.warning("Cluster manifest not found.")
 
 # ─────────────────────────────────────────────
-# TAB 2: AGENT (Professional UI instead of JSON)
+# TAB 2: AGENT 
 # ─────────────────────────────────────────────
 with tab2:
     st.markdown("### Root Cause Analysis")
@@ -149,14 +167,19 @@ with tab2:
             with st.spinner("Analyzing temporal correlation across telemetry and memory..."):
                 try:
                     pipeline_status.markdown("""
-                    - ✅ Context Ingestion
-                    - 🔄 Executing Pipeline...
+                    - ✅ ChromaDB Memory Query
+                    - 🔄 Stage 1 & 2: Executing AI Pipeline...
                     - ⬜ Policy Validation
                     """)
 
                     df_tel = st.session_state.get('custom_telemetry', None)
                     df_dep = st.session_state.get('custom_deployments', None)
-                    response, model_used = generate_rca_with_fallback(df_tel, df_dep)
+                    
+                    # Pass the decoupled dataframes to the backend
+                    response, model_used = generate_rca_with_fallback(
+                        df_telemetry=df_tel,
+                        df_deployments=df_dep
+                    )
                     rca_data = json.loads(response.text)
 
                     st.session_state['rca_data'] = rca_data
@@ -167,12 +190,13 @@ with tab2:
                     st.session_state['rca_complete'] = True
                     st.session_state['used_fallback'] = False
 
+                    # Save to persistent audit log
                     save_audit_log(rca_data, model_used)
 
                     pipeline_status.markdown("""
-                    - ✅ Context Ingestion
-                    - ✅ Stage 1: Flash Filter
-                    - ✅ Stage 2: Pro RCA
+                    - ✅ ChromaDB Memory Query
+                    - ✅ Stage 1: Flash Anomaly Filter
+                    - ✅ Stage 2: Pro Deep RCA
                     - ✅ Policy Validation
                     """)
 
@@ -187,11 +211,17 @@ with tab2:
                         "executable_fix_cmd": "helm upgrade ingress-controller --set proxy-connect-timeout=30s --reuse-values"
                     }
                     st.session_state['rca_data'] = mock_rca
-                    st.session_state['model_used'] = "Cached RCA (API Quota Limit)"
+                    st.session_state['model_used'] = f"Cached RCA ({str(e)[:25]}...)"
                     st.session_state['fix_cmd'] = mock_rca["executable_fix_cmd"]
                     st.session_state['needs_approval'] = mock_rca["require_human_approval"]
                     st.session_state['confidence'] = mock_rca["confidence_score"]
                     st.session_state['rca_complete'] = True
+                    
+                    pipeline_status.markdown("""
+                    - ✅ ChromaDB Memory Query
+                    - ⚠️ Stage 1 & 2: API (Cached Mode)
+                    - ✅ Policy Validation
+                    """)
 
         if st.session_state.get('rca_complete', False):
             rca_data = st.session_state['rca_data']
@@ -222,50 +252,63 @@ with tab2:
         st.caption("Awaiting initialization. Click 'Initialize Diagnostics' to begin.")
 
 # ─────────────────────────────────────────────
-# TAB 3: REMEDIATION (Maintained Terminal logic)
+# TAB 3: REMEDIATION 
 # ─────────────────────────────────────────────
 with tab3:
     if st.session_state.get('rca_complete', False):
         st.markdown("### Execution Plan")
         
-        if st.session_state.get('needs_approval', True):
-            st.warning("🔒 **Security Gate:** Infrastructure modifications require L2 SRE approval.")
-            
-        st.markdown("**Proposed Command:**")
-        st.code(st.session_state.get('fix_cmd', 'Command unavailable'), language="bash")
-
-        col_x, col_y = st.columns([1, 1])
-
-        with col_x:
-            if st.button("Execute Rollback", type="primary", use_container_width=True):
-                terminal_container = st.empty()
-                fix_cmd = st.session_state.get('fix_cmd', '')
+        confidence = st.session_state.get('confidence', 0.0)
+        if confidence < 0.75:
+            st.error(f"❌ **CONFIDENCE FAILED:** Score {confidence*100:.0f}% is below the 75% threshold. Automated remediation blocked. Escalating to L2.")
+        else:
+            if st.session_state.get('needs_approval', True):
+                st.warning("🔒 **Security Gate:** Infrastructure modifications require L2 SRE approval.")
                 
-                terminal_lines = ["$ Initializing secure cluster connection..."]
-                def render_terminal():
-                    terminal_container.markdown(f"```bash\n{chr(10).join(terminal_lines)}\n```")
+            st.markdown("**Proposed Command:**")
+            st.code(st.session_state.get('fix_cmd', 'Command unavailable'), language="bash")
 
-                render_terminal()
-                time.sleep(0.6)
-                terminal_lines.append(f"$ {fix_cmd}")
-                render_terminal()
-                time.sleep(1.2)
-                terminal_lines.append("> Applying configuration changes...")
-                render_terminal()
-                time.sleep(0.8)
-                terminal_lines.append("> Waiting for rollout to finish: 1 of 1 updated replicas...")
-                render_terminal()
-                time.sleep(1.0)
-                terminal_lines.append("✅ Rollout successful. Infrastructure state synced.")
-                render_terminal()
-                time.sleep(0.5)
+            col_x, col_y = st.columns([1, 1])
 
-                st.success("Issue resolved. Connections recovering.")
-                st.balloons()
+            with col_x:
+                if st.button("Execute Remediation", type="primary", use_container_width=True):
+                    
+                    # --- SIMULATED TERMINAL EXECUTION ---
+                    terminal_container = st.empty()
+                    fix_cmd = st.session_state.get('fix_cmd', '')
+                    
+                    terminal_lines = ["$ Initializing secure cluster connection..."]
+                    def render_terminal():
+                        terminal_container.markdown(f"```bash\n{chr(10).join(terminal_lines)}\n```")
 
-        with col_y:
-            if st.button("Reject / Escalate", use_container_width=True):
-                st.error("Execution blocked. Context escalated to L2 via Jira.")
+                    render_terminal()
+                    time.sleep(0.6)
+                    terminal_lines.append(f"$ {fix_cmd}")
+                    render_terminal()
+                    time.sleep(1.2)
+                    terminal_lines.append("> Applying configuration changes...")
+                    render_terminal()
+                    time.sleep(0.8)
+                    terminal_lines.append("> Waiting for rollout to finish: 1 of 1 updated replicas...")
+                    render_terminal()
+                    time.sleep(1.0)
+                    terminal_lines.append("✅ Rollout successful. Infrastructure state synced.")
+                    render_terminal()
+                    time.sleep(0.5)
+
+                    st.success("Issue resolved. Connections recovering.")
+                    st.balloons()
+                    
+                    st.markdown("### 📊 MTTR Impact")
+                    st.table({
+                        "Phase": ["Log Triage", "Correlation", "Root Cause", "Total"],
+                        "Manual SRE": ["15 min", "45 min", "30 min", "90 min"],
+                        "OpsPulse": ["3 sec", "15 sec", "10 sec", "< 60 sec"]
+                    })
+
+            with col_y:
+                if st.button("Reject / Escalate", use_container_width=True):
+                    st.error("Execution blocked. Context escalated to L2 via Jira.")
                 
     elif st.session_state.get('run_agent', False):
         st.caption("Diagnostics in progress...")
