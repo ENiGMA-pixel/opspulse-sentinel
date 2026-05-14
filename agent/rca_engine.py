@@ -15,6 +15,9 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def save_audit_log(rca_result: dict, model_used: str):
+    """
+    Appends every RCA result to a persistent audit log.
+    """
     log_entry = {
         "timestamp": datetime.utcnow().isoformat(),
         "model_used": model_used,
@@ -29,6 +32,7 @@ def save_audit_log(rca_result: dict, model_used: str):
                 existing = []
     else:
         existing = []
+        
     existing.append(log_entry)
     with open(log_path, "w") as f:
         json.dump(existing, f, indent=4)
@@ -76,30 +80,40 @@ def load_context(df_telemetry=None, df_deployments=None):
     if df_deployments is None:
         df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
-    important = df_telemetry[df_telemetry['Level'].isin(['ERROR', 'FATAL', 'WARN', 'INFO'])]
-    clean_telemetry = "\n".join(
+    # Raw telemetry for Flash pre-filter
+    raw_telemetry = "\n".join(
         f"[{r['Time']}] {r['Component']}: {r['Content']}"
-        for _, r in important.tail(15).iterrows()
+        for _, r in df_telemetry.tail(50).iterrows()
     )
+
+    # Optimized deployments for Pro
     clean_deployments = df_deployments.tail(5).to_string(index=False)
 
-    return cluster_map, clean_telemetry, clean_deployments
+    return cluster_map, raw_telemetry, clean_deployments
 
 
 def build_prompt(df_telemetry=None, df_deployments=None):
     historical_memory = query_historical_memory(
         "503 Service Unavailable timeout after deployment configuration change"
     )
-    cluster_map, clean_telemetry, clean_deployments = load_context(
+    cluster_map, raw_telemetry, clean_deployments = load_context(
         df_telemetry=df_telemetry,
         df_deployments=df_deployments
     )
 
+    # STAGE 1: Flash filters raw telemetry
+    filtered_anomalies = flash_anomaly_filter(raw_telemetry)
+
+    # Handle no anomalies detected
+    if filtered_anomalies == "NO_ANOMALIES_DETECTED":
+        filtered_anomalies = "No anomalies detected in telemetry. Focus on deployment changes."
+
+    # STAGE 2: Pro receives only filtered anomalies
     user_prompt = USER_PROMPT_TEMPLATE.format(
         historical_memory=historical_memory,
         cluster_map=cluster_map,
         clean_deployments=clean_deployments,
-        clean_telemetry=clean_telemetry
+        clean_telemetry=filtered_anomalies  # Flash output goes here
     )
 
     return SYSTEM_INSTRUCTION.strip(), user_prompt.strip()
