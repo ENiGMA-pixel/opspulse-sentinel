@@ -1,11 +1,14 @@
-import streamlit as st
-import pandas as pd
-import json
 import sys
 import os
 
-# Ensure the agent directory is accessible for imports
+# Path must be set BEFORE any agent imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import time
+import json
+import streamlit as st
+import pandas as pd
+from agent.rca_engine import generate_rca_with_fallback, save_audit_log
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
@@ -73,6 +76,21 @@ with st.sidebar:
     - ⬜ Remediation Ready
     """)
 
+    st.divider()
+    st.markdown("### 📋 Incident Audit Log")
+    try:
+        with open("audit_log.json", "r") as f:
+            audit_data = json.load(f)
+        st.metric("Total Incidents Logged", len(audit_data))
+        with st.expander("View Full Audit Trail"):
+            for entry in reversed(audit_data):
+                st.markdown(f"**{entry['timestamp']}** — `{entry['model_used']}`")
+                st.markdown(f"Root Cause: `{entry['rca_result'].get('root_cause_component', 'N/A')}`")
+                st.markdown(f"Confidence: `{entry['rca_result'].get('confidence_score', 'N/A')}`")
+                st.divider()
+    except FileNotFoundError:
+        st.info("No incidents logged yet.")
+
 # --- MAIN HEADER ---
 st.markdown('<p class="main-title">🚨 Incident Command Center</p>', unsafe_allow_html=True)
 st.markdown('<p class="sub-title">Autonomous Root Cause Analysis & Remediation Pipeline — Powered by Gemini 3.1</p>', unsafe_allow_html=True)
@@ -93,14 +111,13 @@ tab1, tab2, tab3 = st.tabs([
     "✅ ACT III: Remediation Execution"
 ])
 
-# # ─────────────────────────────────────────────
+# ─────────────────────────────────────────────
 # ACT I: THE DATA LAYER
 # ─────────────────────────────────────────────
 with tab1:
     st.markdown("### 📡 Active System Telemetry")
     st.error("⚠️ CRITICAL ANOMALY: Widespread 503 connection timeouts detected in upstream ServiceA routing.")
 
-    # --- FILE UPLOAD SECTION ---
     st.markdown("### 📂 Data Source")
     upload_col, info_col = st.columns([1, 1])
 
@@ -126,7 +143,6 @@ with tab1:
                 "Columns required: `Date`, `Time`, `Level`, `Component`, `Content`"
             )
 
-    # Store uploads in session state so rca_engine can access them
     if uploaded_telemetry:
         st.session_state['custom_telemetry'] = pd.read_csv(uploaded_telemetry)
     if uploaded_deployments:
@@ -181,7 +197,7 @@ with tab2:
             "- ChromaDB historical memory\n"
             "- Cluster manifest baselines\n"
             "- Deployment log timestamps\n"
-            "- Live telemetry stream"
+            "- Active telemetry stream"
         )
         run_clicked = st.button(
             "🚀 RUN SENTINEL DIAGNOSTIC",
@@ -197,9 +213,6 @@ with tab2:
             if not st.session_state.get('rca_complete', False):
                 with st.spinner("🧠 Executing live Gemini API call... Analyzing temporal correlation..."):
                     try:
-                        from agent.rca_engine import generate_rca_with_fallback
-
-                        # Update pipeline checklist
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
@@ -208,7 +221,6 @@ with tab2:
                         - ⬜ Remediation Ready
                         """)
 
-                        # THE REAL API CALL — no args, engine builds context internally
                         df_tel = st.session_state.get('custom_telemetry', None)
                         df_dep = st.session_state.get('custom_deployments', None)
                         response, model_used = generate_rca_with_fallback(
@@ -217,7 +229,6 @@ with tab2:
                         )
                         rca_data = json.loads(response.text)
 
-                        # Store in session state
                         st.session_state['rca_data'] = rca_data
                         st.session_state['model_used'] = model_used
                         st.session_state['fix_cmd'] = rca_data.get(
@@ -229,6 +240,8 @@ with tab2:
                         st.session_state['rca_complete'] = True
                         st.session_state['used_fallback'] = False
 
+                        save_audit_log(rca_data, model_used)
+
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
@@ -238,7 +251,6 @@ with tab2:
                         """)
 
                     except Exception as e:
-                        # UI-level graceful degradation
                         st.session_state['used_fallback'] = True
                         st.session_state['fallback_error'] = str(e)
 
@@ -266,7 +278,6 @@ with tab2:
                         - ✅ Remediation Ready
                         """)
 
-            # Display results (persists across reruns)
             if st.session_state.get('rca_complete', False):
                 rca_data = st.session_state['rca_data']
                 model_used = st.session_state['model_used']
@@ -304,7 +315,6 @@ with tab3:
     if st.session_state.get('rca_complete', False):
         st.markdown("### 🛡️ Guardrail Check: Human-in-the-Loop")
 
-        # Confidence gate
         confidence = st.session_state.get('confidence', 0.0)
         if confidence < 0.75:
             st.error(
@@ -331,7 +341,6 @@ with tab3:
             with col_x:
                 if st.button("✅ APPROVE & EXECUTE ROLLBACK", type="primary", use_container_width=True):
                     with st.spinner("Executing rollback command..."):
-                        import time
                         time.sleep(1.5)
 
                     st.success("✅ Command executed. proxy-connect-timeout reverted to 30s.")

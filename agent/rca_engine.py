@@ -1,5 +1,7 @@
 import time
 import os
+import json
+from datetime import datetime
 import pandas as pd
 from google import genai
 from agent.schema import RootCauseAnalysis
@@ -12,11 +14,39 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
+def save_audit_log(rca_result: dict, model_used: str):
+    """
+    Appends every RCA result to a persistent audit log.
+    """
+    log_entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "model_used": model_used,
+        "rca_result": rca_result
+    }
+
+    log_path = "audit_log.json"
+
+    if os.path.exists(log_path):
+        with open(log_path, "r") as f:
+            try:
+                existing = json.load(f)
+            except Exception:
+                existing = []
+    else:
+        existing = []
+
+    existing.append(log_entry)
+
+    with open(log_path, "w") as f:
+        json.dump(existing, f, indent=4)
+
+    print(f"✅ Audit log updated. Total incidents: {len(existing)}")
+
+
 def load_context(df_telemetry=None, df_deployments=None):
     with open("config/cluster_manifest.json", "r") as f:
         cluster_map = f.read()
 
-    # Use passed dataframes if provided, otherwise fall back to benchmark
     if df_telemetry is None:
         df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
     if df_deployments is None:
