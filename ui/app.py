@@ -70,8 +70,8 @@ with st.sidebar:
     pipeline_status = st.empty()
     pipeline_status.markdown("""
     - ⬜ ChromaDB Memory Query
-    - ⬜ Context Loading
-    - ⬜ Gemini API Call
+    - ⬜ Stage 1: Flash Anomaly Filter
+    - ⬜ Stage 2: Pro Deep RCA
     - ⬜ Guardrail Validation
     - ⬜ Remediation Ready
     """)
@@ -216,7 +216,7 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - 🔄 Gemini API Call...
+                        - 🔄 Stage 1 & 2: Executing AI Pipeline...
                         - ⬜ Guardrail Validation
                         - ⬜ Remediation Ready
                         """)
@@ -245,7 +245,8 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - ✅ Gemini API Call
+                        - ✅ Stage 1: Flash Anomaly Filter
+                        - ✅ Stage 2: Pro Deep RCA
                         - ✅ Guardrail Validation
                         - ✅ Remediation Ready
                         """)
@@ -273,7 +274,7 @@ with tab2:
                         pipeline_status.markdown("""
                         - ✅ ChromaDB Memory Query
                         - ✅ Context Loading
-                        - ⚠️ Gemini API (Cached)
+                        - ⚠️ Stage 1 & 2: API (Cached Mode)
                         - ✅ Guardrail Validation
                         - ✅ Remediation Ready
                         """)
