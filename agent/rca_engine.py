@@ -15,17 +15,12 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def save_audit_log(rca_result: dict, model_used: str):
-    """
-    Appends every RCA result to a persistent audit log.
-    """
     log_entry = {
         "timestamp": datetime.utcnow().isoformat(),
         "model_used": model_used,
         "rca_result": rca_result
     }
-
     log_path = "audit_log.json"
-
     if os.path.exists(log_path):
         with open(log_path, "r") as f:
             try:
@@ -34,13 +29,42 @@ def save_audit_log(rca_result: dict, model_used: str):
                 existing = []
     else:
         existing = []
-
     existing.append(log_entry)
-
     with open(log_path, "w") as f:
         json.dump(existing, f, indent=4)
-
     print(f"✅ Audit log updated. Total incidents: {len(existing)}")
+
+
+def flash_anomaly_filter(raw_telemetry: str) -> str:
+    """
+    Stage 1: Gemini Flash-Lite rapidly scans raw telemetry
+    and returns only the anomalous lines worth investigating.
+    """
+    flash_model = 'gemini-3.1-flash-lite-preview'
+
+    filter_prompt = f"""
+You are a high-speed log anomaly detector.
+Scan the following telemetry logs and return ONLY the lines that indicate
+errors, warnings, failures, or suspicious patterns.
+Ignore all INFO lines that show normal operation.
+Return the filtered lines as plain text, one per line.
+If no anomalies found, return: "NO_ANOMALIES_DETECTED"
+
+[RAW TELEMETRY]
+{raw_telemetry}
+"""
+
+    print("⚡ Stage 1: Flash-Lite anomaly filtering...")
+    response = client.models.generate_content(
+        model=flash_model,
+        contents=filter_prompt,
+        config=genai.types.GenerateContentConfig(
+            temperature=0.0
+        )
+    )
+    filtered = response.text.strip()
+    print(f"✅ Flash filter complete. Anomalies extracted.")
+    return filtered
 
 
 def load_context(df_telemetry=None, df_deployments=None):
@@ -91,7 +115,7 @@ def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
     )
 
     try:
-        print(f"🧠 Attempting RCA with {primary_model}...")
+        print(f"🧠 Stage 2: Deep RCA with {primary_model}...")
         response = client.models.generate_content(
             model=primary_model,
             contents=user_prompt,
