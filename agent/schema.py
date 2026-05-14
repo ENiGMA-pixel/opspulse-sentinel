@@ -1,4 +1,3 @@
-# Cell 3: The Pydantic Output Schema (The Contract)
 from pydantic import BaseModel, Field
 
 class RootCauseAnalysis(BaseModel):
@@ -20,5 +19,3 @@ class RootCauseAnalysis(BaseModel):
     executable_fix_cmd: str = Field(
         description="The exact terminal or kubectl command to execute the fix."
     )
-
-print("✅ Strict Pydantic Schema defined. The AI is now restricted to this JSON structure.")
