@@ -53,14 +53,14 @@ with st.sidebar:
     st.divider()
 
     st.markdown("### 🔌 System Connections")
-    st.markdown("🟢 **Telemetry Stream:** Active")
+    st.markdown("🟢 **Telemetry Stream:** Connected")
     st.markdown("🟢 **Vector Memory:** ChromaDB Linked")
     st.markdown("🟢 **LLM Engine:** Gemini 3.1 Pro/Flash")
     st.divider()
 
     st.markdown("### 🧠 Agent Architecture")
-    st.info("**Layer 1 (Filter):**\nGemini 3.1 Flash-Lite\nHigh-speed anomaly detection")
-    st.success("**Layer 2 (Reasoner):**\nGemini 3.1 Pro Preview\nDeep semantic RCA")
+    st.success("**Primary Model:**\nGemini 3.1 Pro Preview\nDeep semantic RCA")
+    st.info("**Fallback Model:**\nGemini 3.1 Flash-Lite\nAuto-triggers on quota/unavailability")
     st.divider()
 
     st.markdown("### 📋 Pipeline Checklist")
@@ -97,7 +97,7 @@ tab1, tab2, tab3 = st.tabs([
 # ACT I: THE DATA LAYER
 # ─────────────────────────────────────────────
 with tab1:
-    st.markdown("### 📡 Live System Telemetry")
+    st.markdown("### 📡 Active System Telemetry")
     st.error("⚠️ CRITICAL ANOMALY: Widespread 503 connection timeouts detected in upstream ServiceA routing.")
 
     # --- FILE UPLOAD SECTION ---
@@ -147,7 +147,7 @@ with tab1:
             st.warning("⚠️ Waiting for deployment_log.csv...")
 
     with col_b:
-        st.markdown("**📉 Telemetry Firehose (Last 5 Events)**")
+        st.markdown("**📉 Telemetry Feed (Last 5 Events)**")
         try:
             df_tel = st.session_state.get('custom_telemetry',
                       pd.read_csv("data/processed/structured_telemetry.csv")).tail(5)
