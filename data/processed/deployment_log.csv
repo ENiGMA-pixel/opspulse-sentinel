@@ -1,0 +1,2 @@
+Date,Time,Pid,Level,Component,Content
+260513,142801,0000,INFO,HelmDeploy,Deployment - helm upgrade ingress-controller --set proxy-connect-timeout=5s

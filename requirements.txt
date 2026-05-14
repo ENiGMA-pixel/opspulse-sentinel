@@ -1,0 +1,6 @@
+google-genai
+chromadb
+pandas
+pydantic
+streamlit
+python-dotenv

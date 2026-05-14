@@ -1,0 +1,944 @@
+Date,Time,Pid,Level,Component,Content
+081109,204005,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_7128370237687728475 size 67108864
+081109,204132,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.115:50010 is added to blk_3050920587428079149 size 67108864
+081109,204324,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.80:50010 is added to blk_7888946331804732825 size 67108864
+081109,204453,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.85:50010 is added to blk_2377150260128098806 size 67108864
+081109,204908,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.8:50010 is added to blk_8015913224713045110 size 67108864
+081109,205035,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_000590_0/part-00590. blk_-1727475099218615100
+081109,205315,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_000742_0/part-00742. blk_-7878121102358435702
+081109,205409,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.130:50010 is added to blk_4568434182693165548 size 67108864
+081109,205632,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.74.79:50010 is added to blk_-4794867979917102672 size 67108864
+081109,205739,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.38.197:50010 is added to blk_8763662564934652249 size 67108864
+081109,205746,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.74.134:50010 is added to blk_7453815855294711849 size 67108864
+081109,205858,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_000487_0/part-00487. blk_-5319073033164653435
+081109,205931,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-4980916519894289629
+081109,210407,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.244:50010 is added to blk_5165786360127153975 size 67108864
+081109,210551,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.191:50010 is added to blk_673825774073966710 size 67108864
+081109,210743,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.89.155:50010 is added to blk_8181993091797661153 size 67108864
+081109,211029,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.50:50010 is added to blk_-29548654251973735 size 67108864
+081109,211301,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.228:50010 is added to blk_-2480595760294717232 size 67108864
+081109,211403,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.202.134:50010 is added to blk_2113880130496815041 size 3549917
+081109,211528,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.8:50010 is added to blk_-1661553043410372067 size 67108864
+081109,212245,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_001648_0/part-01648. blk_2513940824125131775
+081109,212317,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_001866_0/part-01866. blk_-1282453782148343691
+081109,212403,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.50:50010 is added to blk_-2530087534157630851 size 67108864
+081109,212440,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.198.196:50010 is added to blk_427714267500527780 size 67108864
+081109,213436,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-2827716238972737794
+081109,213837,19,INFO,dfs.FSDataset,Deleting block blk_1781953582842324563 file /mnt/hadoop/dfs/data/current/subdir5/blk_1781953582842324563
+081109,232324,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.19:50010 is added to blk_6093743385844975689 size 67108864
+081109,232829,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.68:50010 is added to blk_1636660629634995787 size 67108864
+081109,232833,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.79:50010 is added to blk_467589865104023338 size 67108864
+081109,234027,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.85:50010 is added to blk_-7017553867379051457 size 67108864
+081109,234110,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000296_0/part-00296. blk_-6620182933895093708
+081109,234605,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.226:50010 is added to blk_4585055992495043771 size 67108864
+081109,234706,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.179:50010 is added to blk_4628142183191390143 size 67108864
+081109,234728,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.5.237:50010 is added to blk_-476906696485288376 size 67108864
+081109,235030,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.244:50010 is added to blk_-6956067134432991406 size 67108864
+081109,235140,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000230_0/part-00230. blk_559204981722276126
+081109,235311,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000169_0/part-00169. blk_-7105305952901940477
+081109,235813,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.225:50010 is added to blk_7481361125021302112 size 67108864
+081109,235919,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.19:50010 is added to blk_-3249711809227781266 size 67108864
+081110,000117,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000318_0/part-00318. blk_-207775976836691685
+081110,000136,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.4:50010 is added to blk_5114010683183383297 size 67108864
+081110,000232,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000318_0/part-00318. blk_2096692261399680562
+081110,000727,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.240:50010 is added to blk_-1055254430948037872 size 67108864
+081110,001307,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.239:50010 is added to blk_-9069971851590882719 size 67108864
+081110,001337,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.4:50010 is added to blk_-8924134715029713489 size 67108864
+081110,001350,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.146:50010 is added to blk_278357163850888 size 67108864
+081110,002253,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000138_0/part-00138. blk_-210021574616486609
+081110,002337,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-1547954353065580372
+081110,004247,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.242:50010 is added to blk_-4110733372292809607 size 67108864
+081110,010543,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_000382_0/part-00382. blk_8935202950442998446
+081110,010759,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_000392_0/part-00392. blk_-3010126661650043258
+081110,010851,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.86:50010 is added to blk_-9181958042427679309 size 67108864
+081110,010918,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.37:50010 is added to blk_-4741127506068309449 size 67108864
+081110,011001,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.25.237:50010 is added to blk_541463031152673662 size 67108864
+081110,011237,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_6996194389878584395
+081110,011335,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.146:50010 is added to blk_-6836642008179678048 size 67108864
+081110,011431,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_000675_0/part-00675. blk_-7866582011201618766
+081110,011448,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.18:50010 is added to blk_-7555801584297376435 size 67108864
+081110,011505,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.177:50010 is added to blk_-5949883083428548093 size 67108864
+081110,011521,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_000705_0/part-00705. blk_-9162090767925303921
+081110,013125,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001095_0/part-01095. blk_-7413910507260978729
+081110,013306,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.79:50010 is added to blk_5210211633167259832 size 67108864
+081110,013412,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.159:50010 is added to blk_-8558845834445970595 size 67108864
+081110,013721,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_3073404534069578592 size 67108864
+081110,014043,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.129:50010 is added to blk_6002109944224710483 size 67108864
+081110,014050,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.65:50010 is added to blk_5095897972833086609 size 67108864
+081110,014145,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.201.204:50010 is added to blk_9072829105973334075 size 67108864
+081110,014207,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001365_0/part-01365. blk_4841101867353115844
+081110,014421,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.196:50010 is added to blk_6828121630547887549 size 67108864
+081110,014519,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001506_0/part-01506. blk_1104376461837247304
+081110,014520,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.130:50010 is added to blk_-5511630179413516751 size 67108864
+081110,014727,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001597_0/part-01597. blk_-591552904934794824
+081110,014738,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001377_0/part-01377. blk_-8408087700903896282
+081110,014808,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.38:50010 is added to blk_-5404881839098659470 size 67108864
+081110,014914,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001728_0/part-01728. blk_-488298625688742454
+081110,015031,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.194:50010 is added to blk_-1635752698830216319 size 67108864
+081110,015340,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001661_0/part-01661. blk_-1674094254141559552
+081110,015423,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.161:50010 is added to blk_6080034782037237879 size 67108864
+081110,015432,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001630_0/part-01630. blk_-8645365827804358878
+081110,015600,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001817_0/part-01817. blk_3291173852929756766
+081110,015719,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.6:50010 is added to blk_446513188203036714 size 67108864
+081110,015759,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001840_0/part-01840. blk_4210124392039605712
+081110,015832,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.240:50010 is added to blk_-6330812010936261924 size 67108864
+081110,015942,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt/_temporary/_task_200811092030_0003_m_001976_0/part-01976. blk_-8380267327243110056
+081110,015959,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.160:50010 is added to blk_-8077373411465716253 size 67108864
+081110,020302,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.192:50010 is added to blk_6285161494041403917 size 67108864
+081110,020325,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.210:50010 is added to blk_-6995454028444097802 size 67108864
+081110,020357,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.4:50010 is added to blk_344934934043642744 size 67108864
+081110,020458,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.230:50010 is added to blk_4984720043834039361 size 67108864
+081110,020632,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.192:50010 is added to blk_325981833999429148 size 67108864
+081110,020724,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2568309208894455676 is added to invalidSet of 10.251.31.160:50010
+081110,083453,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_3141363517520802396
+081110,085042,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-1383276859207001328
+081110,085933,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-4117999745005013424
+081110,093643,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_9188832735514090334
+081110,103026,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1233005817943453613 is added to invalidSet of 10.251.75.49:50010
+081110,103026,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8736461628840265232 is added to invalidSet of 10.251.195.70:50010
+081110,103027,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_166171721314010075 is added to invalidSet of 10.251.30.85:50010
+081110,103027,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3362838757940877177 is added to invalidSet of 10.250.5.161:50010
+081110,103027,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8026264173633579073 is added to invalidSet of 10.251.214.18:50010
+081110,103027,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8350646254685996250 is added to invalidSet of 10.251.199.159:50010
+081110,103028,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4702684774678057084 is added to invalidSet of 10.250.13.240:50010
+081110,103029,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_434034567989619521 is added to invalidSet of 10.251.91.15:50010
+081110,103030,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_413552235254424009 is added to invalidSet of 10.251.35.1:50010
+081110,103030,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7177118590277025973 is added to invalidSet of 10.251.121.224:50010
+081110,103032,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2576408434603492552 is added to invalidSet of 10.251.106.37:50010
+081110,103034,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_356592557993755459 is added to invalidSet of 10.251.109.236:50010
+081110,103035,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_9111860234027679206 is added to invalidSet of 10.251.39.209:50010
+081110,103036,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5178539130945718870 is added to invalidSet of 10.251.107.19:50010
+081110,103037,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1331750856499198500 is added to invalidSet of 10.251.38.53:50010
+081110,103038,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3792836284792472725 is added to invalidSet of 10.251.106.50:50010
+081110,103038,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6031076349976322578 is added to invalidSet of 10.251.67.225:50010
+081110,103040,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4438674026376140804 is added to invalidSet of 10.251.106.50:50010
+081110,103041,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1777689952069868672 is added to invalidSet of 10.251.31.85:50010
+081110,103044,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3275788837420923000 is added to invalidSet of 10.251.109.236:50010
+081110,103045,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6056336045486998577 is added to invalidSet of 10.251.126.255:50010
+081110,103046,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5368528328022648701 is added to invalidSet of 10.251.202.181:50010
+081110,103047,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-9056276727170871967 is added to invalidSet of 10.251.66.3:50010
+081110,103049,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6289001686128460561 is added to invalidSet of 10.251.91.84:50010
+081110,103049,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6855535886504612774 is added to invalidSet of 10.251.70.211:50010
+081110,103050,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6477590833521072407 is added to invalidSet of 10.251.39.179:50010
+081110,103050,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_865453227320668516 is added to invalidSet of 10.251.71.240:50010
+081110,103054,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2149728827322918746 is added to invalidSet of 10.250.11.194:50010
+081110,103055,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6324712740029479576 is added to invalidSet of 10.251.30.6:50010
+081110,103056,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6763863888784019261 is added to invalidSet of 10.251.70.37:50010
+081110,103057,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1543605971733759530 is added to invalidSet of 10.251.195.33:50010
+081110,103059,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6114220623980201749 is added to invalidSet of 10.250.13.240:50010
+081110,103059,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-945770324989341170 is added to invalidSet of 10.251.31.180:50010
+081110,103107,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5145886774827574591 is added to invalidSet of 10.251.105.189:50010
+081110,103109,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3598904881888399067 is added to invalidSet of 10.250.5.237:50010
+081110,103111,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6255015379143356507 is added to invalidSet of 10.251.111.37:50010
+081110,103111,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8247499802516177421 is added to invalidSet of 10.250.7.96:50010
+081110,103111,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8403618945096094999 is added to invalidSet of 10.251.42.9:50010
+081110,103112,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2012430628930443984 is added to invalidSet of 10.250.11.100:50010
+081110,103112,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7819984111120374407 is added to invalidSet of 10.251.30.6:50010
+081110,103113,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4499140370762613763 is added to invalidSet of 10.251.43.115:50010
+081110,103114,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2304296078821316612 is added to invalidSet of 10.251.39.64:50010
+081110,103114,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_358331073189608564 is added to invalidSet of 10.251.67.225:50010
+081110,103114,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8404604116961181201 is added to invalidSet of 10.250.13.188:50010
+081110,103117,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3582070652284403613 is added to invalidSet of 10.250.10.213:50010
+081110,103123,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4954795063440871977 is added to invalidSet of 10.251.203.80:50010
+081110,103127,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6640779266188771131 is added to invalidSet of 10.251.126.83:50010
+081110,103130,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3858015337960682724 is added to invalidSet of 10.251.214.130:50010
+081110,103130,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_570916157110129687 is added to invalidSet of 10.251.214.18:50010
+081110,103132,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7418499425236853516 is added to invalidSet of 10.251.203.4:50010
+081110,103136,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7894824934989391122 is added to invalidSet of 10.251.38.197:50010
+081110,103137,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5005618994659797504 is added to invalidSet of 10.251.125.193:50010
+081110,103137,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7932704730736035192 is added to invalidSet of 10.251.199.245:50010
+081110,103139,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2834195813213005328 is added to invalidSet of 10.250.7.244:50010
+081110,103141,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5972745462629982078 is added to invalidSet of 10.251.31.5:50010
+081110,103142,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7111788899695387329 is added to invalidSet of 10.251.75.228:50010
+081110,103146,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1110880362999960078 is added to invalidSet of 10.251.194.147:50010
+081110,103146,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6489659315944341351 is added to invalidSet of 10.251.106.50:50010
+081110,103146,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7324196727355442810 is added to invalidSet of 10.251.203.80:50010
+081110,103147,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2589662411410634043 is added to invalidSet of 10.251.42.16:50010
+081110,103147,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8602496359012842630 is added to invalidSet of 10.250.7.32:50010
+081110,103148,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-133919539232421451 is added to invalidSet of 10.250.10.176:50010
+081110,103149,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6136511938931864993 is added to invalidSet of 10.250.14.38:50010
+081110,103149,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8871064397020855320 is added to invalidSet of 10.251.42.84:50010
+081110,103201,19,INFO,dfs.FSDataset,Deleting block blk_8483848473254499625 file /mnt/hadoop/dfs/data/current/subdir51/blk_8483848473254499625
+081110,103257,19,INFO,dfs.FSDataset,Deleting block blk_-8898274302731129139 file /mnt/hadoop/dfs/data/current/subdir18/blk_-8898274302731129139
+081110,103320,18,INFO,dfs.FSDataset,Deleting block blk_-8014701913801168461 file /mnt/hadoop/dfs/data/current/subdir27/blk_-8014701913801168461
+081110,103321,19,INFO,dfs.FSDataset,Deleting block blk_-8775602795571523802 file /mnt/hadoop/dfs/data/current/subdir29/blk_-8775602795571523802
+081110,103327,19,INFO,dfs.FSDataset,Deleting block blk_-7928230000822317050 file /mnt/hadoop/dfs/data/current/subdir9/blk_-7928230000822317050
+081110,103328,19,INFO,dfs.FSDataset,Deleting block blk_8303413189200230139 file /mnt/hadoop/dfs/data/current/subdir32/blk_8303413189200230139
+081110,103331,19,INFO,dfs.FSDataset,Deleting block blk_-9038475355621289969 file /mnt/hadoop/dfs/data/current/subdir41/blk_-9038475355621289969
+081110,103335,19,INFO,dfs.FSDataset,Deleting block blk_-8848810702648406400 file /mnt/hadoop/dfs/data/current/subdir11/blk_-8848810702648406400
+081110,103343,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000206_0/part-00206. blk_-2230892279625104430
+081110,103347,19,INFO,dfs.FSDataset,Deleting block blk_-7515058933811567980 file /mnt/hadoop/dfs/data/current/subdir1/blk_-7515058933811567980
+081110,103348,19,INFO,dfs.FSDataset,Deleting block blk_-8484827087450439270 file /mnt/hadoop/dfs/data/current/subdir25/blk_-8484827087450439270
+081110,103349,19,INFO,dfs.FSDataset,Deleting block blk_-8144387882075572886 file /mnt/hadoop/dfs/data/current/subdir42/blk_-8144387882075572886
+081110,103354,19,INFO,dfs.FSDataset,Deleting block blk_-8383503596684323017 file /mnt/hadoop/dfs/data/current/subdir26/blk_-8383503596684323017
+081110,103400,19,INFO,dfs.FSDataset,Deleting block blk_-8796256534683400159 file /mnt/hadoop/dfs/data/current/subdir18/blk_-8796256534683400159
+081110,103403,19,INFO,dfs.FSDataset,Deleting block blk_-8775602795571523802 file /mnt/hadoop/dfs/data/current/subdir41/blk_-8775602795571523802
+081110,103430,19,INFO,dfs.FSDataset,Deleting block blk_-4368236874477798428 file /mnt/hadoop/dfs/data/current/subdir33/blk_-4368236874477798428
+081110,103432,19,INFO,dfs.FSDataset,Deleting block blk_-4223625526513535681 file /mnt/hadoop/dfs/data/current/subdir60/blk_-4223625526513535681
+081110,103437,19,INFO,dfs.FSDataset,Deleting block blk_-6400421658804613208 file /mnt/hadoop/dfs/data/current/subdir29/blk_-6400421658804613208
+081110,103442,19,INFO,dfs.FSDataset,Deleting block blk_-5880591395067598620 file /mnt/hadoop/dfs/data/current/subdir32/blk_-5880591395067598620
+081110,103442,19,INFO,dfs.FSDataset,Deleting block blk_-7096508472270520039 file /mnt/hadoop/dfs/data/current/subdir20/blk_-7096508472270520039
+081110,103444,19,INFO,dfs.FSDataset,Deleting block blk_-1939956833921604216 file /mnt/hadoop/dfs/data/current/subdir34/blk_-1939956833921604216
+081110,103512,19,INFO,dfs.FSDataset,Deleting block blk_-3860035787700398391 file /mnt/hadoop/dfs/data/current/subdir6/blk_-3860035787700398391
+081110,103524,19,INFO,dfs.FSDataset,Deleting block blk_-6008397446568765070 file /mnt/hadoop/dfs/data/current/blk_-6008397446568765070
+081110,103527,19,INFO,dfs.FSDataset,Deleting block blk_-2425070029518924403 file /mnt/hadoop/dfs/data/current/subdir39/blk_-2425070029518924403
+081110,103533,18,INFO,dfs.FSDataset,Deleting block blk_826351419727053015 file /mnt/hadoop/dfs/data/current/subdir6/blk_826351419727053015
+081110,103533,19,INFO,dfs.FSDataset,Deleting block blk_-3437475890798229344 file /mnt/hadoop/dfs/data/current/subdir57/blk_-3437475890798229344
+081110,103534,19,INFO,dfs.FSDataset,Deleting block blk_-1492402439215451727 file /mnt/hadoop/dfs/data/current/subdir25/blk_-1492402439215451727
+081110,103538,18,INFO,dfs.FSDataset,Deleting block blk_-4298255715894292387 file /mnt/hadoop/dfs/data/current/subdir38/blk_-4298255715894292387
+081110,103547,19,INFO,dfs.FSDataset,Deleting block blk_-4295805058711840933 file /mnt/hadoop/dfs/data/current/subdir0/blk_-4295805058711840933
+081110,103548,19,INFO,dfs.FSDataset,Deleting block blk_830855781964014378 file /mnt/hadoop/dfs/data/current/subdir48/blk_830855781964014378
+081110,103551,19,INFO,dfs.FSDataset,Deleting block blk_8291708741145026623 file /mnt/hadoop/dfs/data/current/subdir57/blk_8291708741145026623
+081110,103552,19,INFO,dfs.FSDataset,Deleting block blk_-921231092429668424 file /mnt/hadoop/dfs/data/current/subdir23/blk_-921231092429668424
+081110,103553,19,INFO,dfs.FSDataset,Deleting block blk_-1581605246928123722 file /mnt/hadoop/dfs/data/current/subdir13/blk_-1581605246928123722
+081110,103554,18,INFO,dfs.FSDataset,Deleting block blk_-2445347158368483245 file /mnt/hadoop/dfs/data/current/subdir30/blk_-2445347158368483245
+081110,103554,19,INFO,dfs.FSDataset,Deleting block blk_-1897524391075610396 file /mnt/hadoop/dfs/data/current/subdir47/blk_-1897524391075610396
+081110,103557,19,INFO,dfs.FSDataset,Deleting block blk_-8588908000680498 file /mnt/hadoop/dfs/data/current/subdir21/blk_-8588908000680498
+081110,103558,19,INFO,dfs.FSDataset,Deleting block blk_561417755647618727 file /mnt/hadoop/dfs/data/current/subdir4/blk_561417755647618727
+081110,103600,19,INFO,dfs.FSDataset,Deleting block blk_-6127741703501838658 file /mnt/hadoop/dfs/data/current/subdir53/blk_-6127741703501838658
+081110,103603,18,INFO,dfs.FSDataset,Deleting block blk_-3636681193077858741 file /mnt/hadoop/dfs/data/current/subdir37/blk_-3636681193077858741
+081110,103615,18,INFO,dfs.FSDataset,Deleting block blk_-643763844763678010 file /mnt/hadoop/dfs/data/current/subdir29/blk_-643763844763678010
+081110,103615,19,INFO,dfs.FSDataset,Deleting block blk_-2826763604408365998 file /mnt/hadoop/dfs/data/current/subdir40/blk_-2826763604408365998
+081110,103618,19,INFO,dfs.FSDataset,Deleting block blk_2278708746675870163 file /mnt/hadoop/dfs/data/current/subdir27/blk_2278708746675870163
+081110,103621,19,INFO,dfs.FSDataset,Deleting block blk_153508158653341141 file /mnt/hadoop/dfs/data/current/subdir50/blk_153508158653341141
+081110,103621,19,INFO,dfs.FSDataset,Deleting block blk_-1775264355226395799 file /mnt/hadoop/dfs/data/current/subdir26/blk_-1775264355226395799
+081110,103626,18,INFO,dfs.FSDataset,Deleting block blk_-1599621098605751235 file /mnt/hadoop/dfs/data/current/subdir16/blk_-1599621098605751235
+081110,103631,19,INFO,dfs.FSDataset,Deleting block blk_-1111344660779690782 file /mnt/hadoop/dfs/data/current/subdir40/blk_-1111344660779690782
+081110,103631,19,INFO,dfs.FSDataset,Deleting block blk_3585588704565901062 file /mnt/hadoop/dfs/data/current/subdir15/blk_3585588704565901062
+081110,103634,19,INFO,dfs.FSDataset,Deleting block blk_2756799797410851893 file /mnt/hadoop/dfs/data/current/subdir24/blk_2756799797410851893
+081110,103641,19,INFO,dfs.FSDataset,Deleting block blk_7323287581932922676 file /mnt/hadoop/dfs/data/current/subdir12/blk_7323287581932922676
+081110,103657,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000097_0/part-00097. blk_496376132244907301
+081110,103659,19,INFO,dfs.FSDataset,Deleting block blk_2731617036199392057 file /mnt/hadoop/dfs/data/current/subdir39/blk_2731617036199392057
+081110,103704,19,INFO,dfs.FSDataset,Deleting block blk_7190156588310412626 file /mnt/hadoop/dfs/data/current/subdir30/blk_7190156588310412626
+081110,103717,19,INFO,dfs.FSDataset,Deleting block blk_8189008752707332487 file /mnt/hadoop/dfs/data/current/subdir7/blk_8189008752707332487
+081110,103719,19,INFO,dfs.FSDataset,Deleting block blk_6828263829429857572 file /mnt/hadoop/dfs/data/current/subdir26/blk_6828263829429857572
+081110,103729,19,INFO,dfs.FSDataset,Deleting block blk_8492196963764530259 file /mnt/hadoop/dfs/data/current/subdir45/blk_8492196963764530259
+081110,103731,19,INFO,dfs.FSDataset,Deleting block blk_7942183449206967755 file /mnt/hadoop/dfs/data/current/subdir30/blk_7942183449206967755
+081110,103734,19,INFO,dfs.FSDataset,Deleting block blk_6223504502438507199 file /mnt/hadoop/dfs/data/current/subdir0/blk_6223504502438507199
+081110,103735,19,INFO,dfs.FSDataset,Deleting block blk_7519257846502835091 file /mnt/hadoop/dfs/data/current/subdir15/blk_7519257846502835091
+081110,103739,19,INFO,dfs.FSDataset,Deleting block blk_5272005015837990021 file /mnt/hadoop/dfs/data/current/subdir0/blk_5272005015837990021
+081110,103743,19,INFO,dfs.FSDataset,Deleting block blk_7090935285617451450 file /mnt/hadoop/dfs/data/current/subdir60/blk_7090935285617451450
+081110,103749,19,INFO,dfs.FSDataset,Deleting block blk_8145984793403459836 file /mnt/hadoop/dfs/data/current/blk_8145984793403459836
+081110,103755,19,INFO,dfs.FSDataset,Deleting block blk_7603278760520020831 file /mnt/hadoop/dfs/data/current/subdir59/blk_7603278760520020831
+081110,103801,19,INFO,dfs.FSDataset,Deleting block blk_9169945668827621796 file /mnt/hadoop/dfs/data/current/subdir50/blk_9169945668827621796
+081110,103818,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.194.147:50010 is added to blk_5277338321835341602 size 67108864
+081110,103819,19,INFO,dfs.FSDataset,Deleting block blk_6973321719929905054 file /mnt/hadoop/dfs/data/current/subdir14/blk_6973321719929905054
+081110,103821,19,INFO,dfs.FSDataset,Deleting block blk_5948455948626091880 file /mnt/hadoop/dfs/data/current/subdir28/blk_5948455948626091880
+081110,103827,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.49:50010 is added to blk_-3684613761619321001 size 67108864
+081110,103840,19,INFO,dfs.FSDataset,Deleting block blk_6497260538939100482 file /mnt/hadoop/dfs/data/current/subdir46/blk_6497260538939100482
+081110,103850,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000056_0/part-00056. blk_6140788650991100539
+081110,103922,19,INFO,dfs.FSDataset,Deleting block blk_7754477838724397551 file /mnt/hadoop/dfs/data/current/subdir46/blk_7754477838724397551
+081110,104224,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000346_0/part-00346. blk_-2016403519138424998
+081110,104321,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.198:50010 is added to blk_8894334107354324777 size 3549832
+081110,104401,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.196:50010 is added to blk_4802366409699286298 size 3547304
+081110,104600,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000121_0/part-00121. blk_-2073265102548439691
+081110,104847,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.144:50010 is added to blk_-6592952246351162022 size 67108864
+081110,104914,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.14.224:50010 is added to blk_-3329473910909732817 size 67108864
+081110,105000,19,INFO,dfs.FSDataset,Deleting block blk_-1347057913082589493 file /mnt/hadoop/dfs/data/current/subdir56/blk_-1347057913082589493
+081110,105219,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_-6449891932967810179 size 67108864
+081110,105345,19,INFO,dfs.FSDataset,Deleting block blk_-4304240611296196935 file /mnt/hadoop/dfs/data/current/subdir55/blk_-4304240611296196935
+081110,105456,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.68:50010 is added to blk_-3663004104512304532 size 67108864
+081110,105512,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_000749_0/part-00749. blk_-6909607053783233975
+081110,105607,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.179:50010 is added to blk_5491101910066444061 size 67108864
+081110,105628,19,INFO,dfs.FSDataset,Deleting block blk_5075966182561035053 file /mnt/hadoop/dfs/data/current/subdir53/blk_5075966182561035053
+081110,110055,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.244:50010 is added to blk_-6582383997201802925 size 67108864
+081110,110101,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.38.214:50010 is added to blk_-5363213609331400263 size 67108864
+081110,110627,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.194.213:50010 is added to blk_-7030770677241078854 size 67108864
+081110,110921,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_001197_0/part-01197. blk_-5255262711039499896
+081110,111043,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.192:50010 is added to blk_-6068587951382721748 size 67108864
+081110,111043,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_001353_0/part-01353. blk_5782729236964719738
+081110,111404,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_001495_0/part-01495. blk_-7592643790414500555
+081110,111409,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.14.143:50010 is added to blk_8952177028039691517 size 67108864
+081110,111415,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.13.240:50010 is added to blk_939695665085237271 size 67108864
+081110,111547,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811101024_0001_m_001587_0/part-01587. blk_6374836031306809839
+081110,111650,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.47:50010 is added to blk_-3990317238913332296 size 67108864
+081110,111807,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.113:50010 is added to blk_8988793695103110546 size 67108864
+081110,111909,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.99:50010 is added to blk_-2600305892036631113 size 67108864
+081110,111958,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.19:50010 is added to blk_-2144263949276079479 size 3547172
+081110,112155,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_774612454978154966
+081110,112448,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.228:50010 is added to blk_-5012639079435860269 size 67108864
+081110,112744,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.100:50010 is added to blk_1021828391502582165 size 67108864
+081110,112807,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.38.53:50010 is added to blk_3202507081359904616 size 67108864
+081110,113636,19,INFO,dfs.FSDataset,Deleting block blk_-7601381921195183756 file /mnt/hadoop/dfs/data/current/subdir48/blk_-7601381921195183756
+081110,114119,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.177:50010 is added to blk_-2402036602753320612 size 67108864
+081110,114309,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_000299_0/part-00299. blk_4984150784048864430
+081110,114319,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.25.237:50010 is added to blk_-8145226289286457574 size 67108864
+081110,114347,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.18:50010 is added to blk_5809900021002850724 size 67108864
+081110,114454,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_000054_0/part-00054. blk_-4139299269696044017
+081110,115017,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.191:50010 is added to blk_1589878256898761558 size 67108864
+081110,115614,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.65.203:50010 is added to blk_-3949633496933134307 size 67108864
+081110,115737,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.195.33:50010 is added to blk_512039711533506696 size 67108864
+081110,115804,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.126.83:50010 is added to blk_5176855630425795751 size 67108864
+081110,120233,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.37:50010 is added to blk_-7603740654202748654 size 67108864
+081110,120410,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_001080_0/part-01080. blk_2847401988110989655
+081110,120429,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.226:50010 is added to blk_4307207852226914003 size 67108864
+081110,120516,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_3506875694435075421 size 67108864
+081110,120524,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.202.134:50010 is added to blk_-4945182943709543868 size 67108864
+081110,120621,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_000809_0/part-00809. blk_7550266985912909372
+081110,120718,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.215.192:50010 is added to blk_-4619809198345103330 size 67108864
+081110,120857,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.201.204:50010 is added to blk_6125469222540396851 size 67108864
+081110,121647,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.32:50010 is added to blk_5272761429354463572 size 67108864
+081110,121758,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_1649162819905816843
+081110,121943,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_001335_0/part-01335. blk_-2541428592126088938
+081110,121951,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.3:50010 is added to blk_6547729596040509998 size 67108864
+081110,122314,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.160:50010 is added to blk_3079488924320077240 size 67108864
+081110,122444,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.102:50010 is added to blk_-5009274684359267777 size 67108864
+081110,122609,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.195:50010 is added to blk_3911263675181899748 size 67108864
+081110,122717,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.63:50010 is added to blk_-3170270010972115378 size 67108864
+081110,123040,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.149:50010 is added to blk_-6247364168500873179 size 67108864
+081110,123114,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.125.237:50010 is added to blk_4234385041723406944 size 67108864
+081110,123237,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.100:50010 is added to blk_-8502460962248995911 size 28489733
+081110,123309,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.32:50010 is added to blk_1389634598105954660 size 67108864
+081110,123453,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.9:50010 is added to blk_-1435656632270396446 size 28490269
+081110,123726,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt2/_temporary/_task_200811101024_0002_m_001968_1/part-01968. blk_5106303344783117537
+081110,135645,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-4984504651603069357
+081110,142841,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000258_0/part-00258. blk_387577766066135394
+081110,143336,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000257_0/part-00257. blk_-1732662141253491971
+081110,143430,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.96:50010 is added to blk_4553790855855864497 size 67108864
+081110,144024,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.195.70:50010 is added to blk_4318179566727871532 size 67108864
+081110,144100,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.33:50010 is added to blk_-2916658835497879256 size 67108864
+081110,144220,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.209:50010 is added to blk_4069436988023676023 size 67108864
+081110,144546,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.27.63:50010 is added to blk_7838843222458775811 size 67108864
+081110,144848,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.102:50010 is added to blk_-8022986908643041177 size 67108864
+081110,145037,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000210_0/part-00210. blk_-7667417209393167541
+081110,145114,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.242:50010 is added to blk_-5400783031085008882 size 67108864
+081110,145606,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.131:50010 is added to blk_-4174618838156947380 size 67108864
+081110,150125,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.193:50010 is added to blk_7415823309220171667 size 67108864
+081110,150205,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000116_0/part-00116. blk_6749232449432458524
+081110,150238,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.38.197:50010 is added to blk_-5427918313707752877 size 67108864
+081110,150254,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-7803343374223161433
+081110,150316,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.105.189:50010 is added to blk_-3275237990609680332 size 67108864
+081110,150531,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000315_0/part-00315. blk_-463998587096565542
+081110,150600,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_578261619176233743 size 67108864
+081110,150618,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.188:50010 is added to blk_-3897674589140998025 size 67108864
+081110,150751,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.17.225:50010 is added to blk_-3573208405519699182 size 67108864
+081110,150809,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_4154740411570608045 size 67108864
+081110,150933,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.179:50010 is added to blk_8188837227311063557 size 67108864
+081110,151115,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.191:50010 is added to blk_-4208396523159735354 size 67108864
+081110,151307,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000152_0/part-00152. blk_-7603795308074215276
+081110,151427,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000344_0/part-00344. blk_-2004529166303428909
+081110,151600,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.143:50010 is added to blk_2618566506268332756 size 67108864
+081110,151902,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.13.188:50010 is added to blk_5971534893446541111 size 67108864
+081110,152147,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.70.37:50010 is added to blk_300967862449910205 size 67108864
+081110,152215,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.19.227:50010 is added to blk_2059389709317340334 size 67108864
+081110,153301,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-8507209254958698084
+081110,160100,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.70.5:50010 is added to blk_-4092973201423074374 size 67108864
+081110,173657,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_2904134648927436267
+081110,183200,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_1584196996810164915
+081110,190333,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_1150231966878829887
+081110,210112,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-531469051872229488 is added to invalidSet of 10.251.71.146:50010
+081110,210115,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4657423175636611807 is added to invalidSet of 10.251.193.175:50010
+081110,210115,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6117917602803602155 is added to invalidSet of 10.251.67.211:50010
+081110,210115,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7584542530081657301 is added to invalidSet of 10.250.10.223:50010
+081110,210118,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4640277741339926850 is added to invalidSet of 10.251.26.131:50010
+081110,210118,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7285565997486715015 is added to invalidSet of 10.250.6.191:50010
+081110,210123,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3652427357251545055 is added to invalidSet of 10.250.10.223:50010
+081110,210123,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5163387277374142808 is added to invalidSet of 10.251.71.193:50010
+081110,210124,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1342669964196815853 is added to invalidSet of 10.250.17.225:50010
+081110,210125,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-424018194735922479 is added to invalidSet of 10.251.42.84:50010
+081110,210126,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3754029959138975487 is added to invalidSet of 10.251.214.112:50010
+081110,210126,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4149539113118855204 is added to invalidSet of 10.251.71.16:50010
+081110,210126,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5868517220927475394 is added to invalidSet of 10.251.67.113:50010
+081110,210127,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6093858391888371854 is added to invalidSet of 10.251.42.207:50010
+081110,210128,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7048740572660501729 is added to invalidSet of 10.251.107.98:50010
+081110,210129,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2025578204394955498 is added to invalidSet of 10.251.91.159:50010
+081110,210129,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-795209964982424254 is added to invalidSet of 10.251.107.227:50010
+081110,210131,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7606019272539977822 is added to invalidSet of 10.251.67.211:50010
+081110,210132,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1960893136630391966 is added to invalidSet of 10.251.39.144:50010
+081110,210142,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8632488927959646482 is added to invalidSet of 10.251.39.64:50010
+081110,210144,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1302893891174665780 is added to invalidSet of 10.251.214.225:50010
+081110,210145,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-490230821467544285 is added to invalidSet of 10.250.10.6:50010
+081110,210146,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4713968111267226537 is added to invalidSet of 10.251.70.5:50010
+081110,210146,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7473411975130090672 is added to invalidSet of 10.251.75.143:50010
+081110,210147,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_753559000954836892 is added to invalidSet of 10.251.30.101:50010
+081110,210147,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_9085898147979939648 is added to invalidSet of 10.251.67.225:50010
+081110,210148,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5403209762224435166 is added to invalidSet of 10.251.125.193:50010
+081110,210149,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6932221506331060207 is added to invalidSet of 10.251.74.79:50010
+081110,210149,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7693277678281547790 is added to invalidSet of 10.251.30.6:50010
+081110,210151,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3792448673967861371 is added to invalidSet of 10.251.89.155:50010
+081110,210151,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5496448884081025648 is added to invalidSet of 10.251.123.195:50010
+081110,210153,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1102735311308675356 is added to invalidSet of 10.251.71.97:50010
+081110,210153,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7094265091490664593 is added to invalidSet of 10.251.71.68:50010
+081110,210157,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1271403908410292619 is added to invalidSet of 10.251.43.147:50010
+081110,210201,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2439225174716664723 is added to invalidSet of 10.251.42.207:50010
+081110,210201,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-9220604860626391374 is added to invalidSet of 10.251.30.179:50010
+081110,210252,18,INFO,dfs.FSDataset,Deleting block blk_-8949548167466276130 file /mnt/hadoop/dfs/data/current/subdir2/blk_-8949548167466276130
+081110,210259,19,INFO,dfs.FSDataset,Deleting block blk_-7548149518969960333 file /mnt/hadoop/dfs/data/current/subdir8/blk_-7548149518969960333
+081110,210308,19,INFO,dfs.FSDataset,Deleting block blk_-7353572928777348242 file /mnt/hadoop/dfs/data/current/subdir22/blk_-7353572928777348242
+081110,210330,19,INFO,dfs.FSDataset,Deleting block blk_7206839389762980382 file /mnt/hadoop/dfs/data/current/subdir61/blk_7206839389762980382
+081110,210339,19,INFO,dfs.FSDataset,Deleting block blk_-9171803179611497035 file /mnt/hadoop/dfs/data/current/subdir35/blk_-9171803179611497035
+081110,210354,19,INFO,dfs.FSDataset,Deleting block blk_-4598246018559857954 file /mnt/hadoop/dfs/data/current/subdir34/blk_-4598246018559857954
+081110,210354,19,INFO,dfs.FSDataset,Deleting block blk_-6901909114834172466 file /mnt/hadoop/dfs/data/current/subdir57/blk_-6901909114834172466
+081110,210401,19,INFO,dfs.FSDataset,Deleting block blk_-6075803209168884005 file /mnt/hadoop/dfs/data/current/subdir31/blk_-6075803209168884005
+081110,210401,19,INFO,dfs.FSDataset,Deleting block blk_-8617088607862430908 file /mnt/hadoop/dfs/data/current/subdir53/blk_-8617088607862430908
+081110,210404,19,INFO,dfs.FSDataset,Deleting block blk_7855353385462032387 file /mnt/hadoop/dfs/data/current/subdir41/blk_7855353385462032387
+081110,210413,19,INFO,dfs.FSDataset,Deleting block blk_3733339790842827121 file /mnt/hadoop/dfs/data/current/subdir42/blk_3733339790842827121
+081110,210417,19,INFO,dfs.FSDataset,Deleting block blk_-9017308542351369260 file /mnt/hadoop/dfs/data/current/subdir14/blk_-9017308542351369260
+081110,210423,19,INFO,dfs.FSDataset,Deleting block blk_-8360774680830158225 file /mnt/hadoop/dfs/data/current/subdir31/blk_-8360774680830158225
+081110,210425,19,INFO,dfs.FSDataset,Deleting block blk_-6942784423611603919 file /mnt/hadoop/dfs/data/current/subdir38/blk_-6942784423611603919
+081110,210427,19,INFO,dfs.FSDataset,Deleting block blk_-5603192027616633151 file /mnt/hadoop/dfs/data/current/subdir34/blk_-5603192027616633151
+081110,210442,19,INFO,dfs.FSDataset,Deleting block blk_-7854501109698465657 file /mnt/hadoop/dfs/data/current/subdir34/blk_-7854501109698465657
+081110,210449,19,INFO,dfs.FSDataset,Deleting block blk_-4551689611865410817 file /mnt/hadoop/dfs/data/current/blk_-4551689611865410817
+081110,210450,19,INFO,dfs.FSDataset,Deleting block blk_-1750007847201154657 file /mnt/hadoop/dfs/data/current/subdir1/blk_-1750007847201154657
+081110,210502,19,INFO,dfs.FSDataset,Deleting block blk_-3564493590065542578 file /mnt/hadoop/dfs/data/current/subdir55/blk_-3564493590065542578
+081110,210509,18,INFO,dfs.FSDataset,Deleting block blk_-2929627680703662712 file /mnt/hadoop/dfs/data/current/subdir32/blk_-2929627680703662712
+081110,210510,19,INFO,dfs.FSDataset,Deleting block blk_2708206493147801743 file /mnt/hadoop/dfs/data/current/subdir15/blk_2708206493147801743
+081110,210511,19,INFO,dfs.FSDataset,Deleting block blk_-4110699195744660699 file /mnt/hadoop/dfs/data/current/subdir34/blk_-4110699195744660699
+081110,210512,19,INFO,dfs.FSDataset,Deleting block blk_7721951162137927252 file /mnt/hadoop/dfs/data/current/subdir52/blk_7721951162137927252
+081110,210515,19,INFO,dfs.FSDataset,Deleting block blk_-1535908830476495455 file /mnt/hadoop/dfs/data/current/subdir10/blk_-1535908830476495455
+081110,210516,19,INFO,dfs.FSDataset,Deleting block blk_1184972950286241114 file /mnt/hadoop/dfs/data/current/subdir39/blk_1184972950286241114
+081110,210517,19,INFO,dfs.FSDataset,Deleting block blk_-3396836569886642130 file /mnt/hadoop/dfs/data/current/subdir32/blk_-3396836569886642130
+081110,210532,19,INFO,dfs.FSDataset,Deleting block blk_22457656256024207 file /mnt/hadoop/dfs/data/current/subdir33/blk_22457656256024207
+081110,210534,19,INFO,dfs.FSDataset,Deleting block blk_5905689738251144455 file /mnt/hadoop/dfs/data/current/blk_5905689738251144455
+081110,210537,19,INFO,dfs.FSDataset,Deleting block blk_-2210703755506918304 file /mnt/hadoop/dfs/data/current/subdir26/blk_-2210703755506918304
+081110,210540,18,INFO,dfs.FSDataset,Deleting block blk_773599351835388127 file /mnt/hadoop/dfs/data/current/subdir60/blk_773599351835388127
+081110,210540,19,INFO,dfs.FSDataset,Deleting block blk_3921292580505776296 file /mnt/hadoop/dfs/data/current/subdir57/blk_3921292580505776296
+081110,210542,19,INFO,dfs.FSDataset,Deleting block blk_4162832865986721185 file /mnt/hadoop/dfs/data/current/subdir4/blk_4162832865986721185
+081110,210545,19,INFO,dfs.FSDataset,Deleting block blk_2156262111024914941 file /mnt/hadoop/dfs/data/current/subdir14/blk_2156262111024914941
+081110,210548,19,INFO,dfs.FSDataset,Deleting block blk_4658551441818960395 file /mnt/hadoop/dfs/data/current/subdir19/blk_4658551441818960395
+081110,210549,19,INFO,dfs.FSDataset,Deleting block blk_3076992299328673559 file /mnt/hadoop/dfs/data/current/subdir54/blk_3076992299328673559
+081110,210549,19,INFO,dfs.FSDataset,Deleting block blk_6085442148007558065 file /mnt/hadoop/dfs/data/current/subdir63/blk_6085442148007558065
+081110,210555,19,INFO,dfs.FSDataset,Deleting block blk_1746384029810476219 file /mnt/hadoop/dfs/data/current/subdir18/blk_1746384029810476219
+081110,210555,19,INFO,dfs.FSDataset,Deleting block blk_4939101994162863442 file /mnt/hadoop/dfs/data/current/subdir24/blk_4939101994162863442
+081110,210558,19,INFO,dfs.FSDataset,Deleting block blk_1144571179430079218 file /mnt/hadoop/dfs/data/current/subdir33/blk_1144571179430079218
+081110,210558,19,INFO,dfs.FSDataset,Deleting block blk_8693774866554287286 file /mnt/hadoop/dfs/data/current/subdir55/blk_8693774866554287286
+081110,210600,18,INFO,dfs.FSDataset,Deleting block blk_6695517786834913217 file /mnt/hadoop/dfs/data/current/subdir15/blk_6695517786834913217
+081110,210601,19,INFO,dfs.FSDataset,Deleting block blk_70980361971054326 file /mnt/hadoop/dfs/data/current/subdir27/blk_70980361971054326
+081110,210608,19,INFO,dfs.FSDataset,Deleting block blk_6499414220139660338 file /mnt/hadoop/dfs/data/current/subdir59/blk_6499414220139660338
+081110,210620,19,INFO,dfs.FSDataset,Deleting block blk_8598135237831029828 file /mnt/hadoop/dfs/data/current/subdir59/blk_8598135237831029828
+081110,210640,19,INFO,dfs.FSDataset,Deleting block blk_7108974241330205218 file /mnt/hadoop/dfs/data/current/subdir22/blk_7108974241330205218
+081110,210704,19,INFO,dfs.FSDataset,Deleting block blk_8929806114713265094 file /mnt/hadoop/dfs/data/current/subdir1/blk_8929806114713265094
+081110,210710,19,INFO,dfs.FSDataset,Deleting block blk_6445339027653789144 file /mnt/hadoop/dfs/data/current/subdir16/blk_6445339027653789144
+081110,210737,19,INFO,dfs.FSDataset,Deleting block blk_8699831307500970779 file /mnt/hadoop/dfs/data/current/subdir54/blk_8699831307500970779
+081110,210753,19,INFO,dfs.FSDataset,Deleting block blk_3221204570666147236 file /mnt/hadoop/dfs/data/current/subdir34/blk_3221204570666147236
+081110,211030,19,INFO,dfs.FSDataset,Deleting block blk_7360639743953947587 file /mnt/hadoop/dfs/data/current/subdir35/blk_7360639743953947587
+081110,211122,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.6:50010 is added to blk_3585424189730250601 size 67108864
+081110,211355,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.10:50010 is added to blk_1151012386083696649 size 67108864
+081110,211541,18,INFO,dfs.DataNode,10.250.15.198:50010 Starting thread to transfer block blk_4292382298896622412 to 10.250.15.240:50010
+081110,211845,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.188:50010 is added to blk_8761786041973172187 size 67108864
+081110,211926,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.70.211:50010 is added to blk_-5471660287004025096 size 67108864
+081110,212051,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.144:50010 is added to blk_-5542336029922582303 size 67108864
+081110,212258,19,INFO,dfs.FSDataset,Deleting block blk_-468830939205980722 file /mnt/hadoop/dfs/data/current/subdir10/blk_-468830939205980722
+081110,212509,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.33:50010 is added to blk_-6442394521537090621 size 67108864
+081110,212510,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.250.18.114:50010 to delete  blk_-5140072410813878235
+081110,212556,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.84:50010 is added to blk_6039898256291822367 size 67108864
+081110,212644,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_000720_0/part-00720. blk_-7988596544606686086
+081110,212851,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.126.5:50010 is added to blk_-989798817617753264 size 67108864
+081110,213723,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.112:50010 is added to blk_8063831442998721547 size 67108864
+081110,213816,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001091_0/part-01091. blk_-4468645577339843974
+081110,214044,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.198.33:50010 is added to blk_-5159573936338473350 size 67108864
+081110,214525,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.195.33:50010 is added to blk_-9049344623659872649 size 67108864
+081110,214907,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.19:50010 is added to blk_5574898547439146021 size 67108864
+081110,215253,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001655_0/part-01655. blk_-6802153775367591521
+081110,215310,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.105.189:50010 is added to blk_-2035996502664501008 size 67108864
+081110,215817,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001824_0/part-01824. blk_-4654885003331291932
+081110,220042,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.84:50010 is added to blk_-2321016155994168744 size 67108864
+081110,220626,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8981795097778421111 is added to invalidSet of 10.251.194.129:50010
+081110,220630,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1979447750586388860 is added to invalidSet of 10.251.215.192:50010
+081110,220636,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3332848207645320273 is added to invalidSet of 10.251.90.64:50010
+081110,220636,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6881216037013929188 is added to invalidSet of 10.251.91.32:50010
+081110,220637,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7541621664406141215 is added to invalidSet of 10.251.214.32:50010
+081110,220645,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1680175975862749862 is added to invalidSet of 10.250.14.38:50010
+081110,220646,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5176179471361959897 is added to invalidSet of 10.250.9.207:50010
+081110,220648,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4385347171136037814 is added to invalidSet of 10.251.67.113:50010
+081110,220648,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8384329882986724706 is added to invalidSet of 10.251.123.195:50010
+081110,220650,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6392434729242722288 is added to invalidSet of 10.251.30.134:50010
+081110,220651,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1714886759174770356 is added to invalidSet of 10.251.31.5:50010
+081110,220651,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7400944190976416273 is added to invalidSet of 10.251.127.243:50010
+081110,220651,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8442157310069672329 is added to invalidSet of 10.251.39.64:50010
+081110,220653,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5624558200776510955 is added to invalidSet of 10.251.107.242:50010
+081110,220655,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1481009974400305784 is added to invalidSet of 10.251.39.242:50010
+081110,220655,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_355286618997526877 is added to invalidSet of 10.250.7.32:50010
+081110,220655,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7369651436133452001 is added to invalidSet of 10.251.127.191:50010
+081110,220656,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8353423262983821010 is added to invalidSet of 10.251.39.209:50010
+081110,220658,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7017399031777870797 is added to invalidSet of 10.250.5.161:50010
+081110,220708,19,INFO,dfs.FSDataset,Deleting block blk_-6891122177443047531 file /mnt/hadoop/dfs/data/current/subdir36/blk_-6891122177443047531
+081110,220711,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_000190_0/part-00190. blk_641646158310569454
+081110,220749,19,INFO,dfs.FSDataset,Deleting block blk_-9171930401624803515 file /mnt/hadoop/dfs/data/current/subdir56/blk_-9171930401624803515
+081110,220801,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.84:50010 is added to blk_5938666289587069744 size 67108864
+081110,220804,19,INFO,dfs.FSDataset,Deleting block blk_-8294986551316947211 file /mnt/hadoop/dfs/data/current/subdir34/blk_-8294986551316947211
+081110,220811,19,INFO,dfs.FSDataset,Deleting block blk_-5718504625725408070 file /mnt/hadoop/dfs/data/current/blk_-5718504625725408070
+081110,220830,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_000374_0/part-00374. blk_-1941312615450572331
+081110,220853,19,INFO,dfs.FSDataset,Deleting block blk_2353918919834315845 file /mnt/hadoop/dfs/data/current/subdir35/blk_2353918919834315845
+081110,220907,19,INFO,dfs.FSDataset,Deleting block blk_391507259220628397 file /mnt/hadoop/dfs/data/current/blk_391507259220628397
+081110,220909,19,INFO,dfs.FSDataset,Deleting block blk_-1263913006422225885 file /mnt/hadoop/dfs/data/current/subdir2/blk_-1263913006422225885
+081110,220911,19,INFO,dfs.FSDataset,Deleting block blk_6542592144596063478 file /mnt/hadoop/dfs/data/current/subdir35/blk_6542592144596063478
+081110,220921,19,INFO,dfs.FSDataset,Deleting block blk_1689772850125323349 file /mnt/hadoop/dfs/data/current/subdir27/blk_1689772850125323349
+081110,220923,19,INFO,dfs.FSDataset,Deleting block blk_8615522912610884162 file /mnt/hadoop/dfs/data/current/subdir35/blk_8615522912610884162
+081110,220925,19,INFO,dfs.FSDataset,Deleting block blk_107727140948970996 file /mnt/hadoop/dfs/data/current/subdir33/blk_107727140948970996
+081110,220936,19,INFO,dfs.FSDataset,Deleting block blk_-1598760065436384831 file /mnt/hadoop/dfs/data/current/subdir53/blk_-1598760065436384831
+081110,220955,19,INFO,dfs.FSDataset,Deleting block blk_8950932638808086257 file /mnt/hadoop/dfs/data/current/subdir18/blk_8950932638808086257
+081110,221212,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_000186_0/part-00186. blk_-6754647973871368247
+081110,221447,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.115:50010 is added to blk_-7893636450787030202 size 67108864
+081110,221932,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.251.122.79:50010 to delete  blk_8048594464172649365
+081110,222130,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.198:50010 is added to blk_4992622607400168655 size 67108864
+081110,222459,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.160:50010 is added to blk_1865953191447352631 size 67108864
+081110,222712,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.68:50010 is added to blk_8850044049297409379 size 67108864
+081110,222946,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_000585_0/part-00585. blk_8561332122820208519
+081110,222948,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.113:50010 is added to blk_-8393060055740236791 size 67108864
+081110,222951,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.38:50010 is added to blk_-5861348317118763621 size 28500222
+081110,223206,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.230:50010 is added to blk_6238543795209416553 size 67108864
+081110,223615,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.243:50010 is added to blk_-5882295985950637419 size 67108864
+081110,223854,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.239:50010 is added to blk_-5927343391895571936 size 67108864
+081110,224154,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.215.192:50010 is added to blk_-1704027189958470814 size 67108864
+081110,224212,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.50:50010 is added to blk_-2023442822091562967 size 67108864
+081110,224218,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.198.196:50010 is added to blk_1779145401405339993 size 28499417
+081110,224338,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.159:50010 is added to blk_7705518309270121951 size 67108864
+081110,224504,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.32:50010 is added to blk_3849239820458663566 size 67108864
+081110,224755,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_001560_0/part-01560. blk_3376391218693716925
+081110,224932,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_001230_0/part-01230. blk_8708862520108736953
+081110,224938,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.79:50010 is added to blk_-5718873743060788176 size 67108864
+081110,225351,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.64:50010 is added to blk_207875475387433291 size 67108864
+081110,225400,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.225:50010 is added to blk_-7115635482536854135 size 67108864
+081110,225740,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_001662_0/part-01662. blk_8196657927516481490
+081110,225947,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.74.227:50010 is added to blk_1594026090263820445 size 67108864
+081110,230105,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_3894335463008345041
+081110,230202,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.193.224:50010 is added to blk_-6299730951392868297 size 67108864
+081110,230338,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.194.213:50010 is added to blk_-3575568207121859434 size 67108864
+081110,230508,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.159:50010 is added to blk_-5739126205963920408 size 67108864
+081110,230859,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.38.53:50010 is added to blk_7430820184211246929 size 67108864
+081110,231236,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-608202790716579401 is added to invalidSet of 10.251.198.33:50010
+081110,231241,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1335063409877429524 is added to invalidSet of 10.251.107.196:50010
+081111,023010,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8887373200836701910 is added to invalidSet of 10.251.193.224:50010
+081111,023011,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1162676743264290624 is added to invalidSet of 10.251.194.213:50010
+081111,023011,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5513640508500780385 is added to invalidSet of 10.251.203.179:50010
+081111,023011,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7767902948513849386 is added to invalidSet of 10.251.71.146:50010
+081111,023013,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5382946262718129284 is added to invalidSet of 10.250.5.161:50010
+081111,023013,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5668137923110942035 is added to invalidSet of 10.251.91.229:50010
+081111,023013,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7197514030988119866 is added to invalidSet of 10.251.75.49:50010
+081111,023015,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5362598472846558076 is added to invalidSet of 10.250.14.143:50010
+081111,023017,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4269939382058952254 is added to invalidSet of 10.251.203.129:50010
+081111,023017,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6978845808078082463 is added to invalidSet of 10.251.109.209:50010
+081111,023022,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1071115021179995772 is added to invalidSet of 10.250.11.53:50010
+081111,023022,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7336636250384047238 is added to invalidSet of 10.251.26.177:50010
+081111,023022,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8493856762887493521 is added to invalidSet of 10.251.26.131:50010
+081111,023024,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1043487525777829194 is added to invalidSet of 10.251.110.8:50010
+081111,023024,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3225035678192156905 is added to invalidSet of 10.251.38.214:50010
+081111,023025,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5572208681898881669 is added to invalidSet of 10.251.38.197:50010
+081111,023027,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2225353020301959077 is added to invalidSet of 10.251.125.237:50010
+081111,023027,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3946183108430554053 is added to invalidSet of 10.250.11.100:50010
+081111,023033,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3681974396824196300 is added to invalidSet of 10.250.17.177:50010
+081111,023037,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2736251498135196075 is added to invalidSet of 10.251.90.64:50010
+081111,023039,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1275198635723397883 is added to invalidSet of 10.251.202.134:50010
+081111,023039,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3428998332517532825 is added to invalidSet of 10.251.43.192:50010
+081111,023139,19,INFO,dfs.FSDataset,Deleting block blk_-7106479503467535906 file /mnt/hadoop/dfs/data/current/subdir32/blk_-7106479503467535906
+081111,023149,19,INFO,dfs.FSDataset,Deleting block blk_-7411858598798393933 file /mnt/hadoop/dfs/data/current/subdir24/blk_-7411858598798393933
+081111,023156,19,INFO,dfs.FSDataset,Deleting block blk_-5429479049793046826 file /mnt/hadoop/dfs/data/current/subdir34/blk_-5429479049793046826
+081111,023158,19,INFO,dfs.FSDataset,Deleting block blk_-6431101765137189231 file /mnt/hadoop/dfs/data/current/subdir33/blk_-6431101765137189231
+081111,023216,19,INFO,dfs.FSDataset,Deleting block blk_-2923662094689783995 file /mnt/hadoop/dfs/data/current/subdir38/blk_-2923662094689783995
+081111,023229,19,INFO,dfs.FSDataset,Deleting block blk_1483582953997932733 file /mnt/hadoop/dfs/data/current/subdir7/blk_1483582953997932733
+081111,023230,19,INFO,dfs.FSDataset,Deleting block blk_-3607708283707030582 file /mnt/hadoop/dfs/data/current/subdir31/blk_-3607708283707030582
+081111,023234,19,INFO,dfs.FSDataset,Deleting block blk_4365203784873840210 file /mnt/hadoop/dfs/data/current/subdir1/blk_4365203784873840210
+081111,023243,19,INFO,dfs.FSDataset,Deleting block blk_1920931690498309324 file /mnt/hadoop/dfs/data/current/subdir42/blk_1920931690498309324
+081111,023243,19,INFO,dfs.FSDataset,Deleting block blk_2731746367139956284 file /mnt/hadoop/dfs/data/current/subdir15/blk_2731746367139956284
+081111,023247,19,INFO,dfs.FSDataset,Deleting block blk_3312198496468502316 file /mnt/hadoop/dfs/data/current/subdir36/blk_3312198496468502316
+081111,023247,19,INFO,dfs.FSDataset,Deleting block blk_-626413149556394155 file /mnt/hadoop/dfs/data/current/subdir26/blk_-626413149556394155
+081111,023248,18,INFO,dfs.FSDataset,Deleting block blk_1350741653957819140 file /mnt/hadoop/dfs/data/current/subdir32/blk_1350741653957819140
+081111,023248,19,INFO,dfs.FSDataset,Deleting block blk_6675564098604634452 file /mnt/hadoop/dfs/data/current/subdir1/blk_6675564098604634452
+081111,023249,19,INFO,dfs.FSDataset,Deleting block blk_1692958087244489888 file /mnt/hadoop/dfs/data/current/subdir62/blk_1692958087244489888
+081111,023250,18,INFO,dfs.FSDataset,Deleting block blk_5528471097481810388 file /mnt/hadoop/dfs/data/current/subdir5/blk_5528471097481810388
+081111,023250,19,INFO,dfs.FSDataset,Deleting block blk_797263375273454863 file /mnt/hadoop/dfs/data/current/subdir16/blk_797263375273454863
+081111,023255,19,INFO,dfs.FSDataset,Deleting block blk_5209577451013188921 file /mnt/hadoop/dfs/data/current/subdir24/blk_5209577451013188921
+081111,023304,18,INFO,dfs.FSDataset,Deleting block blk_4713539908695785630 file /mnt/hadoop/dfs/data/current/subdir39/blk_4713539908695785630
+081111,023310,19,INFO,dfs.FSDataset,Deleting block blk_6148201552996212693 file /mnt/hadoop/dfs/data/current/subdir15/blk_6148201552996212693
+081111,023328,19,INFO,dfs.FSDataset,Deleting block blk_9014154925388243050 file /mnt/hadoop/dfs/data/current/subdir28/blk_9014154925388243050
+081111,023330,19,INFO,dfs.FSDataset,Deleting block blk_8761138012128091849 file /mnt/hadoop/dfs/data/current/subdir33/blk_8761138012128091849
+081111,024133,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.19:50010 is added to blk_6748710057489679257 size 67108864
+081111,024247,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.209:50010 is added to blk_1833093108290599780 size 67108864
+081111,024304,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.146:50010 is added to blk_9163807899833139121 size 67108864
+081111,024443,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_000115_0/part-00115. blk_-17685631368401548
+081111,024724,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_000176_0/part-00176. blk_8924207394547472950
+081111,024831,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.242:50010 is added to blk_5390763359901143305 size 67108864
+081111,024901,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.194:50010 is added to blk_2430417102497887445 size 67108864
+081111,024901,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.18:50010 is added to blk_-747046374856916711 size 67108864
+081111,025424,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.160:50010 is added to blk_-1675768179383804109 size 67108864
+081111,025619,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.113:50010 is added to blk_9060964400089016309 size 67108864
+081111,025634,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_-1417908110808566576 size 67108864
+081111,030017,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.177:50010 is added to blk_-6338549285508312302 size 3530010
+081111,030051,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.179:50010 is added to blk_-900758580041645081 size 3543900
+081111,030153,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.3:50010 is added to blk_1756478622414930264 size 67108864
+081111,030225,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.47:50010 is added to blk_-6555060221133060529 size 67108864
+081111,030300,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.240:50010 is added to blk_-7637577152926063076 size 67108864
+081111,030418,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_001061_0/part-01061. blk_-749176535135404637
+081111,030501,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.245:50010 is added to blk_-7909610753867924116 size 67108864
+081111,030942,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_001281_0/part-01281. blk_2084123600915946046
+081111,031258,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.100:50010 is added to blk_3222673463853349950 size 67108864
+081111,031334,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.8:50010 is added to blk_-5963475042722370536 size 67108864
+081111,031436,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_001398_0/part-01398. blk_-7527506469734664572
+081111,031621,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.159:50010 is added to blk_-4455205822455130625 size 67108864
+081111,031951,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.243:50010 is added to blk_1512923509505250283 size 67108864
+081111,032053,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_001611_0/part-01611. blk_285336326661214154
+081111,032121,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.134:50010 is added to blk_5955377624764578810 size 67108864
+081111,032357,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand4/_temporary/_task_200811101024_0009_m_001574_0/part-01574. blk_-7458279618877678162
+081111,032544,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.109.209:50010 is added to blk_3764801892187716497 size 67108864
+081111,032813,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.223:50010 is added to blk_-4052810234606327693 size 67108864
+081111,033110,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.144:50010 is added to blk_3243316191092266549 size 67108864
+081111,033211,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.21:50010 is added to blk_3206064173813164493 size 67108864
+081111,033819,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1525964299678787959 is added to invalidSet of 10.251.37.240:50010
+081111,033823,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7045475543362904558 is added to invalidSet of 10.251.106.214:50010
+081111,033824,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6802124772693111025 is added to invalidSet of 10.251.66.63:50010
+081111,033829,18,INFO,dfs.FSDataset,Deleting block blk_-5205950257901523262 file /mnt/hadoop/dfs/data/current/subdir40/blk_-5205950257901523262
+081111,033953,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.26.177:50010 is added to blk_6928449948805597176 size 67108864
+081111,034252,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt4/_temporary/_task_200811101024_0010_m_000222_0/part-00222. blk_3764836840384130740
+081111,034600,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.246:50010 is added to blk_-6909400912794057067 size 67108864
+081111,034712,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.192:50010 is added to blk_8249475180346179102 size 67108864
+081111,035152,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_5953577136151423920 size 67108864
+081111,035532,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.101:50010 is added to blk_-6540455811923725840 size 67108864
+081111,035620,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.1:50010 is added to blk_6308888821787547357 size 67108864
+081111,035913,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.229:50010 is added to blk_-4651707530079874243 size 67108864
+081111,040107,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt4/_temporary/_task_200811101024_0010_m_000881_0/part-00881. blk_-3091906986951252347
+081111,040402,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.215.70:50010 is added to blk_-420818767915591010 size 67108864
+081111,040653,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.16:50010 is added to blk_3954386352306480748 size 67108864
+081111,040658,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.105.189:50010 is added to blk_4812792845864526586 size 67108864
+081111,040728,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.70.211:50010 is added to blk_5570475465835003801 size 67108864
+081111,040754,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.242:50010 is added to blk_-4342304152206614489 size 67108864
+081111,041004,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.240:50010 is added to blk_-5580048401594934039 size 67108864
+081111,041039,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.242:50010 is added to blk_6640583412927022083 size 67108864
+081111,041111,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.65.203:50010 is added to blk_-1332315107905285608 size 67108864
+081111,041349,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.74.134:50010 is added to blk_2740792916077430444 size 28482383
+081111,042024,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.166:50010 is added to blk_-2332150303475653460 size 67108864
+081111,042129,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.199.86:50010 is added to blk_4330492872922862223 size 67108864
+081111,042427,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.5:50010 is added to blk_5813361416484537967 size 67108864
+081111,043106,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.193:50010 is added to blk_4577632468651859430 size 67108864
+081111,043132,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt4/_temporary/_task_200811101024_0010_m_001716_0/part-01716. blk_-2051219911597308805
+081111,043358,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.37:50010 is added to blk_-524128780228307052 size 67108864
+081111,044041,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.202.209:50010 is added to blk_111759050707136656 size 67108864
+081111,044304,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2259206517962925438 is added to invalidSet of 10.251.215.16:50010
+081111,044304,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3854777877236596649 is added to invalidSet of 10.251.39.160:50010
+081111,044305,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4265150363959543078 is added to invalidSet of 10.251.39.160:50010
+081111,044309,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3729730843466061623 is added to invalidSet of 10.251.27.63:50010
+081111,044310,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3876184938151091897 is added to invalidSet of 10.251.30.85:50010
+081111,044311,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1227720343537039835 is added to invalidSet of 10.251.202.134:50010
+081111,044314,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6921441628286995043 is added to invalidSet of 10.251.126.83:50010
+081111,044315,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3539852484771802299 is added to invalidSet of 10.250.19.227:50010
+081111,044316,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2341651676737321162 is added to invalidSet of 10.251.203.129:50010
+081111,044318,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-765820154946060546 is added to invalidSet of 10.251.65.203:50010
+081111,044319,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2492400942012223395 is added to invalidSet of 10.251.202.209:50010
+081111,044320,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8351015090014570293 is added to invalidSet of 10.251.199.86:50010
+081111,044328,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-328970571549408286 is added to invalidSet of 10.251.214.32:50010
+081111,044328,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8130925109202184099 is added to invalidSet of 10.251.125.193:50010
+081111,044331,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3242342105286997235 is added to invalidSet of 10.251.71.97:50010
+081111,044332,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2468407162668753567 is added to invalidSet of 10.251.106.37:50010
+081111,044335,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_7841365850685201915 is added to invalidSet of 10.251.110.68:50010
+081111,044337,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-6160667975382232149
+081111,044338,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2426255659473300323 is added to invalidSet of 10.251.106.37:50010
+081111,044338,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5203504995927133832 is added to invalidSet of 10.250.13.240:50010
+081111,044340,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_815809455641029563 is added to invalidSet of 10.251.111.37:50010
+081111,044343,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_6413710007211667486 is added to invalidSet of 10.251.30.179:50010
+081111,044345,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2907776069874917892 is added to invalidSet of 10.251.215.16:50010
+081111,044347,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5802915611610989626 is added to invalidSet of 10.251.110.196:50010
+081111,044349,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7668075074035173978 is added to invalidSet of 10.251.31.5:50010
+081111,044351,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1573544581830458089 is added to invalidSet of 10.251.122.65:50010
+081111,044353,19,INFO,dfs.FSDataset,Deleting block blk_-1180596628202464893 file /mnt/hadoop/dfs/data/current/subdir52/blk_-1180596628202464893
+081111,044522,18,INFO,dfs.FSDataset,Deleting block blk_-8167717961644709843 file /mnt/hadoop/dfs/data/current/blk_-8167717961644709843
+081111,044543,19,INFO,dfs.FSDataset,Deleting block blk_-7464161062429228045 file /mnt/hadoop/dfs/data/current/subdir19/blk_-7464161062429228045
+081111,044546,19,INFO,dfs.FSDataset,Deleting block blk_-5934436507161953485 file /mnt/hadoop/dfs/data/current/subdir33/blk_-5934436507161953485
+081111,044550,19,INFO,dfs.FSDataset,Deleting block blk_-7832937837605180330 file /mnt/hadoop/dfs/data/current/subdir49/blk_-7832937837605180330
+081111,044554,19,INFO,dfs.FSDataset,Deleting block blk_-8547071368131084410 file /mnt/hadoop/dfs/data/current/subdir38/blk_-8547071368131084410
+081111,044556,19,INFO,dfs.FSDataset,Deleting block blk_-5429042599096020592 file /mnt/hadoop/dfs/data/current/subdir34/blk_-5429042599096020592
+081111,044612,19,INFO,dfs.FSDataset,Deleting block blk_-6350492516478706425 file /mnt/hadoop/dfs/data/current/subdir36/blk_-6350492516478706425
+081111,044624,19,INFO,dfs.FSDataset,Deleting block blk_-6053005391233809507 file /mnt/hadoop/dfs/data/current/subdir27/blk_-6053005391233809507
+081111,044630,19,INFO,dfs.FSDataset,Deleting block blk_-4311652947826112510 file /mnt/hadoop/dfs/data/current/subdir57/blk_-4311652947826112510
+081111,044635,19,INFO,dfs.FSDataset,Deleting block blk_-1754204887541031211 file /mnt/hadoop/dfs/data/current/subdir58/blk_-1754204887541031211
+081111,044639,19,INFO,dfs.FSDataset,Deleting block blk_-4165176068096983220 file /mnt/hadoop/dfs/data/current/subdir34/blk_-4165176068096983220
+081111,044648,19,INFO,dfs.FSDataset,Deleting block blk_4863571548336254624 file /mnt/hadoop/dfs/data/current/subdir5/blk_4863571548336254624
+081111,044650,19,INFO,dfs.FSDataset,Deleting block blk_-4844505495441326897 file /mnt/hadoop/dfs/data/current/subdir36/blk_-4844505495441326897
+081111,044652,19,INFO,dfs.FSDataset,Deleting block blk_-7513928662244669476 file /mnt/hadoop/dfs/data/current/subdir11/blk_-7513928662244669476
+081111,044654,19,INFO,dfs.FSDataset,Deleting block blk_-5014786445735476734 file /mnt/hadoop/dfs/data/current/subdir9/blk_-5014786445735476734
+081111,044700,19,INFO,dfs.FSDataset,Deleting block blk_-1046472716157313227 file /mnt/hadoop/dfs/data/current/subdir62/blk_-1046472716157313227
+081111,044700,19,INFO,dfs.FSDataset,Deleting block blk_-1281276222788579863 file /mnt/hadoop/dfs/data/current/subdir30/blk_-1281276222788579863
+081111,044704,19,INFO,dfs.FSDataset,Deleting block blk_449049393237281194 file /mnt/hadoop/dfs/data/current/subdir18/blk_449049393237281194
+081111,044716,19,INFO,dfs.FSDataset,Deleting block blk_352185875883785141 file /mnt/hadoop/dfs/data/current/subdir44/blk_352185875883785141
+081111,044720,19,INFO,dfs.FSDataset,Deleting block blk_-2890295200276774269 file /mnt/hadoop/dfs/data/current/subdir29/blk_-2890295200276774269
+081111,044728,18,INFO,dfs.FSDataset,Deleting block blk_1379455396847512711 file /mnt/hadoop/dfs/data/current/blk_1379455396847512711
+081111,044740,19,INFO,dfs.FSDataset,Deleting block blk_2180875151184358991 file /mnt/hadoop/dfs/data/current/subdir31/blk_2180875151184358991
+081111,044752,19,INFO,dfs.FSDataset,Deleting block blk_1553688227908800900 file /mnt/hadoop/dfs/data/current/subdir15/blk_1553688227908800900
+081111,044757,19,INFO,dfs.FSDataset,Deleting block blk_6138894560185644209 file /mnt/hadoop/dfs/data/current/subdir42/blk_6138894560185644209
+081111,044759,19,INFO,dfs.FSDataset,Deleting block blk_-1368324087589035770 file /mnt/hadoop/dfs/data/current/blk_-1368324087589035770
+081111,044759,19,INFO,dfs.FSDataset,Deleting block blk_3274968259628929519 file /mnt/hadoop/dfs/data/current/subdir19/blk_3274968259628929519
+081111,044806,19,INFO,dfs.FSDataset,Deleting block blk_5736622945587812309 file /mnt/hadoop/dfs/data/current/subdir19/blk_5736622945587812309
+081111,044812,19,INFO,dfs.FSDataset,Deleting block blk_9142114171015520823 file /mnt/hadoop/dfs/data/current/subdir48/blk_9142114171015520823
+081111,044822,19,INFO,dfs.FSDataset,Deleting block blk_8556592730481313831 file /mnt/hadoop/dfs/data/current/blk_8556592730481313831
+081111,044834,19,INFO,dfs.FSDataset,Deleting block blk_6147898566868510104 file /mnt/hadoop/dfs/data/current/subdir36/blk_6147898566868510104
+081111,044855,19,INFO,dfs.FSDataset,Deleting block blk_9081834782322008396 file /mnt/hadoop/dfs/data/current/subdir40/blk_9081834782322008396
+081111,044913,18,INFO,dfs.FSDataset,Deleting block blk_8962411947457130719 file /mnt/hadoop/dfs/data/current/subdir16/blk_8962411947457130719
+081111,045125,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.143:50010 is added to blk_2312679955495839894 size 67108864
+081111,045125,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.143:50010 is added to blk_7434237665308221519 size 67108864
+081111,045430,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.214:50010 is added to blk_4893049344332234616 size 67108864
+081111,045623,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand5/_temporary/_task_200811101024_0011_m_000040_0/part-00040. blk_1253515519191706153
+081111,045628,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.130:50010 is added to blk_-9056748866943837167 size 67108864
+081111,045751,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.126.22:50010 is added to blk_-8298519990603402919 size 67108864
+081111,045911,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.27.63:50010 is added to blk_-7985144765168396303 size 67108864
+081111,050045,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand5/_temporary/_task_200811101024_0011_m_000541_0/part-00541. blk_-6841570414687342011
+081111,050313,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.242:50010 is added to blk_-5773244829531118765 size 67108864
+081111,050346,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.64:50010 is added to blk_-8923923031063738809 size 67108864
+081111,050426,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.101:50010 is added to blk_-5352085087037370841 size 67108864
+081111,051005,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.79:50010 is added to blk_-3622135859810774312 size 67108864
+081111,051129,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.227:50010 is added to blk_5781791720343455145 size 67108864
+081111,051411,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.225:50010 is added to blk_8323519561483823145 size 67108864
+081111,051555,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.16:50010 is added to blk_-3253005280055520211 size 67108864
+081111,051744,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.65.203:50010 is added to blk_4777657900314457675 size 3546628
+081111,052348,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.239:50010 is added to blk_-2281067667503210140 size 67108864
+081111,053010,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand5/_temporary/_task_200811101024_0011_m_001408_0/part-01408. blk_6601059760261449131
+081111,053325,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.144:50010 is added to blk_1526403491950199810 size 3534443
+081111,053359,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand5/_temporary/_task_200811101024_0011_m_001730_0/part-01730. blk_6400082566804273401
+081111,054018,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.106.37:50010 is added to blk_-4510259260131940043 size 3552141
+081111,054323,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.179:50010 is added to blk_-4347054230277727863 size 67108864
+081111,054449,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.125.193:50010 is added to blk_-8657800226489501791 size 3550839
+081111,054731,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3280859030919654043 is added to invalidSet of 10.251.214.130:50010
+081111,055147,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.243:50010 is added to blk_-719178972315562824 size 67108864
+081111,055219,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.4:50010 is added to blk_9093176996492793041 size 67108864
+081111,055640,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.32:50010 is added to blk_-2125743956855238111 size 67108864
+081111,055936,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.244:50010 is added to blk_-4875138366845786590 size 67108864
+081111,060043,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.244:50010 is added to blk_6095704128062577668 size 28484260
+081111,060244,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.226:50010 is added to blk_7275457888263057111 size 67108864
+081111,061602,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001192_0/part-01192. blk_7720864196601815614
+081111,061713,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.109.209:50010 is added to blk_1129715194117079802 size 67108864
+081111,061730,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_000900_0/part-00900. blk_6690143611140381289
+081111,061909,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.192:50010 is added to blk_-4405302133414008227 size 67108864
+081111,062038,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.215.50:50010 is added to blk_6675543598756975559 size 67108864
+081111,062311,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.102:50010 is added to blk_-1932467763723526131 size 67108864
+081111,062628,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001314_0/part-01314. blk_5872617224009342667
+081111,063138,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001529_0/part-01529. blk_-826920518336899809
+081111,063305,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_-5961895238114806886 size 28508403
+081111,063316,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.19:50010 is added to blk_-2654726224018724510 size 67108864
+081111,063323,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.225:50010 is added to blk_-3955287039966096707 size 67108864
+081111,063402,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.143:50010 is added to blk_-1379379987510648393 size 67108864
+081111,063413,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001726_0/part-01726. blk_1858805942071850133
+081111,063451,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001554_0/part-01554. blk_5183831565578080242
+081111,063514,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001709_0/part-01709. blk_3776895047834644694
+081111,063636,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.43.192:50010 is added to blk_8521306385156958668 size 67108864
+081111,063923,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.149:50010 is added to blk_-7282356322111075290 size 67108864
+081111,063944,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.65:50010 is added to blk_-5330522460969948971 size 67108864
+081111,064106,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001709_0/part-01709. blk_6054235487623373096
+081111,064501,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001635_0/part-01635. blk_9034993982993401678
+081111,064603,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.31.5:50010 is added to blk_-1821104627978106102 size 67108864
+081111,065205,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4438918035940270891 is added to invalidSet of 10.251.71.193:50010
+081111,065205,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5616920288053661280 is added to invalidSet of 10.251.42.9:50010
+081111,065206,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_1815340037591016775 is added to invalidSet of 10.250.9.207:50010
+081111,065208,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2154193600525549460 is added to invalidSet of 10.251.43.147:50010
+081111,065211,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5580254744888391593 is added to invalidSet of 10.251.201.204:50010
+081111,065217,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1641081065757890722 is added to invalidSet of 10.251.107.242:50010
+081111,065217,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5505696082121135363 is added to invalidSet of 10.251.214.130:50010
+081111,065218,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5689009809369418749 is added to invalidSet of 10.251.91.84:50010
+081111,065220,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_8155177385081669900 is added to invalidSet of 10.251.197.161:50010
+081111,065224,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_247452006316846355 is added to invalidSet of 10.250.6.191:50010
+081111,065224,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2657997043417110888 is added to invalidSet of 10.250.13.240:50010
+081111,065225,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-323838382557775734 is added to invalidSet of 10.251.202.209:50010
+081111,065225,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-719470845056640928 is added to invalidSet of 10.251.90.64:50010
+081111,065225,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7999375661905777727 is added to invalidSet of 10.251.106.37:50010
+081111,065226,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-2451769929123196359 is added to invalidSet of 10.251.199.159:50010
+081111,065227,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3231389654886008065 is added to invalidSet of 10.251.195.52:50010
+081111,065227,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3637945019239882309 is added to invalidSet of 10.251.198.196:50010
+081111,065229,19,INFO,dfs.FSDataset,Deleting block blk_-7423574498760490375 file /mnt/hadoop/dfs/data/current/subdir58/blk_-7423574498760490375
+081111,065254,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.250.17.177:50010 to delete  blk_-8570780307468499817 blk_-9122557405432088649 blk_-4393063808227796056 blk_8767569714374844347 blk_7079754042611867581 blk_7608961006114219538 blk_-5017273584996436939 blk_-6537833125980536955 blk_7610838808763810123 blk_3300803097775546532 blk_-5120750586032922592 blk_1577274266662884430 blk_765879159867598347 blk_-9076085976403711202 blk_-3198963348573340497 blk_-4645750029177277209 blk_-5136142986912961316 blk_5677959846373741243 blk_2107477892986152528 blk_-4235116161537008844 blk_6082535783543982566 blk_-4809870147222033236 blk_8818706925296961012 blk_-5203577173046267127 blk_189089569009261656 blk_446299976487589160 blk_-3916247521166632303 blk_-3324962406687427922 blk_-1807424528783081572 blk_-6858401049333055963 blk_6036564204960295926 blk_-8140723044408248078 blk_-3800132731140204959 blk_1716344083117307767 blk_-5194808114606613364 blk_-5473871016976323232 blk_2920934363167004552 blk_8736689095894369097 blk_-7642734632751940776 blk_3408482260833769309 blk_118013751374560901 blk_7963891081239759520 blk_3813114133944383323 blk_3042818489384932576 blk_-4570173726231458270 blk_-1564644006975920581 blk_338095650783321996 blk_3150135312641203550 blk_4285859645577726288 blk_3438772130782939627 blk_2634772258588877972 blk_-6795664812575964130 blk_3923069610304693233 blk_-1782996202120067721 blk_2004418049430157212 blk_1932147224007687756 blk_-582901062969027153 blk_5072240701440032119 blk_-7919006477393039068 blk_-7318022361288598312 blk_-6974693594143537436 blk_-5435767047126325206 blk_-5805500288959332434 blk_-7109885589081848850 blk_2161580591957523893 blk_7240227881194993860 blk_-8298405680648445349 blk_-4253026248821272215 blk_8377661448601579317 blk_8029153852899017155 blk_-8754388319080705916 blk_-7844092300527332901 blk_710178463364063355 blk_-5136849989188547884 blk_8393887138377503163 blk_-6950176077776664217 blk_-6488701068659548195 blk_2537458728254532453 blk_364441107933628577 blk_6207861897580168557 blk_8814943807366894581 blk_-4150682644311695471 blk_9174833667156726933 blk_649427218152856001 blk_-7403541028238011236 blk_-334982586592048773 blk_61908781908925992 blk_6385574357371832424 blk_-66376131060945541 blk_1372596948297458670 blk_-3389135155401857220 blk_-6035411221441929663 blk_-5127580069634421247 blk_-5685246533892022418 blk_4977937528993040451 blk_5680538862600094527 blk_-8378747462487962732 blk_425101290285860876 blk_6306622708327890839 blk_-1067866602168873257
+081111,065258,19,INFO,dfs.FSDataset,Deleting block blk_-9169228974826183399 file /mnt/hadoop/dfs/data/current/subdir5/blk_-9169228974826183399
+081111,065303,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.250.10.213:50010 to delete  blk_4029139044660806713 blk_-5471189807977280544 blk_6708643067868168687 blk_-500678958150296008 blk_-8597840983621849778 blk_-3610057702150392748 blk_-1709606535283888232 blk_-4154362211643572668 blk_-8892080524136798472 blk_5356427838869009345 blk_-6987238639050161133 blk_-5215128860160823363 blk_7186692462976470823 blk_-6538449588297475521 blk_-2165930080589343952 blk_-5524899010031625427 blk_6384439316405471171 blk_-2965258329365213675 blk_118950937507976810 blk_-1717088081766373300 blk_-3911466865418055820 blk_1237334407720045724 blk_-760015977981369567 blk_-6802007379650646616 blk_-7667535133893574689 blk_6865645438678864855 blk_4633996820313194570 blk_7225301266481603731 blk_-4930257130609958866 blk_-4124845864570823487 blk_4927011145115127531 blk_7234346856930822716 blk_7159969052744592746 blk_1296823600557793869 blk_2209319141644287774 blk_-622218131799806364 blk_-8154516246083521409 blk_4466433199471909449 blk_8406894133999850666 blk_991075908349619367 blk_-2081474832657208733 blk_-5573393775847919985 blk_2004177185950968695 blk_4041319486058127641 blk_6449230045010995668 blk_5978265573904271474 blk_-4813738732036414715 blk_4389340532803855247 blk_-857151863616763327 blk_-7200136644339435027 blk_-1454962873426270839 blk_-5012294311590635938 blk_7112727670634942639 blk_3335012758760643328 blk_3382627815322561484 blk_825124020036421636 blk_-8040559034239258688 blk_-5415591001139074826 blk_-1052513063506891954 blk_-1155882018729560343 blk_-5679835604685169040 blk_-4498808851217768984 blk_8345415947062862337 blk_8521655806854586696 blk_7602939593939794410 blk_-4833650023923869528 blk_7237730029042141635 blk_2860897425785746911 blk_-1937193099911148343 blk_5740615689780260922 blk_963252337613423037 blk_5537011318013544619 blk_2626057344048606017 blk_8296499240199635880 blk_7211071078501521087 blk_8823112510768971040 blk_-3366974935992288326 blk_-2947778702643296262 blk_7693891282153136044 blk_4644812717442758529 blk_-5724970555730638200 blk_-3039294462945223064 blk_-1729755380346651221 blk_-6448673813272428418 blk_-7724282460846954976 blk_2698691234887375588 blk_-4043525878322523713 blk_-5195120009388265 blk_8879208244602324204 blk_-5784376901556131897 blk_-5201149273969117873 blk_5253889604362640423 blk_7067050654303940677 blk_8992626816092659826 blk_-488462739843441981 blk_8543991617360374935 blk_1943146154560599630 blk_-9194660123773136535 blk_3351984198891394382 blk_-6759123807563555545
+081111,065418,18,INFO,dfs.FSDataset,Deleting block blk_-1306900105984505600 file /mnt/hadoop/dfs/data/current/subdir31/blk_-1306900105984505600
+081111,065420,19,INFO,dfs.FSDataset,Deleting block blk_-1312981516354612257 file /mnt/hadoop/dfs/data/current/subdir29/blk_-1312981516354612257
+081111,065420,19,INFO,dfs.FSDataset,Deleting block blk_-2658615574293326723 file /mnt/hadoop/dfs/data/current/subdir37/blk_-2658615574293326723
+081111,065423,19,INFO,dfs.FSDataset,Deleting block blk_2107487634698646045 file /mnt/hadoop/dfs/data/current/subdir3/blk_2107487634698646045
+081111,065426,19,INFO,dfs.FSDataset,Deleting block blk_-253282915050290778 file /mnt/hadoop/dfs/data/current/subdir23/blk_-253282915050290778
+081111,065435,19,INFO,dfs.FSDataset,Deleting block blk_1587615395786683981 file /mnt/hadoop/dfs/data/current/subdir14/blk_1587615395786683981
+081111,065437,19,INFO,dfs.FSDataset,Deleting block blk_3706543205492061794 file /mnt/hadoop/dfs/data/current/subdir1/blk_3706543205492061794
+081111,065440,19,INFO,dfs.FSDataset,Deleting block blk_3862032846413436284 file /mnt/hadoop/dfs/data/current/subdir28/blk_3862032846413436284
+081111,065444,18,INFO,dfs.FSDataset,Deleting block blk_4632283243694149854 file /mnt/hadoop/dfs/data/current/subdir40/blk_4632283243694149854
+081111,065444,19,INFO,dfs.FSDataset,Deleting block blk_1018961650823645078 file /mnt/hadoop/dfs/data/current/subdir60/blk_1018961650823645078
+081111,065444,19,INFO,dfs.FSDataset,Deleting block blk_1213582438865696738 file /mnt/hadoop/dfs/data/current/subdir56/blk_1213582438865696738
+081111,065445,19,INFO,dfs.FSDataset,Deleting block blk_2473550781612396886 file /mnt/hadoop/dfs/data/current/subdir54/blk_2473550781612396886
+081111,065500,19,INFO,dfs.FSDataset,Deleting block blk_8102707766842966459 file /mnt/hadoop/dfs/data/current/subdir29/blk_8102707766842966459
+081111,065503,19,INFO,dfs.FSDataset,Deleting block blk_6491888411266994867 file /mnt/hadoop/dfs/data/current/subdir39/blk_6491888411266994867
+081111,065504,18,INFO,dfs.FSDataset,Deleting block blk_3336810835691486095 file /mnt/hadoop/dfs/data/current/subdir11/blk_3336810835691486095
+081111,065510,19,INFO,dfs.FSDataset,Deleting block blk_4367982328407767477 file /mnt/hadoop/dfs/data/current/subdir28/blk_4367982328407767477
+081111,065511,19,INFO,dfs.FSDataset,Deleting block blk_6943254721518837570 file /mnt/hadoop/dfs/data/current/subdir41/blk_6943254721518837570
+081111,065515,19,INFO,dfs.FSDataset,Deleting block blk_6077744985764117617 file /mnt/hadoop/dfs/data/current/subdir17/blk_6077744985764117617
+081111,065538,19,INFO,dfs.FSDataset,Deleting block blk_5771906433100975293 file /mnt/hadoop/dfs/data/current/subdir37/blk_5771906433100975293
+081111,065705,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000153_0/part-00153. blk_8596624696139957935
+081111,065803,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_-8483420270408348004 size 67108864
+081111,065804,19,INFO,dfs.FSDataset,Deleting block blk_4506604798892399878 file /mnt/hadoop/dfs/data/current/subdir0/blk_4506604798892399878
+081111,065920,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000197_0/part-00197. blk_1832308388558480
+081111,070055,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.121.224:50010 is added to blk_3134656542322449478 size 67108864
+081111,070232,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-8050165297538775793
+081111,070246,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.134:50010 is added to blk_-3184700311670257792 size 67108864
+081111,070301,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000451_0/part-00451. blk_-8744988583359134013
+081111,070326,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000079_0/part-00079. blk_4225726256421431188
+081111,070505,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.25.237:50010 is added to blk_-1496429201748767714 size 67108864
+081111,070519,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000077_0/part-00077. blk_608957629753483727
+081111,070735,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.130:50010 is added to blk_-4427507243535536615 size 67108864
+081111,070918,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.214:50010 is added to blk_5963655886023015963 size 67108864
+081111,071042,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.134:50010 is added to blk_-5214060566378896158 size 67108864
+081111,071112,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000523_0/part-00523. blk_-4801855948459616884
+081111,071611,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000997_0/part-00997. blk_-500534246236005335
+081111,071746,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.16:50010 is added to blk_-6464763289185102366 size 67108864
+081111,072059,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.6:50010 is added to blk_-2345355483730155757 size 67108864
+081111,072300,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.17.177:50010 is added to blk_4385764838827095986 size 3541872
+081111,072356,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.126.22:50010 is added to blk_707166530951154301 size 67108864
+081111,072523,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.27.63:50010 is added to blk_-7794786562417612249 size 67108864
+081111,072818,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_001195_0/part-01195. blk_5708405953850477535
+081111,072901,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.32:50010 is added to blk_-8127580564011467092 size 67108864
+081111,072921,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.242:50010 is added to blk_621685330749869453 size 67108864
+081111,072948,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.230:50010 is added to blk_8663640697928077697 size 67108864
+081111,073148,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.100:50010 is added to blk_3406384548372443486 size 67108864
+081111,073230,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.193.175:50010 is added to blk_2460145905812664251 size 67108864
+081111,073350,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.7.96:50010 is added to blk_4641147544753118391 size 67108864
+081111,074540,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_001850_0/part-01850. blk_-4312777901444596370
+081111,074548,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_001835_0/part-01835. blk_6178964531181542074
+081111,074958,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_001983_0/part-01983. blk_8861349372992394289
+081111,075158,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand6/_temporary/_task_200811101024_0013_m_002009_1/part-02009. blk_-7367386750462511488
+081111,075212,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.228:50010 is added to blk_-1237539644269634790 size 67108864
+081111,075345,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.65.203:50010 is added to blk_8005746184358076390 size 67108864
+081111,075616,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4471044334742081825 is added to invalidSet of 10.250.15.198:50010
+081111,075619,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3671953658029337449 is added to invalidSet of 10.250.14.143:50010
+081111,075623,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-75893538967225087 is added to invalidSet of 10.250.15.198:50010
+081111,075626,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_805187982300776163 is added to invalidSet of 10.251.73.188:50010
+081111,075628,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4631777956354958682 is added to invalidSet of 10.251.30.134:50010
+081111,075629,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7595375726951801956 is added to invalidSet of 10.251.122.79:50010
+081111,075631,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-4681205519208992498 is added to invalidSet of 10.250.6.191:50010
+081111,075632,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5702487846232575705 is added to invalidSet of 10.250.14.38:50010
+081111,075634,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4834069779372284635 is added to invalidSet of 10.251.71.97:50010
+081111,075636,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3735517274901501821 is added to invalidSet of 10.250.6.4:50010
+081111,075637,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_5018797996887008111 is added to invalidSet of 10.251.89.155:50010
+081111,075638,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-566178736644429906 is added to invalidSet of 10.251.70.37:50010
+081111,075640,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8121498678081035000 is added to invalidSet of 10.250.11.100:50010
+081111,075727,19,INFO,dfs.FSDataset,Deleting block blk_6888300867578983331 file /mnt/hadoop/dfs/data/current/subdir46/blk_6888300867578983331
+081111,075746,19,INFO,dfs.FSDataset,Deleting block blk_-8443921001690182522 file /mnt/hadoop/dfs/data/current/subdir33/blk_-8443921001690182522
+081111,075753,19,INFO,dfs.FSDataset,Deleting block blk_-7446091384471755694 file /mnt/hadoop/dfs/data/current/subdir30/blk_-7446091384471755694
+081111,075759,19,INFO,dfs.FSDataset,Deleting block blk_-4352313989800650828 file /mnt/hadoop/dfs/data/current/subdir56/blk_-4352313989800650828
+081111,075809,19,INFO,dfs.FSDataset,Deleting block blk_-6292499669518281202 file /mnt/hadoop/dfs/data/current/subdir26/blk_-6292499669518281202
+081111,075810,19,INFO,dfs.FSDataset,Deleting block blk_-6750694665033046901 file /mnt/hadoop/dfs/data/current/subdir63/blk_-6750694665033046901
+081111,075814,19,INFO,dfs.FSDataset,Deleting block blk_-6131345369657245178 file /mnt/hadoop/dfs/data/current/blk_-6131345369657245178
+081111,075824,19,INFO,dfs.FSDataset,Deleting block blk_-3575718350717794894 file /mnt/hadoop/dfs/data/current/blk_-3575718350717794894
+081111,075833,19,INFO,dfs.FSDataset,Deleting block blk_-4380385204018751771 file /mnt/hadoop/dfs/data/current/subdir38/blk_-4380385204018751771
+081111,075838,19,INFO,dfs.FSDataset,Deleting block blk_-3594701313167635091 file /mnt/hadoop/dfs/data/current/subdir54/blk_-3594701313167635091
+081111,075844,18,INFO,dfs.FSDataset,Deleting block blk_-1693418636466747515 file /mnt/hadoop/dfs/data/current/subdir16/blk_-1693418636466747515
+081111,075854,19,INFO,dfs.FSDataset,Deleting block blk_5806397523737304814 file /mnt/hadoop/dfs/data/current/subdir34/blk_5806397523737304814
+081111,075901,18,INFO,dfs.FSDataset,Deleting block blk_-1345585044778938153 file /mnt/hadoop/dfs/data/current/subdir45/blk_-1345585044778938153
+081111,075901,19,INFO,dfs.FSDataset,Deleting block blk_2489882700357182381 file /mnt/hadoop/dfs/data/current/blk_2489882700357182381
+081111,075902,19,INFO,dfs.FSDataset,Deleting block blk_-1800458850981311953 file /mnt/hadoop/dfs/data/current/subdir57/blk_-1800458850981311953
+081111,075905,19,INFO,dfs.FSDataset,Deleting block blk_6373260430960091026 file /mnt/hadoop/dfs/data/current/subdir43/blk_6373260430960091026
+081111,075907,19,INFO,dfs.FSDataset,Deleting block blk_-1278725622357466169 file /mnt/hadoop/dfs/data/current/subdir0/blk_-1278725622357466169
+081111,075911,19,INFO,dfs.FSDataset,Deleting block blk_4513772639980123655 file /mnt/hadoop/dfs/data/current/blk_4513772639980123655
+081111,075914,19,INFO,dfs.FSDataset,Deleting block blk_1838564958520120941 file /mnt/hadoop/dfs/data/current/subdir39/blk_1838564958520120941
+081111,075915,19,INFO,dfs.FSDataset,Deleting block blk_7985460426680885040 file /mnt/hadoop/dfs/data/current/blk_7985460426680885040
+081111,075920,19,INFO,dfs.FSDataset,Deleting block blk_2215517976324634098 file /mnt/hadoop/dfs/data/current/subdir4/blk_2215517976324634098
+081111,075920,19,INFO,dfs.FSDataset,Deleting block blk_5453150794205420798 file /mnt/hadoop/dfs/data/current/subdir24/blk_5453150794205420798
+081111,075933,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.194.102:50010 is added to blk_-7522572236891389139 size 67108864
+081111,075957,19,INFO,dfs.FSDataset,Deleting block blk_6163400028286940197 file /mnt/hadoop/dfs/data/current/subdir7/blk_6163400028286940197
+081111,080006,19,INFO,dfs.FSDataset,Deleting block blk_7583807825342916938 file /mnt/hadoop/dfs/data/current/subdir13/blk_7583807825342916938
+081111,080151,19,INFO,dfs.FSDataset,Deleting block blk_8384967715738359346 file /mnt/hadoop/dfs/data/current/subdir27/blk_8384967715738359346
+081111,080256,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.223:50010 is added to blk_-1948505589144820414 size 67108864
+081111,080309,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.202.209:50010 is added to blk_-6224982681533811277 size 67108864
+081111,080329,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.196:50010 is added to blk_-2843780069100181052 size 67108864
+081111,080710,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.74.192:50010 is added to blk_7439201509602018752 size 67108864
+081111,080934,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.250.14.38:50010 to replicate blk_-7571492020523929240 to datanode(s) 10.251.122.38:50010
+081111,081027,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.6:50010 is added to blk_1119272693889755844 size 67108864
+081111,081406,18,INFO,dfs.FSDataset,Deleting block blk_-7606467001548719462 file /mnt/hadoop/dfs/data/current/subdir2/blk_-7606467001548719462
+081111,081534,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.110.160:50010 is added to blk_-2852294661215451806 size 67108864
+081111,081617,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.15.240:50010 is added to blk_8512974147315737844 size 67108864
+081111,082039,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.66.3:50010 is added to blk_-4970213618915792510 size 67108864
+081111,082527,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001049_0/part-01049. blk_-1533191386601391937
+081111,082650,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.13.240:50010 is added to blk_4170936278386288557 size 67108864
+081111,083120,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.192:50010 is added to blk_-3888538223380979891 size 67108864
+081111,083212,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_000973_0/part-00973. blk_5844313985011885282
+081111,083219,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001348_0/part-01348. blk_4531288786306744275
+081111,083338,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.203.129:50010 is added to blk_6170586659371027531 size 67108864
+081111,083426,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.33:50010 is added to blk_1447281351164457761 size 67108864
+081111,083439,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.89.155:50010 is added to blk_-5455316994110506037 size 67108864
+081111,083839,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_1303107722036031233 size 67108864
+081111,084148,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.100:50010 is added to blk_-4595094649363595358 size 67108864
+081111,084228,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001394_0/part-01394. blk_-1101091099241306483
+081111,084322,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.207:50010 is added to blk_2119401975697524206 size 67108864
+081111,084619,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001736_0/part-01736. blk_-3055230140330616860
+081111,084721,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_4473390551542202999 size 67108864
+081111,084728,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001649_0/part-01649. blk_-5581540863377925517
+081111,084757,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.91.32:50010 is added to blk_423916008836295480 size 67108864
+081111,084831,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001940_0/part-01940. blk_1910319264393500537
+081111,084906,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.17.177:50010 is added to blk_5733038550092620376 size 67108864
+081111,085059,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001642_0/part-01642. blk_8215843708467112607
+081111,085432,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.226:50010 is added to blk_-23492739449820023 size 67108864
+081111,085620,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.122.79:50010 is added to blk_-2895171018912807248 size 67108864
+081111,085634,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand7/_temporary/_task_200811101024_0014_m_002007_0/part-02007. blk_7908524857056299716
+081111,085859,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_3492869167398569662 is added to invalidSet of 10.250.5.161:50010
+081111,085906,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3894803026385053344 is added to invalidSet of 10.251.43.21:50010
+081111,085906,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7873581794069372986 is added to invalidSet of 10.251.194.147:50010
+081111,085907,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2060553104861908174 is added to invalidSet of 10.251.201.204:50010
+081111,085909,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6783506473540833076 is added to invalidSet of 10.251.202.209:50010
+081111,085910,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8863130543753323383 is added to invalidSet of 10.251.123.1:50010
+081111,085911,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8769398708439834546 is added to invalidSet of 10.251.127.243:50010
+081111,085912,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-3316519570098743145 is added to invalidSet of 10.251.70.211:50010
+081111,085912,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6068451475575444798 is added to invalidSet of 10.251.43.210:50010
+081111,085912,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7709713535298137702 is added to invalidSet of 10.251.215.50:50010
+081111,085914,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1030832046197982436 is added to invalidSet of 10.251.89.155:50010
+081111,085914,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4738781172941319823 is added to invalidSet of 10.251.91.32:50010
+081111,085916,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2869833078504290822 is added to invalidSet of 10.251.123.132:50010
+081111,085916,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-6261136177206340449 is added to invalidSet of 10.251.70.37:50010
+081111,085917,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-1755309160709170318 is added to invalidSet of 10.251.39.209:50010
+081111,085917,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-8312238797251504127 is added to invalidSet of 10.251.89.155:50010
+081111,085922,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_2713941272199175167 is added to invalidSet of 10.251.38.53:50010
+081111,085922,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-7846283874350947646 is added to invalidSet of 10.251.199.150:50010
+081111,085924,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-793506372912437289 is added to invalidSet of 10.250.17.225:50010
+081111,085926,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_-5293091556505218722 is added to invalidSet of 10.251.125.237:50010
+081111,085929,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.delete: blk_4516306414837452219 is added to invalidSet of 10.251.127.47:50010
+081111,090008,19,INFO,dfs.FSDataset,Deleting block blk_-8792837405349224102 file /mnt/hadoop/dfs/data/current/subdir35/blk_-8792837405349224102
+081111,090031,19,INFO,dfs.FSDataset,Deleting block blk_-8131422413299851907 file /mnt/hadoop/dfs/data/current/subdir46/blk_-8131422413299851907
+081111,090056,19,INFO,dfs.FSDataset,Deleting block blk_-6177194341369822651 file /mnt/hadoop/dfs/data/current/subdir38/blk_-6177194341369822651
+081111,090113,18,INFO,dfs.FSDataset,Deleting block blk_1369784431092292099 file /mnt/hadoop/dfs/data/current/subdir36/blk_1369784431092292099
+081111,090113,19,INFO,dfs.FSDataset,Deleting block blk_-8060252929692927663 file /mnt/hadoop/dfs/data/current/subdir21/blk_-8060252929692927663
+081111,090118,19,INFO,dfs.FSDataset,Deleting block blk_-5344266425789048231 file /mnt/hadoop/dfs/data/current/subdir47/blk_-5344266425789048231
+081111,090126,19,INFO,dfs.FSDataset,Deleting block blk_-2518425063392446785 file /mnt/hadoop/dfs/data/current/subdir6/blk_-2518425063392446785
+081111,090129,19,INFO,dfs.FSDataset,Deleting block blk_-5598693099021996971 file /mnt/hadoop/dfs/data/current/subdir19/blk_-5598693099021996971
+081111,090131,19,INFO,dfs.FSDataset,Deleting block blk_901963876338651405 file /mnt/hadoop/dfs/data/current/subdir1/blk_901963876338651405
+081111,090136,19,INFO,dfs.FSDataset,Deleting block blk_-2722768686407017386 file /mnt/hadoop/dfs/data/current/subdir36/blk_-2722768686407017386
+081111,090138,19,INFO,dfs.FSDataset,Deleting block blk_92946806844541836 file /mnt/hadoop/dfs/data/current/subdir59/blk_92946806844541836
+081111,090139,19,INFO,dfs.FSDataset,Deleting block blk_1824928871191121429 file /mnt/hadoop/dfs/data/current/subdir2/blk_1824928871191121429
+081111,090140,18,INFO,dfs.FSDataset,Deleting block blk_-4301178988618507084 file /mnt/hadoop/dfs/data/current/subdir46/blk_-4301178988618507084
+081111,090140,19,INFO,dfs.FSDataset,Deleting block blk_-2098161025946048013 file /mnt/hadoop/dfs/data/current/subdir17/blk_-2098161025946048013
+081111,090149,19,INFO,dfs.FSDataset,Deleting block blk_-1451819169209310732 file /mnt/hadoop/dfs/data/current/subdir23/blk_-1451819169209310732
+081111,090150,19,INFO,dfs.FSDataset,Deleting block blk_2403370969415186087 file /mnt/hadoop/dfs/data/current/subdir6/blk_2403370969415186087
+081111,090154,19,INFO,dfs.FSDataset,Deleting block blk_5701964561533648583 file /mnt/hadoop/dfs/data/current/subdir10/blk_5701964561533648583
+081111,090159,19,INFO,dfs.FSDataset,Deleting block blk_4007982883396598426 file /mnt/hadoop/dfs/data/current/subdir13/blk_4007982883396598426
+081111,090207,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.197.161:50010 is added to blk_-3724350946705225881 size 67108864
+081111,090208,19,INFO,dfs.FSDataset,Deleting block blk_6051144263842600010 file /mnt/hadoop/dfs/data/current/subdir42/blk_6051144263842600010
+081111,090223,19,INFO,dfs.FSDataset,Deleting block blk_8436095180790908547 file /mnt/hadoop/dfs/data/current/subdir43/blk_8436095180790908547
+081111,090229,18,INFO,dfs.FSDataset,Deleting block blk_5100975846124291571 file /mnt/hadoop/dfs/data/current/subdir38/blk_5100975846124291571
+081111,090246,19,INFO,dfs.FSDataset,Deleting block blk_-4941547144875557718 file /mnt/hadoop/dfs/data/current/subdir61/blk_-4941547144875557718
+081111,090816,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.107.196:50010 is added to blk_-6308508598639278892 size 67108864
+081111,091200,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_000480_0/part-00480. blk_-5613694521084380933
+081111,091317,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.100:50010 is added to blk_-1970947032352756307 size 67108864
+081111,091351,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_000737_0/part-00737. blk_5894088883762961800
+081111,091728,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.39.160:50010 is added to blk_-3510473878877779134 size 67108864
+081111,091733,19,INFO,dfs.FSNamesystem,BLOCK* ask 10.251.126.5:50010 to delete  blk_-9016567407076718172 blk_-8695715290502978219 blk_-7168328752988473716 blk_-4355192005224403537 blk_-3757501769775889193 blk_-154600013573668394 blk_167132135416677587 blk_2654596473569751784 blk_5202581916713319258
+081111,091742,19,INFO,dfs.FSDataset,Deleting block blk_-2808875502459981198 file /mnt/hadoop/dfs/data/current/subdir3/blk_-2808875502459981198
+081111,092311,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_000882_0/part-00882. blk_-3152434225121092058
+081111,092436,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.223:50010 is added to blk_-6390296685077811803 size 3546314
+081111,092617,19,INFO,dfs.FSDataset,Deleting block blk_9173199815015538212 file /mnt/hadoop/dfs/data/current/subdir24/blk_9173199815015538212
+081111,092649,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001033_0/part-01033. blk_-8948316319329891645
+081111,092720,27,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.42.207:50010 is added to blk_-6314365697827006048 size 67108864
+081111,092751,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_000939_0/part-00939. blk_-3522956055443924791
+081111,093026,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.29.239:50010 is added to blk_-409558225151784282 size 67108864
+081111,093407,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001294_0/part-01294. blk_4214952053910973364
+081111,093742,13,INFO,dfs.DataBlockScanner,Verification succeeded for blk_-8347949825960763812
+081111,094439,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001425_0/part-01425. blk_2630223487595425525
+081111,094713,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001757_0/part-01757. blk_-5343533992609553091
+081111,094825,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001473_0/part-01473. blk_-4390972361898978900
+081111,094939,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.223:50010 is added to blk_7474737521119026445 size 67108864
+081111,095035,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.214.67:50010 is added to blk_-8428590803682810851 size 67108864
+081111,095039,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/rand8/_temporary/_task_200811101024_0015_m_001860_0/part-01860. blk_8716294289715825928
+081111,095238,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.123.132:50010 is added to blk_8527475857502481768 size 67108864
+081111,095535,28,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.127.243:50010 is added to blk_1793140687921032046 size 67108864
+081111,095618,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.126.5:50010 is added to blk_4361294871479973840 size 67108864
+081111,095632,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.6.4:50010 is added to blk_-6945615463687647586 size 67108864
+081111,095702,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.6:50010 is added to blk_8527562124953828227 size 67108864
+081111,095726,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.134:50010 is added to blk_2749066163012162435 size 67108864
+081111,095733,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.228:50010 is added to blk_-1305222006484630743 size 67108864
+081111,095844,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.215.192:50010 is added to blk_2015610615789582788 size 67108864
+081111,095957,26,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.75.49:50010 is added to blk_-2959268996938658555 size 15715490
+081111,100210,19,INFO,dfs.FSDataset,Deleting block blk_-1082541280306680938 file /mnt/hadoop/dfs/data/current/subdir38/blk_-1082541280306680938
+081111,100350,32,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.13.240:50010 is added to blk_2593937801738981947 size 67108864
+081111,100414,35,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.71.193:50010 is added to blk_5489815612272797790 size 67108864
+081111,100417,30,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.30.101:50010 is added to blk_6451403582950672007 size 67108864
+081111,100903,33,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.130:50010 is added to blk_5646792755154529338 size 67108864
+081111,101120,31,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.67.225:50010 is added to blk_-6325232815283133921 size 67108864
+081111,101225,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.allocateBlock: /user/root/randtxt9/_temporary/_task_200811101024_0016_m_000347_0/part-00347. blk_-8426741581316629266
+081111,101230,34,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.29.239:50010 is added to blk_-762982068597249045 size 67108864
+081111,101316,29,INFO,dfs.FSNamesystem,BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.90.64:50010 is added to blk_1441315972355360459 size 67108864

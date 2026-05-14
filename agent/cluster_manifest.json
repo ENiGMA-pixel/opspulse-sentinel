@@ -1,0 +1,43 @@
+{
+    "cluster_name": "OpsPulse-Production-01",
+    "environment": "production",
+    "topology": {
+        "ingress": {
+            "name": "ingress-controller (Nginx)",
+            "health_check_path": "/healthz",
+            "standard_timeout": "30s"
+        },
+        "services": {
+            "ServiceA": {
+                "port": 8080,
+                "replicas": 3,
+                "dependencies": [
+                    "PostgreSQL-Main"
+                ]
+            },
+            "Auth-Service": {
+                "port": 9000,
+                "replicas": 2,
+                "dependencies": [
+                    "PostgreSQL-Main"
+                ]
+            },
+            "Payment-Gateway": {
+                "port": 443,
+                "replicas": 2,
+                "dependencies": [
+                    "ServiceA"
+                ]
+            }
+        },
+        "database": {
+            "name": "PostgreSQL-Main",
+            "max_connections": 100
+        }
+    },
+    "critical_thresholds": {
+        "p99_latency_ms": 500,
+        "error_rate_pct": 0.01,
+        "max_proxy_timeout_reduction_pct": 0.5
+    }
+}
