@@ -56,30 +56,37 @@ If no anomalies found, return: "NO_ANOMALIES_DETECTED"
 [RAW TELEMETRY]
 {raw_telemetry}
 """
-
     print("⚡ Stage 1: Flash-Lite anomaly filtering...")
-    response = client.models.generate_content(
-        model=flash_model,
-        contents=filter_prompt,
-        config=genai.types.GenerateContentConfig(
-            temperature=0.0
+    try:
+        response = client.models.generate_content(
+            model=flash_model,
+            contents=filter_prompt,
+            config=genai.types.GenerateContentConfig(
+                temperature=0.0
+            )
         )
-    )
-    filtered = response.text.strip()
-    print(f"✅ Flash filter complete. Anomalies extracted.")
-    return filtered
-
+        filtered = response.text.strip()
+        # Fallback if Flash returns empty or finds nothing
+        if not filtered or filtered == "NO_ANOMALIES_DETECTED":
+            print("ℹ️ Flash found no anomalies. Passing raw telemetry.")
+            return raw_telemetry 
+        
+        print(f"✅ Flash filter complete. Anomalies extracted.")
+        return filtered
+        
+    except Exception as e:
+        # Graceful fallback if API rate limits or times out
+        print(f"⚠️ Flash filter failed ({e}). Using raw telemetry as fallback.")
+        return raw_telemetry
 
 def load_context(df_telemetry, df_deployments):
     """Loads and pre-processes context for the Pro model."""
     
-    # Convert DataFrame to string before passing to Flash
-    raw_telemetry_str = df_telemetry.to_string(index=False)
+    # ⚡ FIX: Only pass the last 50 rows to prevent a token bomb
+    raw_telemetry_str = df_telemetry.tail(50).to_string(index=False)
     
-    # ⚡ NEW: Run the raw telemetry through the Flash filter first
     filtered_telemetry_str = flash_anomaly_filter(raw_telemetry_str)
     
-    # Format the deployment logs normally
     clean_deployments = df_deployments.to_string(index=False)
     
     return filtered_telemetry_str, clean_deployments

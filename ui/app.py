@@ -63,7 +63,7 @@ with st.sidebar:
     st.markdown("<br>", unsafe_allow_html=True)
 
     st.markdown("### Connections")
-    st.markdown("🟢 Telemetry Stream\n\n🟢 ChromaDB Vector Store\n\n🟢 Kubernetes API")
+    st.markdown("🟢 Telemetry Stream\n\n🟢 ChromaDB Vector Store\n\n🟢 Cluster Manifest Loaded")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
