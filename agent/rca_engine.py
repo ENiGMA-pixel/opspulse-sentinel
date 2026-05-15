@@ -13,7 +13,6 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-
 def save_audit_log(rca_result: dict, model_used: str):
     """
     Appends every RCA result to a persistent audit log.
@@ -71,58 +70,62 @@ If no anomalies found, return: "NO_ANOMALIES_DETECTED"
     return filtered
 
 
-def load_context(df_telemetry=None, df_deployments=None):
-    with open("config/cluster_manifest.json", "r") as f:
-        cluster_map = f.read()
+def load_context(df_telemetry, df_deployments):
+    """Loads and pre-processes context for the Pro model."""
+    
+    # Convert DataFrame to string before passing to Flash
+    raw_telemetry_str = df_telemetry.to_string(index=False)
+    
+    # ⚡ NEW: Run the raw telemetry through the Flash filter first
+    filtered_telemetry_str = flash_anomaly_filter(raw_telemetry_str)
+    
+    # Format the deployment logs normally
+    clean_deployments = df_deployments.to_string(index=False)
+    
+    return filtered_telemetry_str, clean_deployments
 
+
+def build_prompt(df_telemetry, df_deployments):
+    """Assembles the final prompt for Gemini Pro."""
+    
+    # 1. Load Cluster Manifest
+    try:
+        with open("config/cluster_manifest.json", "r") as f:
+            cluster_map = f.read()
+    except Exception:
+        cluster_map = "Cluster manifest not available."
+
+    # 2. Pre-process telemetry and deployments (Includes Stage 1 Flash Filter)
+    clean_telemetry, clean_deployments = load_context(df_telemetry, df_deployments)
+    
+    # 3. Query Historical Memory using the anomalies we just found!
+    print("🔍 Querying ChromaDB Historical Memory...")
+    historical_memory = query_historical_memory(clean_telemetry)
+    
+    # 4. Inject all context into your final prompt string
+    user_prompt = USER_PROMPT_TEMPLATE.format(
+        historical_memory=historical_memory,
+        cluster_map=cluster_map,
+        clean_deployments=clean_deployments,
+        clean_telemetry=clean_telemetry # <--- This is now the Flash-filtered output!
+    )
+    
+    # Return BOTH the system instruction and the user prompt
+    return SYSTEM_INSTRUCTION, user_prompt
+
+
+def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
+    
+    # Load defaults if none provided by Streamlit
     if df_telemetry is None:
         df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
     if df_deployments is None:
         df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
-    # Raw telemetry for Flash pre-filter
-    raw_telemetry = "\n".join(
-        f"[{r['Time']}] {r['Component']}: {r['Content']}"
-        for _, r in df_telemetry.tail(50).iterrows()
-    )
-
-    # Optimized deployments for Pro
-    clean_deployments = df_deployments.tail(5).to_string(index=False)
-
-    return cluster_map, raw_telemetry, clean_deployments
-
-
-def build_prompt(df_telemetry=None, df_deployments=None):
-    historical_memory = query_historical_memory(
-        "503 Service Unavailable timeout after deployment configuration change"
-    )
-    cluster_map, raw_telemetry, clean_deployments = load_context(
-        df_telemetry=df_telemetry,
-        df_deployments=df_deployments
-    )
-
-    # STAGE 1: Flash filters raw telemetry
-    filtered_anomalies = flash_anomaly_filter(raw_telemetry)
-
-    # Handle no anomalies detected
-    if filtered_anomalies == "NO_ANOMALIES_DETECTED":
-        filtered_anomalies = "No anomalies detected in telemetry. Focus on deployment changes."
-
-    # STAGE 2: Pro receives only filtered anomalies
-    user_prompt = USER_PROMPT_TEMPLATE.format(
-        historical_memory=historical_memory,
-        cluster_map=cluster_map,
-        clean_deployments=clean_deployments,
-        clean_telemetry=filtered_anomalies  # Flash output goes here
-    )
-
-    return SYSTEM_INSTRUCTION.strip(), user_prompt.strip()
-
-
-def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
     primary_model = 'gemini-3.1-pro-preview'
     fallback_model = 'gemini-3.1-flash-lite-preview'
 
+    # Unpack the two values returned by build_prompt
     system_instruction, user_prompt = build_prompt(
         df_telemetry=df_telemetry,
         df_deployments=df_deployments
