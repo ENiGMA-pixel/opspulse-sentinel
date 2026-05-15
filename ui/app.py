@@ -399,6 +399,7 @@ with tab2:
                 except Exception as e:
                     # ── CACHED FALLBACK ──────────────────────────────────────
                     # Only reached if BOTH Gemini models fail (e.g. full API outage)
+                    st.error(f"🔴 DEBUG: {str(e)}")
                     st.session_state['used_fallback'] = True
                     mock_rca = {
                         "incident_summary": "ServiceA 503 errors are semantically linked to the Ingress Controller Helm upgrade at 14:28, exactly 4 minutes before the error cascade began at 14:32.",
