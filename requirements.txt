@@ -1,6 +1,7 @@
-streamlit
+google-genai
+chromadb
 pandas
-google-genai==0.3.0
-chromadb==0.4.24
-pydantic==2.6.4
-python-dotenv==1.0.1
+pydantic
+streamlit
+python-dotenv
+
