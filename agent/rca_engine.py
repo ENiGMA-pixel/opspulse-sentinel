@@ -160,8 +160,8 @@ def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
     if df_deployments is None:
         df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
-    primary_model = 'gemini-2.0-flash'      # swap to gemini-3.1-pro-preview if available
-    fallback_model = 'gemini-2.0-flash-lite'
+    primary_model = 'gemini-3.1-flash-lite-preview'      # swap to gemini-3.1-pro-preview if available
+    fallback_model = 'gemini-3.1-pro-preview'
 
     # ── EVERYTHING inside one try block ──────────────────────────────
     # build_prompt() (which calls flash_anomaly_filter) is now protected.
