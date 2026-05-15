@@ -1,8 +1,12 @@
 import sys
 import os
 
-# Path must be set BEFORE any agent imports
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# 1. Calculate the absolute path to the root of your repository
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# 2. FORCE this directory to the very front of Python's search path
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
 import time
 import json
