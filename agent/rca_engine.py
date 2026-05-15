@@ -160,8 +160,8 @@ def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
     if df_deployments is None:
         df_deployments = pd.read_csv("data/processed/deployment_log.csv")
 
-    primary_model = 'gemini-3.1-flash-lite-preview'      # swap to gemini-3.1-pro-preview if available
-    fallback_model = 'gemini-3.1-pro-preview'
+    primary_model = 'gemini-3.1-pro-preview'      # swap to gemini-3.1-pro-preview if available
+    fallback_model = 'gemini-3.1-flash-lite-preview'
 
     # ── EVERYTHING inside one try block ──────────────────────────────
     # build_prompt() (which calls flash_anomaly_filter) is now protected.
@@ -189,8 +189,8 @@ def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
 
     except Exception as e:
         error_msg = str(e)
-        quota_errors = ["429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "quota"]
-
+        quota_errors = ["429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "quota",
+                "PERMISSION_DENIED", "billing", "API_KEY_INVALID", "invalid"]
         if any(code in error_msg for code in quota_errors):
             # ── LAYER 2: Model fallback ───────────────────────────────
             print(f"⚠️ {primary_model} unavailable ({error_msg[:60]}). Triggering fallback: {fallback_model}...")
