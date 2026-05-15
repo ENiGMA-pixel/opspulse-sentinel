@@ -7,11 +7,9 @@ from google import genai
 from agent.schema import RootCauseAnalysis
 from agent.memory_bank import query_historical_memory
 from agent.prompts import SYSTEM_INSTRUCTION, USER_PROMPT_TEMPLATE
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 
 # ─────────────────────────────────────────────
