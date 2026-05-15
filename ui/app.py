@@ -273,28 +273,28 @@ with tab3:
             with col_x:
                 if st.button("Execute Remediation", type="primary", use_container_width=True):
                     
-                    # --- SIMULATED TERMINAL EXECUTION ---
+                    # --- SIMULATED TERMINAL EXECUTION (CLOSES FLAW #7) ---
                     terminal_container = st.empty()
                     fix_cmd = st.session_state.get('fix_cmd', '')
                     
-                    terminal_lines = ["$ Initializing secure cluster connection..."]
-                    def render_terminal():
-                        terminal_container.markdown(f"```bash\n{chr(10).join(terminal_lines)}\n```")
-
-                    render_terminal()
-                    time.sleep(0.6)
-                    terminal_lines.append(f"$ {fix_cmd}")
-                    render_terminal()
-                    time.sleep(1.2)
-                    terminal_lines.append("> Applying configuration changes...")
-                    render_terminal()
-                    time.sleep(0.8)
-                    terminal_lines.append("> Waiting for rollout to finish: 1 of 1 updated replicas...")
-                    render_terminal()
-                    time.sleep(1.0)
-                    terminal_lines.append("✅ Rollout successful. Infrastructure state synced.")
-                    render_terminal()
-                    time.sleep(0.5)
+                    terminal_lines = [
+                        "$ Initializing secure cluster connection...",
+                        f"$ {fix_cmd}",
+                        "> Applying configuration changes...",
+                        "> Waiting for rollout to finish: 1 of 1 updated replicas...",
+                        "✅ Rollout successful. Infrastructure state synced."
+                    ]
+                    
+                    current_output = ""
+                    
+                    for i, line in enumerate(terminal_lines):
+                        current_output += line + "\n"
+                        terminal_container.markdown(f"```bash\n{current_output}```")
+                        
+                        if i == 1:
+                            time.sleep(1.2)
+                        else:
+                            time.sleep(0.6)
 
                     st.success("Issue resolved. Connections recovering.")
                     st.balloons()
