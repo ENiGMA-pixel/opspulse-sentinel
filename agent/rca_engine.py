@@ -1,20 +1,22 @@
 import time
 import os
 import json
+import logging
 from datetime import datetime
 import pandas as pd
 from google import genai
 from agent.schema import RootCauseAnalysis
 from agent.memory_bank import query_historical_memory
 from agent.prompts import SYSTEM_INSTRUCTION, USER_PROMPT_TEMPLATE
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
+logger = logging.getLogger(__name__)
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 
 def save_audit_log(rca_result: dict, model_used: str):
+    """Write RCA result to audit_log.json. Creates file if absent."""
     log_entry = {
         "timestamp": datetime.utcnow().isoformat(),
         "model_used": model_used,
@@ -29,71 +31,67 @@ def save_audit_log(rca_result: dict, model_used: str):
                 existing = []
     else:
         existing = []
+
     existing.append(log_entry)
     with open(log_path, "w") as f:
         json.dump(existing, f, indent=4)
-    print(f"✅ Audit log updated. Total incidents: {len(existing)}")
 
 
 def flash_anomaly_filter(raw_telemetry: str) -> str:
     """
-    Stage 1: Gemini Flash-Lite rapidly scans raw telemetry
-    and returns only the anomalous lines worth investigating.
+    Run raw telemetry through Flash-Lite to extract anomalous lines only.
+    Falls back to passing raw telemetry if the model call fails.
     """
-    flash_model = 'gemini-3.1-flash-lite-preview'
+    flash_model = 'gemini-2.0-flash-lite'
 
-    filter_prompt = f"""
-You are a high-speed log anomaly detector.
+    filter_prompt = f"""You are a high-speed log anomaly detector.
 Scan the following telemetry logs and return ONLY the lines that indicate
 errors, warnings, failures, or suspicious patterns.
 Ignore all INFO lines that show normal operation.
 Return the filtered lines as plain text, one per line.
-If no anomalies found, return: "NO_ANOMALIES_DETECTED"
+If no anomalies are found, return exactly: NO_ANOMALIES_DETECTED
 
 [RAW TELEMETRY]
 {raw_telemetry}
 """
 
-    print("⚡ Stage 1: Flash-Lite anomaly filtering...")
-    response = client.models.generate_content(
-        model=flash_model,
-        contents=filter_prompt,
-        config=genai.types.GenerateContentConfig(
-            temperature=0.0
+    try:
+        response = client.models.generate_content(
+            model=flash_model,
+            contents=filter_prompt,
+            config=genai.types.GenerateContentConfig(
+                temperature=0.0
+            )
         )
-    )
-    filtered = response.text.strip()
-    print(f"✅ Flash filter complete. Anomalies extracted.")
-    return filtered
+        result = response.text.strip()
+
+        if not result or result == "NO_ANOMALIES_DETECTED":
+            return raw_telemetry
+
+        return result
+
+    except Exception as e:
+        logger.warning("flash filter failed, passing raw telemetry: %s", e)
+        return raw_telemetry
 
 
-def load_context(df_telemetry=None, df_deployments=None):
-    with open("config/cluster_manifest.json", "r") as f:
-        cluster_map = f.read()
-
-    if df_telemetry is None:
-        df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
-    if df_deployments is None:
-        df_deployments = pd.read_csv("data/processed/deployment_log.csv")
-
-    important = df_telemetry[df_telemetry['Level'].isin(['ERROR', 'FATAL', 'WARN', 'INFO'])]
-    clean_telemetry = "\n".join(
-        f"[{r['Time']}] {r['Component']}: {r['Content']}"
-        for _, r in important.tail(15).iterrows()
-    )
-    clean_deployments = df_deployments.tail(5).to_string(index=False)
-
-    return cluster_map, clean_telemetry, clean_deployments
+def load_context(df_telemetry: pd.DataFrame, df_deployments: pd.DataFrame):
+    # cap at 50 rows to avoid token overflow on large uploads
+    raw_telemetry = df_telemetry.tail(50).to_string(index=False)
+    filtered_telemetry = flash_anomaly_filter(raw_telemetry)
+    clean_deployments = df_deployments.to_string(index=False)
+    return filtered_telemetry, clean_deployments
 
 
-def build_prompt(df_telemetry=None, df_deployments=None):
-    historical_memory = query_historical_memory(
-        "503 Service Unavailable timeout after deployment configuration change"
-    )
-    cluster_map, clean_telemetry, clean_deployments = load_context(
-        df_telemetry=df_telemetry,
-        df_deployments=df_deployments
-    )
+def build_prompt(df_telemetry: pd.DataFrame, df_deployments: pd.DataFrame):
+    try:
+        with open("config/cluster_manifest.json", "r") as f:
+            cluster_map = f.read()
+    except Exception:
+        cluster_map = "Cluster manifest not available."
+
+    clean_telemetry, clean_deployments = load_context(df_telemetry, df_deployments)
+    historical_memory = query_historical_memory(clean_telemetry)
 
     user_prompt = USER_PROMPT_TEMPLATE.format(
         historical_memory=historical_memory,
@@ -102,20 +100,29 @@ def build_prompt(df_telemetry=None, df_deployments=None):
         clean_telemetry=clean_telemetry
     )
 
-    return SYSTEM_INSTRUCTION.strip(), user_prompt.strip()
+    return SYSTEM_INSTRUCTION, user_prompt
 
 
 def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
+    if df_telemetry is None:
+        df_telemetry = pd.read_csv("data/processed/structured_telemetry.csv")
+    if df_deployments is None:
+        df_deployments = pd.read_csv("data/processed/deployment_log.csv")
+
     primary_model = 'gemini-3.1-pro-preview'
     fallback_model = 'gemini-3.1-flash-lite-preview'
 
-    system_instruction, user_prompt = build_prompt(
-        df_telemetry=df_telemetry,
-        df_deployments=df_deployments
-    )
+    quota_errors = [
+        "429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE",
+        "quota", "PERMISSION_DENIED", "billing", "API_KEY_INVALID", "invalid"
+    ]
 
     try:
-        print(f"🧠 Stage 2: Deep RCA with {primary_model}...")
+        system_instruction, user_prompt = build_prompt(
+            df_telemetry=df_telemetry,
+            df_deployments=df_deployments
+        )
+
         response = client.models.generate_content(
             model=primary_model,
             contents=user_prompt,
@@ -130,19 +137,31 @@ def generate_rca_with_fallback(df_telemetry=None, df_deployments=None):
 
     except Exception as e:
         error_msg = str(e)
-        if any(code in error_msg for code in ["429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE"]):
-            print(f"⚠️ {primary_model} unavailable. Triggering fallback: {fallback_model}...")
+        if any(code in error_msg for code in quota_errors):
+            logger.warning("primary model unavailable (%s), falling back to %s", primary_model, fallback_model)
             time.sleep(1)
-            response = client.models.generate_content(
-                model=fallback_model,
-                contents=user_prompt,
-                config=genai.types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    response_mime_type="application/json",
-                    response_schema=RootCauseAnalysis,
-                    temperature=0.1
-                ),
-            )
-            return response, fallback_model
+
+            try:
+                system_instruction, user_prompt = build_prompt(
+                    df_telemetry=df_telemetry,
+                    df_deployments=df_deployments
+                )
+                response = client.models.generate_content(
+                    model=fallback_model,
+                    contents=user_prompt,
+                    config=genai.types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        response_mime_type="application/json",
+                        response_schema=RootCauseAnalysis,
+                        temperature=0.1
+                    ),
+                )
+                return response, fallback_model
+
+            except Exception as fallback_error:
+                raise RuntimeError(
+                    f"Both models failed. Primary: {error_msg[:80]}. "
+                    f"Fallback: {str(fallback_error)[:80]}"
+                )
         else:
             raise e

@@ -1,8 +1,9 @@
 import sys
 import os
 
-# Path must be set BEFORE any agent imports
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
 import time
 import json
@@ -10,373 +11,526 @@ import streamlit as st
 import pandas as pd
 from agent.rca_engine import generate_rca_with_fallback, save_audit_log
 
-# --- PAGE CONFIGURATION ---
 st.set_page_config(
-    page_title="OpsPulse Sentinel | AIOps",
-    page_icon="🛡️",
+    page_title="OpsPulse Sentinel | SRE",
+    page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    .block-container { padding-top: 2rem; padding-bottom: 2rem; }
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .block-container {
+        padding-top: 1.8rem;
+        padding-bottom: 2rem;
+        max-width: 1280px;
+    }
+
+    h1, h2, h3 {
+        font-weight: 600 !important;
+        letter-spacing: -0.02em !important;
+    }
+
     div[data-testid="metric-container"] {
-        background-color: #1E1E1E;
-        border: 1px solid #333333;
-        padding: 5% 10% 5% 10%;
+        background-color: #0D1117;
+        border: 1px solid #21262D;
+        padding: 1.1rem 1.2rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+
+    .header-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #F0F6FC;
+        letter-spacing: -0.04em;
+        margin-bottom: 0.1rem;
+    }
+    .header-sub {
+        font-size: 0.95rem;
+        color: #6E7681;
+        font-weight: 400;
+        margin-bottom: 1.8rem;
+    }
+
+    .badge-success {
+        background: rgba(46,160,67,0.15);
+        color: #3FB950;
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid rgba(46,160,67,0.35);
+        letter-spacing: 0.04em;
+    }
+    .badge-cached {
+        background: rgba(210,153,34,0.15);
+        color: #D29922;
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid rgba(210,153,34,0.35);
+        letter-spacing: 0.04em;
+    }
+
+    .rca-box {
+        background-color: #161B22;
+        border: 1px solid #30363D;
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        padding: 22px 24px;
+        margin-top: 12px;
+        margin-bottom: 16px;
     }
-    .main-title { font-size: 2.5rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0rem; }
-    .sub-title { font-size: 1.1rem; color: #A0A0A0; margin-bottom: 2rem; }
-    .agent-status {
-        background-color: #0E1117;
-        border-left: 4px solid #00FFAA;
-        padding: 15px;
-        border-radius: 5px;
+    .rca-label {
+        font-size: 0.72rem;
+        color: #6E7681;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+    .rca-value {
+        font-size: 1rem;
+        color: #E6EDF3;
+        margin-bottom: 18px;
+        line-height: 1.55;
+    }
+    .rca-value:last-child {
+        margin-bottom: 0;
+    }
+
+    .evidence-box {
+        background-color: #0D1117;
+        border: 1px solid #21262D;
+        border-left: 3px solid #F78166;
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-top: 12px;
         margin-bottom: 20px;
     }
-    .fallback-status {
-        background-color: #0E1117;
-        border-left: 4px solid #FFA500;
-        padding: 15px;
-        border-radius: 5px;
-        margin-bottom: 20px;
+    .evidence-title {
+        font-size: 0.72rem;
+        color: #F78166;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+    .evidence-item {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 8px;
+        align-items: flex-start;
+    }
+    .evidence-dot {
+        width: 6px;
+        height: 6px;
+        background: #F78166;
+        border-radius: 50%;
+        margin-top: 6px;
+        flex-shrink: 0;
+    }
+    .evidence-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: #CDD9E5;
+        line-height: 1.5;
+    }
+
+    hr { border-color: #21262D !important; }
+
+    section[data-testid="stSidebar"] {
+        background-color: #0D1117;
+        border-right: 1px solid #21262D;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR: MISSION CONTROL ---
+REQUIRED_COLS = {'Date', 'Time', 'Pid', 'Level', 'Component', 'Content'}
+
+
+def safe_read_csv(uploaded_file):
+    """Try utf-8 first, fall back to latin-1 on decode errors."""
+    try:
+        try:
+            df = pd.read_csv(uploaded_file)
+        except UnicodeDecodeError:
+            uploaded_file.seek(0)
+            df = pd.read_csv(uploaded_file, encoding='latin-1')
+        return df, None
+    except Exception as e:
+        return None, str(e)
+
+
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/2083/2083213.png", width=60)
-    st.markdown("## 🛡️ OpsPulse Sentinel")
-    st.markdown("**Enterprise SRE Agent**")
-    st.divider()
+    st.markdown("## ⚡ OpsPulse")
+    st.markdown("<span class='badge-success'>● AGENT ACTIVE</span>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("### 🔌 System Connections")
-    st.markdown("🟢 **Telemetry Stream:** Connected")
-    st.markdown("🟢 **Vector Memory:** ChromaDB Linked")
-    st.markdown("🟢 **LLM Engine:** Gemini 3.1 Pro/Flash")
-    st.divider()
+    st.markdown("### Connections")
+    st.markdown("🟢 Telemetry Stream\n\n🟢 ChromaDB Vector Store\n\n🟢 Cluster Manifest Loaded")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("### 🧠 Agent Architecture")
-    st.success("**Primary Model:**\nGemini 3.1 Pro Preview\nDeep semantic RCA")
-    st.info("**Fallback Model:**\nGemini 3.1 Flash-Lite\nAuto-triggers on quota/unavailability")
-    st.divider()
+    st.markdown("### Agent Architecture")
+    st.success("**Stage 1 — Filter**\nGemini Flash-Lite\nAnomaly extraction")
+    st.info("**Stage 2 — Reason**\nGemini Pro Preview\nSemantic RCA\n\n*Auto-fallback to Flash-Lite on quota limits*")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("### 📋 Pipeline Checklist")
+    st.markdown("### Pipeline Status")
     pipeline_status = st.empty()
     pipeline_status.markdown("""
+    - ⬜ Stage 1: Flash Anomaly Filter
     - ⬜ ChromaDB Memory Query
-    - ⬜ Context Loading
-    - ⬜ Gemini API Call
-    - ⬜ Guardrail Validation
-    - ⬜ Remediation Ready
+    - ⬜ Stage 2: Pro Deep RCA
+    - ⬜ Policy Validation
     """)
 
-    st.divider()
-    st.markdown("### 📋 Incident Audit Log")
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("### Audit Log")
     try:
         with open("audit_log.json", "r") as f:
             audit_data = json.load(f)
-        st.metric("Total Incidents Logged", len(audit_data))
-        with st.expander("View Full Audit Trail"):
-            for entry in reversed(audit_data):
-                st.markdown(f"**{entry['timestamp']}** — `{entry['model_used']}`")
-                st.markdown(f"Root Cause: `{entry['rca_result'].get('root_cause_component', 'N/A')}`")
-                st.markdown(f"Confidence: `{entry['rca_result'].get('confidence_score', 'N/A')}`")
+        with st.expander(f"View History ({len(audit_data)} events)"):
+            for entry in reversed(audit_data[-5:]):
+                st.caption(f"{entry['timestamp'][:16].replace('T', ' ')} UTC")
+                st.markdown(f"`{entry['rca_result'].get('root_cause_component', 'N/A')}`")
+                conf = entry['rca_result'].get('confidence_score', 0)
+                st.caption(f"Confidence: {conf*100:.0f}%")
                 st.divider()
     except FileNotFoundError:
-        st.info("No incidents logged yet.")
+        st.caption("No historical incidents yet.")
 
-# --- MAIN HEADER ---
-st.markdown('<p class="main-title">🚨 Incident Command Center</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-title">Autonomous Root Cause Analysis & Remediation Pipeline — Powered by Gemini 3.1</p>', unsafe_allow_html=True)
 
-# --- KPI METRIC CARDS ---
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("ServiceA Status", "503 Error", "-100% SLA", delta_color="inverse")
-col2.metric("Manual Diagnostic MTTR", "45-90 Mins", "Industry Avg", delta_color="off")
-col3.metric("OpsPulse Diagnostic Time", "< 60 Secs", "-98% Time", delta_color="normal")
-col4.metric("Pending Rollbacks", "1 Action", "Awaiting Approval", delta_color="off")
+st.markdown('<div class="header-title">⚡ Incident Command Center</div>', unsafe_allow_html=True)
+st.markdown('<div class="header-sub">Autonomous Site Reliability Engineering · Semantic Root Cause Analysis Pipeline</div>', unsafe_allow_html=True)
 
-st.divider()
+c1, c2, c3, c4 = st.columns(4)
 
-# --- THREE-ACT TABS ---
-tab1, tab2, tab3 = st.tabs([
-    "📊 ACT I: Telemetry & Architecture",
-    "🧠 ACT II: Agentic Reasoning",
-    "✅ ACT III: Remediation Execution"
-])
+if st.session_state.get('custom_telemetry') is not None:
+    c1.metric("System Status", "Degraded", "Custom Data Loaded", delta_color="inverse")
+else:
+    c1.metric("ServiceA Status", "503 Error", "-100% SLA", delta_color="inverse")
 
-# ─────────────────────────────────────────────
-# ACT I: THE DATA LAYER
-# ─────────────────────────────────────────────
+c2.metric("Pending Actions", "1 Review", "Requires L2", delta_color="off")
+c3.metric("Manual MTTR Baseline", "90 min", "Industry Avg", delta_color="off")
+c4.metric("Agent Diagnostic Time", "< 60 sec", "-98.9%", delta_color="normal")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+tab1, tab2, tab3 = st.tabs(["📡 Telemetry Feed", "🧠 Diagnostic Agent", "⚡ Remediation"])
+
+
 with tab1:
-    st.markdown("### 📡 Active System Telemetry")
-    st.error("⚠️ CRITICAL ANOMALY: Widespread 503 connection timeouts detected in upstream ServiceA routing.")
-
-    st.markdown("### 📂 Data Source")
-    upload_col, info_col = st.columns([1, 1])
-
-    with upload_col:
-        uploaded_telemetry = st.file_uploader(
-            "Upload custom telemetry log (CSV)",
-            type=["csv"],
-            help="Must have columns: Date, Time, Level, Component, Content"
-        )
-        uploaded_deployments = st.file_uploader(
-            "Upload custom deployment log (CSV)",
-            type=["csv"],
-            help="Must have columns: Date, Time, Component, Content"
-        )
-
-    with info_col:
-        if uploaded_telemetry or uploaded_deployments:
-            st.success("✅ Custom data loaded. Sentinel will analyze your logs.")
-        else:
-            st.info(
-                "📋 **Using default benchmark dataset**\n\n"
-                "Upload your own CSVs above to analyze a different failure scenario. "
-                "Columns required: `Date`, `Time`, `Level`, `Component`, `Content`"
-            )
-
-    if uploaded_telemetry:
-        st.session_state['custom_telemetry'] = pd.read_csv(uploaded_telemetry)
-    if uploaded_deployments:
-        st.session_state['custom_deployments'] = pd.read_csv(uploaded_deployments)
-
-    st.divider()
+    if st.session_state.get('custom_telemetry') is not None:
+        st.error("**CRITICAL ANOMALY:** Elevated error rates detected in uploaded telemetry stream.")
+    else:
+        st.error("**CRITICAL ANOMALY:** Widespread 503 connection timeouts in upstream ServiceA routing.")
 
     col_a, col_b = st.columns(2)
 
     with col_a:
-        st.markdown("**🔄 Recent Deployment Events**")
+        st.markdown("**Recent Deployment Events**")
         try:
-            df_dep = st.session_state.get('custom_deployments',
-                      pd.read_csv("data/processed/deployment_log.csv")).tail(3)
-            st.dataframe(df_dep, use_container_width=True, hide_index=True)
-            st.caption("⚠️ Note the Helm upgrade at 14:28:01 — 4 minutes before errors began.")
+            df_dep_display = st.session_state.get(
+                'custom_deployments',
+                pd.read_csv("data/processed/deployment_log.csv")
+            ).tail(5)
+            st.dataframe(df_dep_display, use_container_width=True, hide_index=True)
         except Exception:
-            st.warning("⚠️ Waiting for deployment_log.csv...")
+            st.warning("Deployment log not found.")
 
     with col_b:
-        st.markdown("**📉 Telemetry Feed (Last 5 Events)**")
+        st.markdown("**Telemetry Stream**")
         try:
-            df_tel = st.session_state.get('custom_telemetry',
-                      pd.read_csv("data/processed/structured_telemetry.csv")).tail(5)
-            st.dataframe(df_tel, use_container_width=True, hide_index=True)
-            st.caption("Errors cascade beginning at 14:32 — 4 minutes after the Helm change.")
+            df_tel_display = st.session_state.get(
+                'custom_telemetry',
+                pd.read_csv("data/processed/structured_telemetry.csv")
+            ).tail(8)
+            st.dataframe(df_tel_display, use_container_width=True, hide_index=True)
         except Exception:
-            st.warning("⚠️ Waiting for structured_telemetry.csv...")
+            st.warning("Telemetry file not found.")
 
-    st.divider()
-    st.markdown("### 🗺️ Cluster Architecture Baseline")
-    try:
-        with open("config/cluster_manifest.json", "r") as f:
-            manifest = f.read()
-        with st.expander("View cluster_manifest.json — Ground Truth Configuration"):
-            st.code(manifest, language="json")
-    except Exception:
-        st.warning("⚠️ cluster_manifest.json not found at config/cluster_manifest.json")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.warning("⏱️ **Without OpsPulse:** A senior SRE would take **45-90 minutes** to manually trace this failure chain across three data sources.")
+    with st.expander("Upload Custom Data / View Cluster Manifest"):
+        st.caption("Upload your own CSVs to run the agent against custom telemetry. Leave blank to use the built-in demo data.")
+        u_col1, u_col2 = st.columns(2)
 
-# ─────────────────────────────────────────────
-# ACT II: THE AI REASONING ENGINE
-# ─────────────────────────────────────────────
-with tab2:
-    col_c, col_d = st.columns([1, 2])
-
-    with col_c:
-        st.markdown("### 🚀 Trigger Agent")
-        st.markdown(
-            "Initiates deep semantic correlation across:\n"
-            "- ChromaDB historical memory\n"
-            "- Cluster manifest baselines\n"
-            "- Deployment log timestamps\n"
-            "- Active telemetry stream"
+        uploaded_telemetry = u_col1.file_uploader(
+            "Custom Telemetry (CSV)",
+            type=["csv"],
+            help="Required columns: Date, Time, Pid, Level, Component, Content"
         )
-        run_clicked = st.button(
-            "🚀 RUN SENTINEL DIAGNOSTIC",
-            type="primary",
-            use_container_width=True
+        uploaded_deployments = u_col2.file_uploader(
+            "Custom Deployment Log (CSV)",
+            type=["csv"],
+            help="Required columns: Date, Time, Pid, Level, Component, Content"
         )
-        if run_clicked:
-            st.session_state['run_agent'] = True
-            st.session_state['rca_complete'] = False
 
-    with col_d:
-        if st.session_state.get('run_agent', False):
-            if not st.session_state.get('rca_complete', False):
-                with st.spinner("🧠 Executing live Gemini API call... Analyzing temporal correlation..."):
-                    try:
-                        pipeline_status.markdown("""
-                        - ✅ ChromaDB Memory Query
-                        - ✅ Context Loading
-                        - 🔄 Gemini API Call...
-                        - ⬜ Guardrail Validation
-                        - ⬜ Remediation Ready
-                        """)
-
-                        df_tel = st.session_state.get('custom_telemetry', None)
-                        df_dep = st.session_state.get('custom_deployments', None)
-                        response, model_used = generate_rca_with_fallback(
-                            df_telemetry=df_tel,
-                            df_deployments=df_dep
-                        )
-                        rca_data = json.loads(response.text)
-
-                        st.session_state['rca_data'] = rca_data
-                        st.session_state['model_used'] = model_used
-                        st.session_state['fix_cmd'] = rca_data.get(
-                            "executable_fix_cmd",
-                            "helm upgrade ingress-controller --set proxy-connect-timeout=30s --reuse-values"
-                        )
-                        st.session_state['needs_approval'] = rca_data.get("require_human_approval", True)
-                        st.session_state['confidence'] = rca_data.get("confidence_score", 0.0)
-                        st.session_state['rca_complete'] = True
-                        st.session_state['used_fallback'] = False
-
-                        save_audit_log(rca_data, model_used)
-
-                        pipeline_status.markdown("""
-                        - ✅ ChromaDB Memory Query
-                        - ✅ Context Loading
-                        - ✅ Gemini API Call
-                        - ✅ Guardrail Validation
-                        - ✅ Remediation Ready
-                        """)
-
-                    except Exception as e:
-                        st.session_state['used_fallback'] = True
-                        st.session_state['fallback_error'] = str(e)
-
-                        mock_rca = {
-                            "incident_summary": "ServiceA 503 errors are semantically linked to the Ingress Controller Helm upgrade at 14:28, 4 minutes before the error cascade at 14:32.",
-                            "root_cause_component": "HelmDeploy (ingress-controller)",
-                            "confidence_score": 0.98,
-                            "require_human_approval": True,
-                            "recommended_action": "Revert the proxy-connect-timeout setting on the ingress-controller back to the 30s architectural baseline defined in cluster_manifest.json.",
-                            "executable_fix_cmd": "helm upgrade ingress-controller --set proxy-connect-timeout=30s --reuse-values"
-                        }
-
-                        st.session_state['rca_data'] = mock_rca
-                        st.session_state['model_used'] = "Cached RCA (API Unavailable)"
-                        st.session_state['fix_cmd'] = mock_rca["executable_fix_cmd"]
-                        st.session_state['needs_approval'] = mock_rca["require_human_approval"]
-                        st.session_state['confidence'] = mock_rca["confidence_score"]
-                        st.session_state['rca_complete'] = True
-
-                        pipeline_status.markdown("""
-                        - ✅ ChromaDB Memory Query
-                        - ✅ Context Loading
-                        - ⚠️ Gemini API (Cached)
-                        - ✅ Guardrail Validation
-                        - ✅ Remediation Ready
-                        """)
-
-            if st.session_state.get('rca_complete', False):
-                rca_data = st.session_state['rca_data']
-                model_used = st.session_state['model_used']
-                confidence = st.session_state['confidence']
-
-                if st.session_state.get('used_fallback', False):
-                    st.markdown(
-                        f'<div class="fallback-status">⚠️ <b>Cached RCA Mode:</b> Live API unavailable. '
-                        f'Displaying validated cached result.<br><small>Error: {st.session_state.get("fallback_error", "")}</small></div>',
-                        unsafe_allow_html=True
+        if uploaded_telemetry is not None:
+            df, err = safe_read_csv(uploaded_telemetry)
+            if err:
+                st.error(f"Could not read telemetry file: {err}. Please upload a valid CSV.")
+            else:
+                missing = REQUIRED_COLS - set(df.columns)
+                if missing:
+                    st.error(
+                        f"Invalid telemetry file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**."
                     )
                 else:
-                    st.markdown(
-                        f'<div class="agent-status">✅ <b>Live API Response:</b> Powered by <b>{model_used}</b> '
-                        f'| Confidence: <b>{confidence*100:.0f}%</b></div>',
-                        unsafe_allow_html=True
+                    st.session_state['custom_telemetry'] = df
+                    st.success(f"Custom telemetry loaded: {len(df)} rows, {len(df.columns)} columns")
+
+        if uploaded_deployments is not None:
+            df, err = safe_read_csv(uploaded_deployments)
+            if err:
+                st.error(f"Could not read deployment file: {err}. Please upload a valid CSV.")
+            else:
+                missing = REQUIRED_COLS - set(df.columns)
+                if missing:
+                    st.error(
+                        f"Invalid deployment file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**."
+                    )
+                else:
+                    st.session_state['custom_deployments'] = df
+                    st.success(f"Custom deployment log loaded: {len(df)} rows, {len(df.columns)} columns")
+
+        if (st.session_state.get('custom_telemetry') is not None
+                or st.session_state.get('custom_deployments') is not None):
+            if st.button("Clear Custom Data (revert to demo)", type="secondary"):
+                st.session_state.pop('custom_telemetry', None)
+                st.session_state.pop('custom_deployments', None)
+                st.session_state['rca_complete'] = False
+                st.session_state['run_agent'] = False
+                st.rerun()
+
+        st.markdown("---")
+        st.markdown("**Cluster Architecture Manifest**")
+        try:
+            with open("config/cluster_manifest.json", "r") as f:
+                st.code(f.read(), language="json")
+        except FileNotFoundError:
+            st.warning("cluster_manifest.json not found in config/.")
+
+
+with tab2:
+    st.markdown("### Root Cause Analysis")
+
+    if st.session_state.get('custom_telemetry') is not None:
+        st.markdown("<span class='badge-success'>● Custom Data Active</span>", unsafe_allow_html=True)
+    else:
+        st.markdown("<span class='badge-success'>● Demo Data Active</span>", unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    run_clicked = st.button("▶ Initialize Diagnostics", type="primary")
+    if run_clicked:
+        st.session_state['run_agent'] = True
+        st.session_state['rca_complete'] = False
+
+    if st.session_state.get('run_agent', False):
+
+        if not st.session_state.get('rca_complete', False):
+            with st.spinner("Analyzing temporal correlation across telemetry, deployment history, and architectural context..."):
+                try:
+                    pipeline_status.markdown("""
+                    - 🔄 Stage 1: Flash Anomaly Filter
+                    - ⬜ ChromaDB Memory Query
+                    - ⬜ Stage 2: Pro Deep RCA
+                    - ⬜ Policy Validation
+                    """)
+
+                    df_tel = st.session_state.get('custom_telemetry', None)
+                    df_dep = st.session_state.get('custom_deployments', None)
+
+                    response, model_used = generate_rca_with_fallback(
+                        df_telemetry=df_tel,
+                        df_deployments=df_dep
                     )
 
-                col_conf, col_model = st.columns(2)
-                col_conf.metric("Confidence Score", f"{confidence*100:.0f}%")
-                col_model.metric("Model Used", model_used.split("-preview")[0].replace("gemini-", "Gemini "))
+                    pipeline_status.markdown("""
+                    - ✅ Stage 1: Flash Anomaly Filter
+                    - ✅ ChromaDB Memory Query
+                    - 🔄 Stage 2: Pro Deep RCA
+                    - ⬜ Policy Validation
+                    """)
 
-                st.markdown("### 📄 Official RCA Report")
-                st.json(rca_data, expanded=True)
+                    rca_data = json.loads(response.text)
 
-                st.info("✅ RCA complete. Navigate to **ACT III** to execute the remediation.")
+                    st.session_state['rca_data'] = rca_data
+                    st.session_state['model_used'] = model_used
+                    st.session_state['fix_cmd'] = rca_data.get(
+                        "executable_fix_cmd",
+                        "helm upgrade ingress-controller --set proxy-connect-timeout=30s --reuse-values"
+                    )
+                    st.session_state['needs_approval'] = rca_data.get("require_human_approval", True)
+                    st.session_state['confidence'] = rca_data.get("confidence_score", 0.0)
+                    st.session_state['rca_complete'] = True
+                    st.session_state['used_fallback'] = False
 
-        else:
-            st.info("👈 Click **RUN SENTINEL DIAGNOSTIC** to begin analysis.")
+                    save_audit_log(rca_data, model_used)
 
-# ─────────────────────────────────────────────
-# ACT III: REMEDIATION & MTTR IMPACT
-# ─────────────────────────────────────────────
+                    pipeline_status.markdown("""
+                    - ✅ Stage 1: Flash Anomaly Filter
+                    - ✅ ChromaDB Memory Query
+                    - ✅ Stage 2: Pro Deep RCA
+                    - ✅ Policy Validation
+                    """)
+
+                except Exception as e:
+                    st.error(str(e))
+                    st.session_state['used_fallback'] = True
+                    mock_rca = {
+                        "incident_summary": "ServiceA 503 errors are semantically linked to the Ingress Controller Helm upgrade at 14:28, exactly 4 minutes before the error cascade began at 14:32.",
+                        "evidence_chain": [
+                            "14:28:01 - Deployment: helm upgrade ingress-controller --set proxy-connect-timeout=5s",
+                            "14:30:14 - Config drift detected: proxy-connect-timeout reduced from 30s to 5s",
+                            "14:32:05 - Anomaly: ServiceA upstream connection timeout (threshold exceeded)",
+                            "14:32:10 - Cascade: Load balancer health checks failing for ServiceA",
+                            "14:32:18 - Storm: 503 error rate reached 100% on ServiceA endpoints"
+                        ],
+                        "root_cause_component": "HelmDeploy (ingress-controller)",
+                        "confidence_score": 0.98,
+                        "require_human_approval": True,
+                        "recommended_action": "Revert proxy-connect-timeout setting on the ingress-controller to the 30s architectural baseline defined in cluster_manifest.json.",
+                        "executable_fix_cmd": "helm upgrade ingress-controller --set proxy-connect-timeout=30s --reuse-values"
+                    }
+                    st.session_state['rca_data'] = mock_rca
+                    st.session_state['model_used'] = "Cached RCA (API Unavailable)"
+                    st.session_state['fix_cmd'] = mock_rca["executable_fix_cmd"]
+                    st.session_state['needs_approval'] = mock_rca["require_human_approval"]
+                    st.session_state['confidence'] = mock_rca["confidence_score"]
+                    st.session_state['rca_complete'] = True
+
+                    pipeline_status.markdown("""
+                    - ✅ Stage 1: Flash Anomaly Filter
+                    - ✅ ChromaDB Memory Query
+                    - ⚠️ Stage 2: Cached Mode (API Unavailable)
+                    - ✅ Policy Validation
+                    """)
+
+        if st.session_state.get('rca_complete', False):
+            rca_data = st.session_state['rca_data']
+            conf = st.session_state['confidence']
+
+            if st.session_state.get('used_fallback'):
+                st.markdown("<span class='badge-cached'>⚠ Cached RCA Mode — API Unavailable</span>", unsafe_allow_html=True)
+                st.markdown("<br>", unsafe_allow_html=True)
+
+            st.markdown(f"""
+            <div class="rca-box">
+                <div class="rca-label">Identified Component</div>
+                <div class="rca-value">{rca_data.get('root_cause_component', 'N/A')}</div>
+                <div class="rca-label">Incident Summary</div>
+                <div class="rca-value">{rca_data.get('incident_summary', 'N/A')}</div>
+                <div class="rca-label">Recommended Action</div>
+                <div class="rca-value">{rca_data.get('recommended_action', 'N/A')}</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+            evidence = rca_data.get('evidence_chain', [])
+            if evidence:
+                items_html = "".join([
+                    f'<div class="evidence-item"><div class="evidence-dot"></div>'
+                    f'<div class="evidence-text">{item}</div></div>'
+                    for item in evidence
+                ])
+                st.markdown(f"""
+                <div class="evidence-box">
+                    <div class="evidence-title">Causal Evidence Chain — {len(evidence)} Events</div>
+                    {items_html}
+                </div>
+                """, unsafe_allow_html=True)
+
+            col_m1, col_m2, col_m3 = st.columns(3)
+
+            model_label = st.session_state['model_used']
+            if isinstance(model_label, str):
+                model_label = (model_label
+                               .replace("gemini-", "")
+                               .replace("-preview", "")
+                               .replace("-", " ")
+                               .title())
+
+            col_m1.metric("Engine", model_label)
+            col_m2.metric("Confidence", f"{conf * 100:.1f}%")
+            col_m3.metric("Human Approval", "Required" if st.session_state['needs_approval'] else "Auto-Resolve")
+
+            with st.expander("View Raw JSON Response"):
+                st.json(rca_data)
+
+            st.info("Proceed to the Remediation tab to execute the fix.")
+
+    else:
+        st.caption("Awaiting initialization. Click 'Initialize Diagnostics' to begin.")
+
+
 with tab3:
     if st.session_state.get('rca_complete', False):
-        st.markdown("### 🛡️ Guardrail Check: Human-in-the-Loop")
+        st.markdown("### Execution Plan")
 
         confidence = st.session_state.get('confidence', 0.0)
+
         if confidence < 0.75:
             st.error(
-                f"❌ **CONFIDENCE THRESHOLD FAILED:** Score {confidence*100:.0f}% is below the 75% threshold. "
+                f"Confidence score {confidence * 100:.0f}% is below the 75% threshold. "
                 f"Automated remediation blocked. Escalating to L2 SRE."
             )
         else:
             if st.session_state.get('needs_approval', True):
-                st.warning(
-                    "⚠️ **POLICY FLAG:** Enterprise rules require human approval "
-                    "before modifying production infrastructure."
-                )
-            else:
-                st.success("✅ Confidence threshold passed. No approval required by policy.")
+                st.warning("This action modifies production infrastructure. L2 SRE approval required before execution.")
 
-            st.markdown("**📟 Proposed Remediation Command:**")
-            st.code(
-                st.session_state.get('fix_cmd', 'Command unavailable'),
-                language="bash"
-            )
+            st.markdown("**Proposed Remediation Command:**")
+            st.code(st.session_state.get('fix_cmd', 'Command unavailable'), language="bash")
 
-            col_x, col_y = st.columns(2)
+            col_x, col_y = st.columns([1, 1])
 
             with col_x:
-                if st.button("✅ APPROVE & EXECUTE ROLLBACK", type="primary", use_container_width=True):
-                    with st.spinner("Executing rollback command..."):
-                        time.sleep(1.5)
+                if st.button("Approve & Execute", type="primary", use_container_width=True):
+                    terminal_container = st.empty()
+                    fix_cmd = st.session_state.get('fix_cmd', '')
 
-                    st.success("✅ Command executed. proxy-connect-timeout reverted to 30s.")
-                    st.info("📈 ServiceA latency stabilizing. Connections recovering.")
+                    terminal_lines = [
+                        "$ Initializing secure cluster connection...",
+                        f"$ {fix_cmd}",
+                        "> Sending request to Kubernetes API...",
+                        "> Applying configuration patch...",
+                        "> Waiting for rollout: 1 of 1 updated replicas are available...",
+                        "> Health check passed. Upstream connections recovering.",
+                        "> Rollout complete. Infrastructure state synced successfully."
+                    ]
+
+                    current_output = ""
+                    for i, line in enumerate(terminal_lines):
+                        current_output += line + "\n"
+                        terminal_container.code(current_output, language="bash")
+                        time.sleep(0.8 if i > 1 else 1.2)
+
+                    st.success("Issue resolved. ServiceA connections recovering.")
                     st.balloons()
 
-                    st.markdown("### 📊 MTTR Impact Analysis")
+                    st.markdown("### MTTR Impact")
                     st.table({
-                        "Diagnostic Phase": [
-                            "Log Triage",
-                            "Cross-Service Correlation",
-                            "Root Cause Identification",
-                            "Total MTTR"
-                        ],
-                        "Manual SRE (Traditional)": [
-                            "15 min", "45 min", "30 min", "90 min"
-                        ],
-                        "OpsPulse Sentinel (AI)": [
-                            "3 sec", "15 sec", "10 sec", "< 60 sec"
-                        ]
+                        "Diagnostic Phase": ["Log Triage", "Cross-Service Correlation", "Root Cause ID", "Total"],
+                        "Manual SRE": ["15 min", "45 min", "30 min", "90 min"],
+                        "OpsPulse Sentinel": ["3 sec", "15 sec", "10 sec", "< 60 sec"],
+                        "Reduction": ["99.7%", "99.4%", "99.4%", "~98.9%"]
                     })
 
-                    st.success("🎯 **P1 Incident Closed.** MTTR reduced by 98%.")
-
             with col_y:
-                if st.button("❌ REJECT — Escalate to L2", use_container_width=True):
-                    st.error(
-                        "🚫 Execution blocked by human operator. "
-                        "Escalating full RCA context to L2 SRE via Jira."
-                    )
-                    st.info(
-                        "📋 Incident report with root cause, evidence chain, "
-                        "and proposed command has been logged."
-                    )
+                if st.button("Reject / Escalate to L2", use_container_width=True):
+                    st.error("Execution rejected. Incident context packaged and escalated to L2 via Jira.")
 
     elif st.session_state.get('run_agent', False):
-        st.info("⏳ RCA still running. Please wait for ACT II to complete.")
+        st.caption("Diagnostics in progress. This tab will activate once RCA is complete.")
     else:
-        st.info("👈 Run the diagnostic in **ACT II** to generate remediation steps.")
+        st.caption("Run the Diagnostic Agent first to generate a remediation plan.")

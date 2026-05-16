@@ -1,21 +1,27 @@
 from pydantic import BaseModel, Field
+from typing import List
+
 
 class RootCauseAnalysis(BaseModel):
     incident_summary: str = Field(
-        description="A one-sentence summary of the observed symptoms (e.g., '503 errors on ServiceA')."
+        description="Concise summary of observed symptoms across all data sources."
+    )
+    evidence_chain: List[str] = Field(
+        description="Chronological list of supporting events leading to the root cause.",
+        min_length=1
     )
     root_cause_component: str = Field(
-        description="The specific component that caused the failure (e.g., 'ingress-controller')."
+        description="The component identified as the origin of the failure chain."
     )
     confidence_score: float = Field(
-        description="A score between 0.0 and 1.0 indicating confidence in this RCA. If below 0.75, escalate."
+        description="Confidence in this RCA from 0.0 to 1.0. Below 0.75 blocks automated remediation."
     )
     require_human_approval: bool = Field(
-        description="MUST be True if the recommended action involves modifying production infrastructure."
+        description="True if the proposed fix modifies production infrastructure."
     )
     recommended_action: str = Field(
-        description="Plain english explanation of how to fix the issue."
+        description="Plain english explanation of the fix and why it resolves the root cause."
     )
     executable_fix_cmd: str = Field(
-        description="The exact terminal or kubectl command to execute the fix."
+        description="Exact shell, kubectl, or helm command to execute the fix."
     )

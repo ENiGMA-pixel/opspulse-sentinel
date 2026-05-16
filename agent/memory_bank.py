@@ -1,16 +1,12 @@
 import os
 import chromadb
 
-# Persist to disk instead of in-memory
 CHROMA_PATH = "data/chroma_db"
 os.makedirs(CHROMA_PATH, exist_ok=True)
 
 chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
-
-# Get or create — won't wipe on restart
 collection = chroma_client.get_or_create_collection(name="incident_history")
 
-# Only add if collection is empty — prevents duplicate entries on restart
 if collection.count() == 0:
     collection.add(
         documents=[
@@ -22,9 +18,6 @@ if collection.count() == 0:
         ],
         ids=["inc_001", "inc_002", "inc_003", "inc_004", "inc_005"]
     )
-    print("✅ Memory bank initialized with 5 historical incidents.")
-else:
-    print(f"✅ Memory bank loaded. {collection.count()} incidents in history.")
 
 
 def query_historical_memory(query: str) -> str:
