@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Resolve repo root and inject into path
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
@@ -12,9 +11,6 @@ import streamlit as st
 import pandas as pd
 from agent.rca_engine import generate_rca_with_fallback, save_audit_log
 
-# ─────────────────────────────────────────────
-# PAGE CONFIGURATION
-# ─────────────────────────────────────────────
 st.set_page_config(
     page_title="OpsPulse Sentinel | SRE",
     page_icon="⚡",
@@ -22,9 +18,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ─────────────────────────────────────────────
-# GLOBAL CSS
-# ─────────────────────────────────────────────
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -160,22 +153,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
-# ─────────────────────────────────────────────
-# CONSTANTS
-# ─────────────────────────────────────────────
 REQUIRED_COLS = {'Date', 'Time', 'Pid', 'Level', 'Component', 'Content'}
 
 
-# ─────────────────────────────────────────────
-# HELPER: Safe CSV reader
-# ─────────────────────────────────────────────
 def safe_read_csv(uploaded_file):
-    """
-    Reads an uploaded CSV safely.
-    Handles UnicodeDecodeError by falling back to latin-1.
-    Returns (DataFrame, error_string). On success, error is None.
-    """
+    """Try utf-8 first, fall back to latin-1 on decode errors."""
     try:
         try:
             df = pd.read_csv(uploaded_file)
@@ -187,9 +169,6 @@ def safe_read_csv(uploaded_file):
         return None, str(e)
 
 
-# ─────────────────────────────────────────────
-# SIDEBAR
-# ─────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## ⚡ OpsPulse")
     st.markdown("<span class='badge-success'>● AGENT ACTIVE</span>", unsafe_allow_html=True)
@@ -197,13 +176,11 @@ with st.sidebar:
 
     st.markdown("### Connections")
     st.markdown("🟢 Telemetry Stream\n\n🟢 ChromaDB Vector Store\n\n🟢 Cluster Manifest Loaded")
-
     st.markdown("<br>", unsafe_allow_html=True)
 
     st.markdown("### Agent Architecture")
     st.success("**Stage 1 — Filter**\nGemini Flash-Lite\nAnomaly extraction")
     st.info("**Stage 2 — Reason**\nGemini Pro Preview\nSemantic RCA\n\n*Auto-fallback to Flash-Lite on quota limits*")
-
     st.markdown("<br>", unsafe_allow_html=True)
 
     st.markdown("### Pipeline Status")
@@ -231,15 +208,9 @@ with st.sidebar:
         st.caption("No historical incidents yet.")
 
 
-# ─────────────────────────────────────────────
-# MAIN HEADER
-# ─────────────────────────────────────────────
 st.markdown('<div class="header-title">⚡ Incident Command Center</div>', unsafe_allow_html=True)
 st.markdown('<div class="header-sub">Autonomous Site Reliability Engineering · Semantic Root Cause Analysis Pipeline</div>', unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# KPI METRICS
-# ─────────────────────────────────────────────
 c1, c2, c3, c4 = st.columns(4)
 
 if st.session_state.get('custom_telemetry') is not None:
@@ -253,20 +224,14 @@ c4.metric("Agent Diagnostic Time", "< 60 sec", "-98.9%", delta_color="normal")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# TABS
-# ─────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["📡 Telemetry Feed", "🧠 Diagnostic Agent", "⚡ Remediation"])
 
 
-# ─────────────────────────────────────────────
-# TAB 1: TELEMETRY FEED
-# ─────────────────────────────────────────────
 with tab1:
     if st.session_state.get('custom_telemetry') is not None:
-        st.error("🔴 **CRITICAL ANOMALY:** Elevated error rates detected in uploaded telemetry stream.")
+        st.error("**CRITICAL ANOMALY:** Elevated error rates detected in uploaded telemetry stream.")
     else:
-        st.error("🔴 **CRITICAL ANOMALY:** Widespread 503 connection timeouts in upstream ServiceA routing.")
+        st.error("**CRITICAL ANOMALY:** Widespread 503 connection timeouts in upstream ServiceA routing.")
 
     col_a, col_b = st.columns(2)
 
@@ -282,7 +247,7 @@ with tab1:
             st.warning("Deployment log not found.")
 
     with col_b:
-        st.markdown("**Live Telemetry Stream**")
+        st.markdown("**Telemetry Stream**")
         try:
             df_tel_display = st.session_state.get(
                 'custom_telemetry',
@@ -294,7 +259,7 @@ with tab1:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    with st.expander("⚙️ Upload Custom Data Sources / View Cluster Manifest"):
+    with st.expander("Upload Custom Data / View Cluster Manifest"):
         st.caption("Upload your own CSVs to run the agent against custom telemetry. Leave blank to use the built-in demo data.")
         u_col1, u_col2 = st.columns(2)
 
@@ -309,44 +274,39 @@ with tab1:
             help="Required columns: Date, Time, Pid, Level, Component, Content"
         )
 
-        # ── TELEMETRY UPLOAD HANDLER ─────────────────────────────────
         if uploaded_telemetry is not None:
             df, err = safe_read_csv(uploaded_telemetry)
             if err:
-                st.error(f"⚠️ Could not read telemetry file: {err}. Please upload a valid CSV.")
+                st.error(f"Could not read telemetry file: {err}. Please upload a valid CSV.")
             else:
                 missing = REQUIRED_COLS - set(df.columns)
                 if missing:
                     st.error(
-                        f"⚠️ Invalid telemetry file. "
-                        f"Missing required columns: **{', '.join(sorted(missing))}**. "
-                        f"Please fix and re-upload."
+                        f"Invalid telemetry file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**."
                     )
                 else:
                     st.session_state['custom_telemetry'] = df
-                    st.success(f"✅ Custom telemetry loaded: {len(df)} rows, {len(df.columns)} columns")
+                    st.success(f"Custom telemetry loaded: {len(df)} rows, {len(df.columns)} columns")
 
-        # ── DEPLOYMENT UPLOAD HANDLER ────────────────────────────────
         if uploaded_deployments is not None:
             df, err = safe_read_csv(uploaded_deployments)
             if err:
-                st.error(f"⚠️ Could not read deployment file: {err}. Please upload a valid CSV.")
+                st.error(f"Could not read deployment file: {err}. Please upload a valid CSV.")
             else:
                 missing = REQUIRED_COLS - set(df.columns)
                 if missing:
                     st.error(
-                        f"⚠️ Invalid deployment file. "
-                        f"Missing required columns: **{', '.join(sorted(missing))}**. "
-                        f"Please fix and re-upload."
+                        f"Invalid deployment file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**."
                     )
                 else:
                     st.session_state['custom_deployments'] = df
-                    st.success(f"✅ Custom deployment log loaded: {len(df)} rows, {len(df.columns)} columns")
+                    st.success(f"Custom deployment log loaded: {len(df)} rows, {len(df.columns)} columns")
 
-        # ── CLEAR BUTTON ─────────────────────────────────────────────
         if (st.session_state.get('custom_telemetry') is not None
                 or st.session_state.get('custom_deployments') is not None):
-            if st.button("🗑️ Clear Custom Data (revert to demo)", type="secondary"):
+            if st.button("Clear Custom Data (revert to demo)", type="secondary"):
                 st.session_state.pop('custom_telemetry', None)
                 st.session_state.pop('custom_deployments', None)
                 st.session_state['rca_complete'] = False
@@ -362,9 +322,6 @@ with tab1:
             st.warning("cluster_manifest.json not found in config/.")
 
 
-# ─────────────────────────────────────────────
-# TAB 2: DIAGNOSTIC AGENT
-# ─────────────────────────────────────────────
 with tab2:
     st.markdown("### Root Cause Analysis")
 
@@ -430,13 +387,13 @@ with tab2:
                     """)
 
                 except Exception as e:
-                    st.error(f"🔴 DEBUG: {str(e)}")
+                    st.error(str(e))
                     st.session_state['used_fallback'] = True
                     mock_rca = {
                         "incident_summary": "ServiceA 503 errors are semantically linked to the Ingress Controller Helm upgrade at 14:28, exactly 4 minutes before the error cascade began at 14:32.",
                         "evidence_chain": [
                             "14:28:01 - Deployment: helm upgrade ingress-controller --set proxy-connect-timeout=5s",
-                            "14:30:14 - Config drift detected: proxy-connect-timeout reduced from 30s → 5s",
+                            "14:30:14 - Config drift detected: proxy-connect-timeout reduced from 30s to 5s",
                             "14:32:05 - Anomaly: ServiceA upstream connection timeout (threshold exceeded)",
                             "14:32:10 - Cascade: Load balancer health checks failing for ServiceA",
                             "14:32:18 - Storm: 503 error rate reached 100% on ServiceA endpoints"
@@ -461,7 +418,6 @@ with tab2:
                     - ✅ Policy Validation
                     """)
 
-        # ── RENDER RCA RESULTS ───────────────────────────────────────
         if st.session_state.get('rca_complete', False):
             rca_data = st.session_state['rca_data']
             conf = st.session_state['confidence']
@@ -470,11 +426,10 @@ with tab2:
                 st.markdown("<span class='badge-cached'>⚠ Cached RCA Mode — API Unavailable</span>", unsafe_allow_html=True)
                 st.markdown("<br>", unsafe_allow_html=True)
 
-            # ── SUMMARY CARD ─────────────────────────────────────────
             st.markdown(f"""
             <div class="rca-box">
                 <div class="rca-label">Identified Component</div>
-                <div class="rca-value">🎯 {rca_data.get('root_cause_component', 'N/A')}</div>
+                <div class="rca-value">{rca_data.get('root_cause_component', 'N/A')}</div>
                 <div class="rca-label">Incident Summary</div>
                 <div class="rca-value">{rca_data.get('incident_summary', 'N/A')}</div>
                 <div class="rca-label">Recommended Action</div>
@@ -482,7 +437,6 @@ with tab2:
             </div>
             """, unsafe_allow_html=True)
 
-            # ── EVIDENCE CHAIN ───────────────────────────────────────
             evidence = rca_data.get('evidence_chain', [])
             if evidence:
                 items_html = "".join([
@@ -492,12 +446,11 @@ with tab2:
                 ])
                 st.markdown(f"""
                 <div class="evidence-box">
-                    <div class="evidence-title">⛓ Causal Evidence Chain — {len(evidence)} Events</div>
+                    <div class="evidence-title">Causal Evidence Chain — {len(evidence)} Events</div>
                     {items_html}
                 </div>
                 """, unsafe_allow_html=True)
 
-            # ── METRICS ROW ──────────────────────────────────────────
             col_m1, col_m2, col_m3 = st.columns(3)
 
             model_label = st.session_state['model_used']
@@ -512,18 +465,15 @@ with tab2:
             col_m2.metric("Confidence", f"{conf * 100:.1f}%")
             col_m3.metric("Human Approval", "Required" if st.session_state['needs_approval'] else "Auto-Resolve")
 
-            with st.expander("📋 View Raw JSON Response"):
+            with st.expander("View Raw JSON Response"):
                 st.json(rca_data)
 
-            st.info("➡️ Proceed to the **Remediation** tab to execute the fix.")
+            st.info("Proceed to the Remediation tab to execute the fix.")
 
     else:
         st.caption("Awaiting initialization. Click 'Initialize Diagnostics' to begin.")
 
 
-# ─────────────────────────────────────────────
-# TAB 3: REMEDIATION
-# ─────────────────────────────────────────────
 with tab3:
     if st.session_state.get('rca_complete', False):
         st.markdown("### Execution Plan")
@@ -532,12 +482,12 @@ with tab3:
 
         if confidence < 0.75:
             st.error(
-                f"❌ **CONFIDENCE FAILED:** Score {confidence * 100:.0f}% is below the 75% threshold. "
+                f"Confidence score {confidence * 100:.0f}% is below the 75% threshold. "
                 f"Automated remediation blocked. Escalating to L2 SRE."
             )
         else:
             if st.session_state.get('needs_approval', True):
-                st.warning("🔒 **Security Gate:** This action modifies infrastructure. L2 SRE approval required before execution.")
+                st.warning("This action modifies production infrastructure. L2 SRE approval required before execution.")
 
             st.markdown("**Proposed Remediation Command:**")
             st.code(st.session_state.get('fix_cmd', 'Command unavailable'), language="bash")
@@ -545,7 +495,7 @@ with tab3:
             col_x, col_y = st.columns([1, 1])
 
             with col_x:
-                if st.button("✅ Approve & Execute", type="primary", use_container_width=True):
+                if st.button("Approve & Execute", type="primary", use_container_width=True):
                     terminal_container = st.empty()
                     fix_cmd = st.session_state.get('fix_cmd', '')
 
@@ -556,7 +506,7 @@ with tab3:
                         "> Applying configuration patch...",
                         "> Waiting for rollout: 1 of 1 updated replicas are available...",
                         "> Health check passed. Upstream connections recovering.",
-                        "✅ Rollout complete. Infrastructure state synced successfully."
+                        "> Rollout complete. Infrastructure state synced successfully."
                     ]
 
                     current_output = ""
@@ -565,10 +515,10 @@ with tab3:
                         terminal_container.code(current_output, language="bash")
                         time.sleep(0.8 if i > 1 else 1.2)
 
-                    st.success("✅ Issue resolved. ServiceA connections recovering.")
+                    st.success("Issue resolved. ServiceA connections recovering.")
                     st.balloons()
 
-                    st.markdown("### 📊 MTTR Impact Report")
+                    st.markdown("### MTTR Impact")
                     st.table({
                         "Diagnostic Phase": ["Log Triage", "Cross-Service Correlation", "Root Cause ID", "Total"],
                         "Manual SRE": ["15 min", "45 min", "30 min", "90 min"],
@@ -577,8 +527,8 @@ with tab3:
                     })
 
             with col_y:
-                if st.button("🚫 Reject / Escalate to L2", use_container_width=True):
-                    st.error("⛔ Execution rejected. Incident context packaged and escalated to L2 via Jira.")
+                if st.button("Reject / Escalate to L2", use_container_width=True):
+                    st.error("Execution rejected. Incident context packaged and escalated to L2 via Jira.")
 
     elif st.session_state.get('run_agent', False):
         st.caption("Diagnostics in progress. This tab will activate once RCA is complete.")
