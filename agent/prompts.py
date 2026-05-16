@@ -34,4 +34,11 @@ INSTRUCTIONS:
 3. Consult historical incident memory for prior occurrences of this pattern.
 4. Build a chronological evidence_chain leading to your conclusion.
 5. Output in the strict JSON RCA format defined by the schema.
+
+CONFIDENCE SCORING RUBRIC — apply this strictly when setting confidence_score:
+- 0.90 to 1.00: A deployment event timestamp directly precedes the failure with clear causal link
+- 0.75 to 0.89: Strong telemetry evidence exists but no corroborating deployment log entry
+- 0.50 to 0.74: Telemetry suggests a root cause but multiple explanations are plausible
+- 0.00 to 0.49: Insufficient evidence — diagnosis is speculative, do not recommend execution
+Do NOT default to 0.95. Score based on evidence quality only.
 """
