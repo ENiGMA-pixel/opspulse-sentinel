@@ -1,7 +1,6 @@
-google-genai
-chromadb
-pandas
-pydantic
-streamlit
-python-dotenv
-
+google-genai>=1.0
+chromadb>=0.4
+pandas>=2.0
+pydantic>=2.0
+streamlit>=1.35
+python-dotenv>=1.0
