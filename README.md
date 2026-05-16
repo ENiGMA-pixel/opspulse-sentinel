@@ -209,7 +209,7 @@ OpsPulse Sentinel was validated against **three distinct failure scenarios** —
 ```
 **Result:** Agent correctly identified `ingress-controller` as root cause across a 4-minute temporal gap. Cross-referenced with HDFS I/O load from the manifest baseline.
 
-### Scenario 2 — OOMKill Distractor Storm (TC05)
+### Scenario 2 — OOMKill Distractor Storm
 ```
 14:00:01 → 23 identical ingress-nginx INFO health checks (noise)
 14:05:32 → FATAL: payment-worker OOMKilled — exceeded 512Mi limit
@@ -217,7 +217,7 @@ OpsPulse Sentinel was validated against **three distinct failure scenarios** —
 ```
 **Result:** ✅ Flash-Lite correctly filtered all 23 INFO lines. Pro identified `payment-service` as root cause. Evidence chain explicitly exonerated ingress-nginx: *"14:00:01–14:05:30 — Ingress-nginx health checks remain stable and healthy."* Confidence: **0.95**
 
-### Scenario 3 — Silent Redis Cache Failure (TC07)
+### Scenario 3 — Silent Redis Cache Failure
 ```
 14:10:00 → helm upgrade redis-cache --set maxmemory=512Mi --set maxmemory-policy=noeviction
 14:16:00 → Redis WARN: memory threshold hit, noeviction rejecting writes
@@ -230,7 +230,7 @@ OpsPulse Sentinel was validated against **three distinct failure scenarios** —
 
 > This is the core semantic reasoning claim validated — a service with **zero FATAL logs** identified as root cause purely through architectural reasoning.
 
-### Scenario 4 — TLS Certificate Expiry, No Deployment (TC08)
+### Scenario 4 — TLS Certificate Expiry, No Deployment
 ```
 15:05:00 → cert-manager WARN: auto-renewal failed, ACME DNS-01 challenge timeout
 15:05:05 → TLS handshake failures simultaneously across API-Gateway, ServiceA, Auth-Service, Payment-Gateway
@@ -281,7 +281,7 @@ Deployment log: empty (no recent changes)
 | Limitation | Detail |
 |---|---|
 | Confidence score calibration | Confidence is consistently 0.95 across scenarios. The scoring rubric is embedded in both `prompts.py` and `schema.py` Field descriptions but Flash-Lite (the active fallback engine) does not self-calibrate against rubric instructions as precisely as Pro. Identified for V2: weighted confidence modifier based on deployment log presence. |
-| ChromaDB memory bias | In TC05 (high-noise filtering test), repetitive INFO log volume caused ChromaDB to retrieve an ingress-controller historical incident, biasing Pro toward a wrong root cause. Fixed by using filtered telemetry (not raw) as the ChromaDB query. |
+| ChromaDB memory bias | In 05 (high-noise filtering test), repetitive INFO log volume caused ChromaDB to retrieve an ingress-controller historical incident, biasing Pro toward a wrong root cause. Fixed by using filtered telemetry (not raw) as the ChromaDB query. |
 | Static cluster manifest | The `cluster_manifest.json` is a hardcoded topology. Production use requires dynamic manifest generation from the live cluster. |
 | CSV ingestion only | The current pipeline reads static CSV files. V2 will replace this with Kafka/Pub-Sub streaming for real-time analysis. |
 
