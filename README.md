@@ -10,6 +10,7 @@
 > **Stack:** Gemini 3.1 Pro + Flash-Lite · ChromaDB · Pydantic · Streamlit
 
 ---
+
 <p align="center">
   <img src="docs/1.png" alt="OpsPulse Sentinel Dashboard" width="100%">
   <br>
@@ -97,6 +98,15 @@ Raw Telemetry CSV
 | `gemini-3.1-pro-preview` | Stage 2 deep RCA | Primary attempt |
 | `gemini-3.1-flash-lite-preview` | Stage 2 fallback | On quota/503/429 |
 
+### Confidence Scoring Rubric
+
+| Score | Meaning | Remediation |
+|---|---|---|
+| 0.90 – 1.00 | Deployment event directly precedes failure | ✅ Allowed (with approval) |
+| 0.75 – 0.89 | Strong telemetry evidence, no deployment anchor | ✅ Allowed (with approval) |
+| 0.50 – 0.74 | Multiple causes plausible | ❌ Blocked — escalate to L2 |
+| < 0.50 | Insufficient evidence — speculative | ❌ Blocked — manual investigation |
+
 ---
 
 ## 🚀 Quick Start
@@ -132,6 +142,13 @@ streamlit run ui/app.py
 
 Open `http://localhost:8501`
 
+### Streamlit Cloud Deployment
+
+1. Fork this repo
+2. Connect to [share.streamlit.io](https://share.streamlit.io)
+3. Add `GEMINI_API_KEY` under **App Settings → Secrets**
+4. Deploy — no other configuration needed
+
 ### Data Setup
 
 The repo includes a pre-built synthetic validation dataset:
@@ -151,15 +168,19 @@ opspulse-sentinel/
 ├── agent/
 │   ├── __init__.py
 │   ├── memory_bank.py       ← ChromaDB PersistentClient + 5 historical incidents
-│   ├── prompts.py           ← SYSTEM_INSTRUCTION + USER_PROMPT_TEMPLATE
+│   ├── prompts.py           ← SYSTEM_INSTRUCTION + USER_PROMPT_TEMPLATE + confidence rubric
 │   ├── rca_engine.py        ← Two-stage pipeline + fallback logic + audit logging
-│   └── schema.py            ← Pydantic RootCauseAnalysis schema
+│   └── schema.py            ← Pydantic RootCauseAnalysis schema with Field descriptions
 ├── config/
-│   └── cluster_manifest.json ← Ground truth baselines (timeouts, dependencies)
+│   └── cluster_manifest.json ← Ground truth baselines (timeouts, dependencies, topology)
 ├── data/
 │   └── processed/
 │       ├── deployment_log.csv
 │       └── structured_telemetry.csv
+├── docs/
+│   ├── 1.png                ← Dashboard screenshot
+│   ├── 2.png                ← Evidence chain JSON screenshot
+│   └── 3.png                ← Remediation terminal screenshot
 ├── ui/
 │   └── app.py               ← Streamlit three-act dashboard
 ├── .env.example
@@ -170,7 +191,7 @@ opspulse-sentinel/
 
 ---
 
-## 🔬 Validation: The Synthetic Test Suite
+## 🔬 Validation: Semantic Reasoning Test Suite
 
 <p align="center">
   <img src="docs/2.png" alt="Evidence Chain JSON" width="80%">
@@ -178,20 +199,44 @@ opspulse-sentinel/
   <em>The structured output from Gemini Pro, proving chronological reasoning across deployment and telemetry events.</em>
 </p>
 
-The benchmark scenario is a **controlled Helm timeout failure**:
+OpsPulse Sentinel was validated against **three distinct failure scenarios** — each with different root causes and injected red herrings.
 
+### Scenario 1 — Helm Timeout Failure (Default Dataset)
 ```
 14:28:01 → helm upgrade ingress-controller --set proxy-connect-timeout=5s
 14:32:05 → ServiceA upstream connection timeouts begin
 14:32:18 → 503 error storm at 100% rate
 ```
+**Result:** Agent correctly identified `ingress-controller` as root cause across a 4-minute temporal gap. Cross-referenced with HDFS I/O load from the manifest baseline.
 
-Gemini correctly identifies the 4-minute causal gap without keyword matching — it reasons about temporal correlation between the deployment event and the error cascade.
+### Scenario 2 — OOMKill Distractor Storm (TC05)
+```
+14:00:01 → 23 identical ingress-nginx INFO health checks (noise)
+14:05:32 → FATAL: payment-worker OOMKilled — exceeded 512Mi limit
+13:55:00 → Deployment: helm upgrade payment-service --set resources.limits.memory=512Mi
+```
+**Result:** ✅ Flash-Lite correctly filtered all 23 INFO lines. Pro identified `payment-service` as root cause. Evidence chain explicitly exonerated ingress-nginx: *"14:00:01–14:05:30 — Ingress-nginx health checks remain stable and healthy."* Confidence: **0.95**
 
-A second unseen scenario (PostgreSQL connection pool exhaustion) was also validated:
-- Different telemetry source, different failure pattern
-- Gemini correctly calculated `25+20+20 = 65` combined pool size exceeding the 100-connection limit
-- Generated three separate `kubectl patch` commands, one per affected service
+### Scenario 3 — Silent Redis Cache Failure (TC07)
+```
+14:10:00 → helm upgrade redis-cache --set maxmemory=512Mi --set maxmemory-policy=noeviction
+14:16:00 → Redis WARN: memory threshold hit, noeviction rejecting writes
+14:17:00 → Cache misses force direct PostgreSQL queries — connection load rises
+14:19:30 → PostgreSQL connection pool exhausted — cascading FATAL across all services
+```
+**Red herrings planted:** `pg-backup-daily` cron job, `kubectl autoscale` event — both ignored correctly.
+
+**Result:** ✅ Agent identified `Redis-Cache` as root cause despite PostgreSQL generating all FATAL logs. Correctly separated symptom (DB failure) from cause (cache eviction policy). Confidence: **0.95**
+
+> This is the core semantic reasoning claim validated — a service with **zero FATAL logs** identified as root cause purely through architectural reasoning.
+
+### Scenario 4 — TLS Certificate Expiry, No Deployment (TC08)
+```
+15:05:00 → cert-manager WARN: auto-renewal failed, ACME DNS-01 challenge timeout
+15:05:05 → TLS handshake failures simultaneously across API-Gateway, ServiceA, Auth-Service, Payment-Gateway
+Deployment log: empty (no recent changes)
+```
+**Result:** ✅ Agent correctly deduced root cause from telemetry alone. Identified `cert-manager / TLS Certificate api.opspulse.internal`. Generated `kubectl` fix command (not helm — correct tool for cert rotation). PostgreSQL replica lag red herring ignored.
 
 ---
 
@@ -206,11 +251,13 @@ A second unseen scenario (PostgreSQL connection pool exhaustion) was also valida
 | Feature | Implementation |
 |---|---|
 | Confidence threshold | RCA blocked if `confidence_score < 0.75` |
+| Speculative block | Separate error state for `confidence_score < 0.50` |
 | Human approval gate | `require_human_approval: true` for all infrastructure changes |
 | Dual-model fallback | Automatic switch to Flash-Lite on quota/503/429 errors |
 | Flash passthrough | If Stage 1 fails, raw telemetry passes to Stage 2 uninterrupted |
 | Audit trail | Every RCA written to `audit_log.json` with timestamp and model used |
 | Structured output | Pydantic schema enforces JSON contract — no free-text hallucination |
+| Input validation | Missing columns caught at upload with user-facing error message |
 
 ---
 
@@ -225,6 +272,18 @@ A second unseen scenario (PostgreSQL connection pool exhaustion) was also valida
 | Executable fix command | ❌ | ❌ | ❌ | ✅ |
 | Human approval gate | ❌ | ⚠️ | ❌ | ✅ |
 | Custom log upload | ❌ | ❌ | ❌ | ✅ |
+| Confidence-gated blocking | ❌ | ❌ | ❌ | ✅ |
+
+---
+
+## ⚠️ Known Limitations
+
+| Limitation | Detail |
+|---|---|
+| Confidence score calibration | Confidence is consistently 0.95 across scenarios. The scoring rubric is embedded in both `prompts.py` and `schema.py` Field descriptions but Flash-Lite (the active fallback engine) does not self-calibrate against rubric instructions as precisely as Pro. Identified for V2: weighted confidence modifier based on deployment log presence. |
+| ChromaDB memory bias | In TC05 (high-noise filtering test), repetitive INFO log volume caused ChromaDB to retrieve an ingress-controller historical incident, biasing Pro toward a wrong root cause. Fixed by using filtered telemetry (not raw) as the ChromaDB query. |
+| Static cluster manifest | The `cluster_manifest.json` is a hardcoded topology. Production use requires dynamic manifest generation from the live cluster. |
+| CSV ingestion only | The current pipeline reads static CSV files. V2 will replace this with Kafka/Pub-Sub streaming for real-time analysis. |
 
 ---
 
@@ -235,6 +294,7 @@ A second unseen scenario (PostgreSQL connection pool exhaustion) was also valida
 - **Expanding memory** — ChromaDB auto-populated from resolved incidents over time
 - **Slack/PagerDuty integration** — push RCA reports to existing on-call workflows
 - **RBAC** — role-based approval policies per team and severity level
+- **Confidence calibration** — weighted scoring based on evidence source diversity
 
 ---
 
@@ -246,6 +306,11 @@ GEMINI_API_KEY=your_key_here
 ```
 
 Get your key at [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+
+For Streamlit Cloud deployment, add the key under **App Settings → Secrets** in TOML format:
+```toml
+GEMINI_API_KEY = "your_key_here"
+```
 
 ---
 
