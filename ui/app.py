@@ -44,7 +44,6 @@ st.markdown("""
         letter-spacing: -0.02em !important;
     }
 
-    /* Metric Cards */
     div[data-testid="metric-container"] {
         background-color: #0D1117;
         border: 1px solid #21262D;
@@ -53,7 +52,6 @@ st.markdown("""
         box-shadow: 0 1px 6px rgba(0,0,0,0.3);
     }
 
-    /* Header */
     .header-title {
         font-size: 2rem;
         font-weight: 700;
@@ -68,7 +66,6 @@ st.markdown("""
         margin-bottom: 1.8rem;
     }
 
-    /* Status Badges */
     .badge-success {
         background: rgba(46,160,67,0.15);
         color: #3FB950;
@@ -90,7 +87,6 @@ st.markdown("""
         letter-spacing: 0.04em;
     }
 
-    /* RCA Report Box */
     .rca-box {
         background-color: #161B22;
         border: 1px solid #30363D;
@@ -117,7 +113,6 @@ st.markdown("""
         margin-bottom: 0;
     }
 
-    /* Evidence Chain */
     .evidence-box {
         background-color: #0D1117;
         border: 1px solid #21262D;
@@ -156,28 +151,40 @@ st.markdown("""
         line-height: 1.5;
     }
 
-    /* Terminal output */
-    .terminal-block {
-        background: #0D1117;
-        border: 1px solid #30363D;
-        border-radius: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.82rem;
-        color: #3FB950;
-        padding: 16px 20px;
-        line-height: 1.7;
-    }
-
-    /* Divider */
     hr { border-color: #21262D !important; }
 
-    /* Sidebar */
     section[data-testid="stSidebar"] {
         background-color: #0D1117;
         border-right: 1px solid #21262D;
     }
     </style>
 """, unsafe_allow_html=True)
+
+
+# ─────────────────────────────────────────────
+# CONSTANTS
+# ─────────────────────────────────────────────
+REQUIRED_COLS = {'Date', 'Time', 'Pid', 'Level', 'Component', 'Content'}
+
+
+# ─────────────────────────────────────────────
+# HELPER: Safe CSV reader
+# ─────────────────────────────────────────────
+def safe_read_csv(uploaded_file):
+    """
+    Reads an uploaded CSV safely.
+    Handles UnicodeDecodeError by falling back to latin-1.
+    Returns (DataFrame, error_string). On success, error is None.
+    """
+    try:
+        try:
+            df = pd.read_csv(uploaded_file)
+        except UnicodeDecodeError:
+            uploaded_file.seek(0)
+            df = pd.read_csv(uploaded_file, encoding='latin-1')
+        return df, None
+    except Exception as e:
+        return None, str(e)
 
 
 # ─────────────────────────────────────────────
@@ -294,49 +301,51 @@ with tab1:
         uploaded_telemetry = u_col1.file_uploader(
             "Custom Telemetry (CSV)",
             type=["csv"],
-            help="Upload a structured telemetry CSV. Any columns will work — the agent reads it as plain text."
+            help="Required columns: Date, Time, Pid, Level, Component, Content"
         )
         uploaded_deployments = u_col2.file_uploader(
             "Custom Deployment Log (CSV)",
             type=["csv"],
-            help="Upload a deployment events CSV with timestamps and change descriptions."
+            help="Required columns: Date, Time, Pid, Level, Component, Content"
         )
 
-        REQUIRED_COLS = {'Date', 'Time', 'Pid', 'Level', 'Component', 'Content'}
-
+        # ── TELEMETRY UPLOAD HANDLER ─────────────────────────────────
         if uploaded_telemetry is not None:
-            try:
-                try:
-                    df = pd.read_csv(uploaded_telemetry)
-                except UnicodeDecodeError:
-                    uploaded_telemetry.seek(0)
-                    df = pd.read_csv(uploaded_telemetry, encoding='latin-1')
+            df, err = safe_read_csv(uploaded_telemetry)
+            if err:
+                st.error(f"⚠️ Could not read telemetry file: {err}. Please upload a valid CSV.")
+            else:
                 missing = REQUIRED_COLS - set(df.columns)
                 if missing:
-                    st.error(f"⚠️ Invalid telemetry file. Missing columns: {', '.join(sorted(missing))}. Please fix and re-upload.")
+                    st.error(
+                        f"⚠️ Invalid telemetry file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**. "
+                        f"Please fix and re-upload."
+                    )
                 else:
                     st.session_state['custom_telemetry'] = df
-                    st.success(f"✅ Custom telemetry loaded: {len(df)} rows")
-            except Exception as e:
-                st.error(f"⚠️ Could not read telemetry file: {str(e)}")
+                    st.success(f"✅ Custom telemetry loaded: {len(df)} rows, {len(df.columns)} columns")
 
+        # ── DEPLOYMENT UPLOAD HANDLER ────────────────────────────────
         if uploaded_deployments is not None:
-            try:
-                try:
-                    df = pd.read_csv(uploaded_deployments)
-                except UnicodeDecodeError:
-                    uploaded_deployments.seek(0)
-                    df = pd.read_csv(uploaded_deployments, encoding='latin-1')
+            df, err = safe_read_csv(uploaded_deployments)
+            if err:
+                st.error(f"⚠️ Could not read deployment file: {err}. Please upload a valid CSV.")
+            else:
                 missing = REQUIRED_COLS - set(df.columns)
                 if missing:
-                    st.error(f"⚠️ Invalid deployment file. Missing columns: {', '.join(sorted(missing))}. Please fix and re-upload.")
+                    st.error(
+                        f"⚠️ Invalid deployment file. "
+                        f"Missing required columns: **{', '.join(sorted(missing))}**. "
+                        f"Please fix and re-upload."
+                    )
                 else:
                     st.session_state['custom_deployments'] = df
-                    st.success(f"✅ Custom deployment log loaded: {len(df)} rows")
-            except Exception as e:
-                st.error(f"⚠️ Could not read deployment file: {str(e)}")])} rows")
+                    st.success(f"✅ Custom deployment log loaded: {len(df)} rows, {len(df.columns)} columns")
 
-        if st.session_state.get('custom_telemetry') is not None or st.session_state.get('custom_deployments') is not None:
+        # ── CLEAR BUTTON ─────────────────────────────────────────────
+        if (st.session_state.get('custom_telemetry') is not None
+                or st.session_state.get('custom_deployments') is not None):
             if st.button("🗑️ Clear Custom Data (revert to demo)", type="secondary"):
                 st.session_state.pop('custom_telemetry', None)
                 st.session_state.pop('custom_deployments', None)
@@ -359,7 +368,6 @@ with tab1:
 with tab2:
     st.markdown("### Root Cause Analysis")
 
-    # Data source indicator
     if st.session_state.get('custom_telemetry') is not None:
         st.markdown("<span class='badge-success'>● Custom Data Active</span>", unsafe_allow_html=True)
     else:
@@ -384,7 +392,6 @@ with tab2:
                     - ⬜ Policy Validation
                     """)
 
-                    # Pull from session state — None means rca_engine loads defaults
                     df_tel = st.session_state.get('custom_telemetry', None)
                     df_dep = st.session_state.get('custom_deployments', None)
 
@@ -423,8 +430,6 @@ with tab2:
                     """)
 
                 except Exception as e:
-                    # ── CACHED FALLBACK ──────────────────────────────────────
-                    # Only reached if BOTH Gemini models fail (e.g. full API outage)
                     st.error(f"🔴 DEBUG: {str(e)}")
                     st.session_state['used_fallback'] = True
                     mock_rca = {
@@ -481,7 +486,8 @@ with tab2:
             evidence = rca_data.get('evidence_chain', [])
             if evidence:
                 items_html = "".join([
-                    f'<div class="evidence-item"><div class="evidence-dot"></div><div class="evidence-text">{item}</div></div>'
+                    f'<div class="evidence-item"><div class="evidence-dot"></div>'
+                    f'<div class="evidence-text">{item}</div></div>'
                     for item in evidence
                 ])
                 st.markdown(f"""
@@ -496,13 +502,16 @@ with tab2:
 
             model_label = st.session_state['model_used']
             if isinstance(model_label, str):
-                model_label = model_label.replace("gemini-", "").replace("-preview", "").replace("-", " ").title()
+                model_label = (model_label
+                               .replace("gemini-", "")
+                               .replace("-preview", "")
+                               .replace("-", " ")
+                               .title())
 
             col_m1.metric("Engine", model_label)
             col_m2.metric("Confidence", f"{conf * 100:.1f}%")
             col_m3.metric("Human Approval", "Required" if st.session_state['needs_approval'] else "Auto-Resolve")
 
-            # ── RAW JSON EXPANDER ────────────────────────────────────
             with st.expander("📋 View Raw JSON Response"):
                 st.json(rca_data)
 
@@ -544,7 +553,7 @@ with tab3:
                         "$ Initializing secure cluster connection...",
                         f"$ {fix_cmd}",
                         "> Sending request to Kubernetes API...",
-                        "> Applying configuration patch to ingress-controller...",
+                        "> Applying configuration patch...",
                         "> Waiting for rollout: 1 of 1 updated replicas are available...",
                         "> Health check passed. Upstream connections recovering.",
                         "✅ Rollout complete. Infrastructure state synced successfully."
