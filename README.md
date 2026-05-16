@@ -45,7 +45,7 @@ Raw Telemetry CSV
        │
        ▼
 ┌─────────────────────────────┐
-│  Stage 1: Flash-Lite Filter │  ← Gemini 3.1 Flash-Lite-Privew
+│  Stage 1: Flash-Lite Filter │  ← Gemini 3.1 Flash-Lite-Preview
 │  Anomaly extraction from    │    Strips INFO noise, returns
 │  50 raw log lines           │    only ERRORs / WARNs / FATALs
 └────────────┬────────────────┘
