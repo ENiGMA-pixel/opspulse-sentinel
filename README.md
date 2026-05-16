@@ -171,6 +171,12 @@ opspulse-sentinel/
 
 ## 🔬 Validation: The Synthetic Test Suite
 
+<p align="center">
+  <img src="docs/2.png" alt="Evidence Chain JSON" width="80%">
+  <br>
+  <em>The structured output from Gemini Pro, proving chronological reasoning across deployment and telemetry events.</em>
+</p>
+
 The benchmark scenario is a **controlled Helm timeout failure**:
 
 ```
@@ -191,9 +197,9 @@ A second unseen scenario (PostgreSQL connection pool exhaustion) was also valida
 ## 🛡️ Safety & Governance
 
 <p align="center">
-  <img src="docs/2.png" alt="Evidence Chain JSON" width="80%">
+  <img src="docs/3.png" alt="Remediation Terminal" width="80%">
   <br>
-  <em>The structured output from Gemini Pro, proving chronological reasoning across deployment and telemetry events.</em>
+  <em>The Human-in-the-Loop approval gate and simulated execution terminal.</em>
 </p>
 
 | Feature | Implementation |
