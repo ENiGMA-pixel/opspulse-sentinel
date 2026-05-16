@@ -302,13 +302,39 @@ with tab1:
             help="Upload a deployment events CSV with timestamps and change descriptions."
         )
 
+        REQUIRED_COLS = {'Date', 'Time', 'Pid', 'Level', 'Component', 'Content'}
+
         if uploaded_telemetry is not None:
-            st.session_state['custom_telemetry'] = pd.read_csv(uploaded_telemetry)
-            st.success(f"✅ Custom telemetry loaded: {len(st.session_state['custom_telemetry'])} rows")
+            try:
+                try:
+                    df = pd.read_csv(uploaded_telemetry)
+                except UnicodeDecodeError:
+                    uploaded_telemetry.seek(0)
+                    df = pd.read_csv(uploaded_telemetry, encoding='latin-1')
+                missing = REQUIRED_COLS - set(df.columns)
+                if missing:
+                    st.error(f"⚠️ Invalid telemetry file. Missing columns: {', '.join(sorted(missing))}. Please fix and re-upload.")
+                else:
+                    st.session_state['custom_telemetry'] = df
+                    st.success(f"✅ Custom telemetry loaded: {len(df)} rows")
+            except Exception as e:
+                st.error(f"⚠️ Could not read telemetry file: {str(e)}")
 
         if uploaded_deployments is not None:
-            st.session_state['custom_deployments'] = pd.read_csv(uploaded_deployments)
-            st.success(f"✅ Custom deployment log loaded: {len(st.session_state['custom_deployments'])} rows")
+            try:
+                try:
+                    df = pd.read_csv(uploaded_deployments)
+                except UnicodeDecodeError:
+                    uploaded_deployments.seek(0)
+                    df = pd.read_csv(uploaded_deployments, encoding='latin-1')
+                missing = REQUIRED_COLS - set(df.columns)
+                if missing:
+                    st.error(f"⚠️ Invalid deployment file. Missing columns: {', '.join(sorted(missing))}. Please fix and re-upload.")
+                else:
+                    st.session_state['custom_deployments'] = df
+                    st.success(f"✅ Custom deployment log loaded: {len(df)} rows")
+            except Exception as e:
+                st.error(f"⚠️ Could not read deployment file: {str(e)}")])} rows")
 
         if st.session_state.get('custom_telemetry') is not None or st.session_state.get('custom_deployments') is not None:
             if st.button("🗑️ Clear Custom Data (revert to demo)", type="secondary"):
