@@ -9,6 +9,11 @@
 > **Stack:** Gemini 3.1 Pro + Flash-Lite · ChromaDB · Pydantic · Streamlit
 
 ---
+<p align="center">
+  <img src="docs/1.png" alt="OpsPulse Sentinel Dashboard" width="100%">
+  <br>
+  <em>OpsPulse Sentinel Incident Command Center: Diagnosing a critical telemetry anomaly in under 60 seconds.</em>
+</p>
 
 ## 📊 Projected MTTR Impact
 
