@@ -42,7 +42,7 @@ def flash_anomaly_filter(raw_telemetry: str) -> str:
     Run raw telemetry through Flash-Lite to extract anomalous lines only.
     Falls back to passing raw telemetry if the model call fails.
     """
-    flash_model = 'gemini-2.0-flash-lite'
+    flash_model = 'gemini-3.1-flash-lite-preview'
 
     filter_prompt = f"""You are a high-speed log anomaly detector.
 Scan the following telemetry logs and return ONLY the lines that indicate
