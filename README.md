@@ -190,6 +190,12 @@ A second unseen scenario (PostgreSQL connection pool exhaustion) was also valida
 
 ## 🛡️ Safety & Governance
 
+<p align="center">
+  <img src="docs/2.png" alt="Evidence Chain JSON" width="80%">
+  <br>
+  <em>The structured output from Gemini Pro, proving chronological reasoning across deployment and telemetry events.</em>
+</p>
+
 | Feature | Implementation |
 |---|---|
 | Confidence threshold | RCA blocked if `confidence_score < 0.75` |
