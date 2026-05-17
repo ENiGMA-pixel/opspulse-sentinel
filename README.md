@@ -284,6 +284,7 @@ Deployment log: empty (no recent changes)
 | ChromaDB memory bias | In 05 (high-noise filtering test), repetitive INFO log volume caused ChromaDB to retrieve an ingress-controller historical incident, biasing Pro toward a wrong root cause. Fixed by using filtered telemetry (not raw) as the ChromaDB query. |
 | Static cluster manifest | The `cluster_manifest.json` is a hardcoded topology. Production use requires dynamic manifest generation from the live cluster. |
 | CSV ingestion only | The current pipeline reads static CSV files. V2 will replace this with Kafka/Pub-Sub streaming for real-time analysis. |
+| Incident history | ChromaDB operates on an ephemeral Streamlit Cloud filesystem. The 5 base incidents are automatically re-seeded on restart, but incidents diagnosed during live sessions are not yet persisted to external storage. Identified for V2: external database-backed incident memory. |
 
 ---
 
