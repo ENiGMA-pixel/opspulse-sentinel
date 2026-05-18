@@ -2,7 +2,7 @@
 ### Autonomous Root Cause Analysis for Enterprise SRE Teams
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit)](https://opspulse-sentinel.streamlit.app)
-[![Video Demo](https://img.shields.io/badge/Video%20Demo-YouTube-FF0000?logo=youtube)](YOUR_YOUTUBE_LINK_HERE)
+[![Video Demo](https://img.shields.io/badge/Video%20Demo-YouTube-FF0000?logo=youtube)](https://share.descript.com/view/F8tZA4W1540)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python)](https://python.org)
 [![Gemini](https://img.shields.io/badge/Powered%20by-Gemini%203.1-4285F4?logo=google)](https://ai.google.dev)
 
