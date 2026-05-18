@@ -1,0 +1,20 @@
+Date,Time,Pid,Level,Component,Content
+260513,141001,2001,INFO,Redis-Cache,Cache hit rate 94% memory usage 48% of 512Mi
+260513,141100,2002,INFO,PostgreSQL-Main,Connection pool healthy 12 of 200 connections active
+260513,141200,2003,INFO,ServiceA,Request latency p99 45ms within baseline threshold
+260513,141300,2004,INFO,Auth-Service,Token cache hit rate 91% all systems nominal
+260513,141400,2005,INFO,Payment-Gateway,Transaction throughput 340 req/s nominal
+260513,141500,2006,INFO,Redis-Cache,Cache hit rate 89% memory usage 71% of 512Mi
+260513,141600,2007,WARN,Redis-Cache,Memory threshold approaching 80% noeviction policy active rejecting new writes
+260513,141700,2008,WARN,Redis-Cache,Cache write rejected key session:user:4471 fallback to direct DB query
+260513,141800,2009,WARN,Redis-Cache,Cache write rejected key session:user:5823 fallback to direct DB query
+260513,141830,2010,WARN,PostgreSQL-Main,Connection pool utilisation rising 67 of 200 connections active
+260513,141900,2011,WARN,PostgreSQL-Main,Connection pool utilisation critical 134 of 200 connections active
+260513,141930,2012,ERROR,PostgreSQL-Main,Connection pool exhausted remaining slots reserved for superuser
+260513,141935,2013,ERROR,ServiceA,Database connection refused upstream query timeout after 30s
+260513,141940,2014,ERROR,Auth-Service,Unable to validate token database unreachable user authentication failing
+260513,141945,2015,ERROR,Payment-Gateway,Transaction failed database write timeout rolling back
+260513,141950,2016,FATAL,PostgreSQL-Main,Max connections 200 reached all new connections rejected
+260513,141955,2017,ERROR,ServiceA,Health check failed cascading timeout from PostgreSQL unavailability
+260513,142000,2018,ERROR,Auth-Service,Health check failed all downstream dependencies unreachable
+260513,142005,2019,FATAL,Payment-Gateway,Shutting down gracefully unable to reach PostgreSQL after 3 retries

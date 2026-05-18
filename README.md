@@ -115,6 +115,10 @@ Raw Telemetry CSV
 - Python 3.10+
 - Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
+**Demo Dataset:** A pre-built incident scenario is available in 
+`data/test_scenarios/` — upload these two files in the app to 
+reproduce the Redis-Cache root cause analysis shown in the demo video.
+
 ### Installation
 
 ```bash
@@ -131,6 +135,8 @@ pip install -r requirements.txt
 
 # Configure API key
 cp .env.example .env
+
+
 # Edit .env and add your GEMINI_API_KEY
 ```
 
